@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="laydate/laydate.js"></script>
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+
+/*时间选择开始*/
+.timetable{ 
+	position:absolute;
+	top:70px;
+	left:36px;
+	font-size:18px;
+}
+.timeline{ 
+	position:absolute;
+	top:110px;
+	left:35px;
+	right:90px;
+	color:rgb(204,204,204);
+}
+/*时间选择结束*/
+
+/*电压开始*/
+.voltage{ 
+	width:100%;
+	height:202px;
+}
+
+.VchartTextLeft{ 	
+	position:absolute;
+	top:126px;
+	left:65px;
+}
+.VchartTextRight{ 
+	position:absolute;
+	top:126px;
+	right:86px;
+}
+
+.Vimg{        /*小图标*/
+	position:absolute;
+	top:124px;
+	left:32px;
+}
+.line1{ 
+	border:dotted;
+	position:absolute;
+	top:134px;
+	left:129px;
+	right:126px;
+}
+.VchartPhoto{ 
+	height:120px;
+	background-color:rgb(204,204,204);
+	position:absolute;
+	top:160px;
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*电压结束*/
+
+/*电流开始*/
+.current{ 
+	width:100%;
+	height:196px;
+}
+
+.CchartTextLeft{ 	
+	position:absolute;
+	top:328px;  /*96+202*/
+	left:65px;
+}
+.CchartTextRight{ 
+	position:absolute;
+	top:328px;
+	right:86px;
+}
+
+.Cimg{ 
+	position:absolute;
+	top:326px;
+	left:32px;
+}
+.line2{ 
+	border:dotted;
+	position:absolute;
+	top:336px;/*104+202*/
+	left:129px;
+	right:126px;
+}
+.CchartPhoto{ 
+	height:120px;
+	background-color:rgb(204,204,204);
+	position:absolute;
+	top:362px; /*130+202*/
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*电流结束*/
+/*温度开始*/
+.temperature{ 
+	width:100%;
+	height:196px;
+}
+
+.TchartTextLeft{ 	
+	position:absolute;
+	top:524px;  /*298+196*/
+	left:65px;
+}
+.TchartTextRight{ 
+	position:absolute;
+	top:524px;
+	right:86px;
+}
+
+.Timg{ 
+	position:absolute;
+	top:520px;
+	left:32px;
+}
+.line3{ 
+	border:dotted;
+	position:absolute;
+	top:532px;/*306+196*/
+	left:129px;
+	right:126px;
+}
+.TchartPhoto{ 
+	height:120px;
+	background-color:rgb(204,204,204);
+	position:absolute;
+	top:558px; /*332+196*/
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*温度结束*/
+
+</style>
+</head>
+<body>
+<div class="title">三号电源————储能电源主控单元</div>
+<div class="text">
+	<!--时间选择-->
+	<div class="timetable">
+   	    起始日期：<input onClick="laydate()"> 截止日期：<input id="demo" >
+        <button type="button">查询</button>
+	</div>
+    
+    <!--图表-->
+    <div class="container">
+    	    <div class="voltage">
+        <hr class="timeline">
+   		<img class="Vimg" src="../../images/icons/voltage.png">
+    	<div class="VchartTextLeft">电压</div><hr class="line1">
+        <div class="VchartTextRight">XXV</div> 
+		<div class="VchartPhoto"> 
+        电压图
+   		</div>  
+    </div>
+    <div class="current">
+    	<img class="Cimg" src="../../images/icons/current.png">
+        <div class="CchartTextLeft">电流</div><hr class="line2">
+        <div class="CchartTextRight">XXA</div>
+        <div class="CchartPhoto"> 
+        电流图
+        </div> 
+    </div>
+    <div class="temperature">
+        <img class="Timg" src="../../images/icons/temperature.png">
+        <div class="TchartTextLeft">温度</div><hr class="line3">
+        <div class="TchartTextRight">XX°C</div>
+    	<div class="TchartPhoto"> 
+        温度图
+        </div> 
+    </div>
+    
+</div>
+<script>
+;!function(){
+laydate({
+   elem: '#demo'
+})
+}();
+</script>
+</body>
+</html>

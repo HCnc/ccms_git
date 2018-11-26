@@ -1,0 +1,9 @@
+<launch>
+	<node pkg="ccms_pro" type="sub_block_data" name="topic_block_sub" output="screen"/>
+	<node pkg="ccms_pro" type="sub_block2_data" name="topic_block2_sub" output="screen"/>
+	<node pkg="ccms_pro" type="sub_can5_data" name="topic_can5_sub" output="screen"/>
+	<node pkg="ccms_pro" type="sub_can6_data" name="topic_can6_sub" output="screen"/>
+	<node pkg="ccms_pro" type="sub_error_data" name="sub_error_data" output="screen"/>
+	<node pkg="ccms_pro" type="sub_module_data" name="sub_module_data" output="screen"/>
+	
+</launch>

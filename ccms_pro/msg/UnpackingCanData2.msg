@@ -1,0 +1,6 @@
+uint32 id
+time stamp
+uint16 Module_Block_Voltage1
+uint16 Module_Block_Voltage2
+uint16 Module_Block_Voltage3
+uint16 Module_Block_Voltage4

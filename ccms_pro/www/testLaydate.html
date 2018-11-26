@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="/html/history/laydate/laydate.js"></script>
+    <link href="/html/history/laydate/need/laydate.css" rel="stylesheet">
+    <script src="js/adddate.js"></script>
+</head>
+<body>
+<script>
+    !function() {
+        laydate({
+            elem: '#test-n1'
+            // , position: 'static'
+        });
+        laydate({
+            elem: '#test-n2'
+            // , position: 'static'
+            // , lang: 'en'
+        });
+        laydate({
+            elem: '#test-n3'
+            , type: 'month'
+            , position: 'static'
+        });
+        laydate({
+            elem: '#test-n4'
+            , type: 'time'
+            , position: 'static'
+        });
+    }();
+</script>
+<input type="text" style="width: 75%;" readonly="readonly"  value="2016-08-01 00:00:00" id="start_time" onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss') " />
+
+<input class="laydate-icon" id="test-n1" value="xuanze"/>
+<input class="laydate-icon" id="test-n2" value="xuanze"  onClick="laydate()">
+<input class="laydate-icon" id="test-n3" value="xuanze"/>
+<input class="laydate-icon" id="test-n4" value="xuanze">
+<input type="datetime-local"/>
+</body>

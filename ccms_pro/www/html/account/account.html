@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>title</title>
+<style> 
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+
+.container{ 
+	position:absolute;
+	top:40%;
+	left:40%;
+	
+}
+.account{ 
+	width:300px;
+	height:40px;
+	position:relative;
+	top:10px;
+}
+.password{ 
+	width:300px;
+	height:40px;
+	position:relative;
+	top:30px;
+}
+.button{ 
+	width:80px;
+	height:30px;
+	border-color:rgb(102,102,102);
+	color:rgb(255,255,255);
+	background-color:rgb(0,195,233);
+	border-radius:7px;
+	position:relative;
+	top:50px;
+	right:-220px;
+}
+</style>
+</head>
+<div class="title">我的账户</div>
+<div class="container"> 
+	管理员|普通用户<br>
+    <input class="account" type="text" value="请输入账号"><br>
+    <input class="password" type="password" value="请输入密码"><br>
+    <button class="button" type="button">登陆</button>
+</div>
+<body>
+</body>
+</html>

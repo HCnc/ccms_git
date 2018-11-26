@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="../../js/jQuery3.2.1.js"></script>
+<script src="../../config.js"></script>
+<script src="../../js/main/onePowerNow.js"></script>
+<script src="../../js/echarts/echarts.min.js"></script>
+
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+
+/*电压开始*/
+.voltage{ 
+	width:100%;
+	height:400px;
+}
+
+.VchartPhoto{
+    background-color: #000000 !important;
+	height:400px;
+	position:absolute;
+	top:15%;
+	left:60px;
+	right:80px;
+	border-radius:15px;
+}
+/*电压结束*/
+
+#chargingstate{ 
+    position:absolute;
+	top:550px;
+	left:20%;
+}
+#charging{ 
+	position:absolute;
+	top:550px;
+	left:23%;
+}
+#finishcharging{ 
+	position:absolute;
+	top:550px;
+	left:28%;
+}
+.fan1{
+	position:absolute;
+	top:550px;
+	left:40%;
+}
+.fan2{
+	position:absolute;
+	top:550px;
+	left:55%;
+}
+.fan3{
+	position:absolute;
+	top:550px;
+	left:70%;
+}
+</style>
+
+</head>
+
+<body>
+<div class="title">三号电源————储能电源主控单元</div>
+<div class="container">
+    <div class="voltage">
+		<div class="VchartPhoto" id="oneVPhoto"> 
+        电压图
+   		</div>  
+    </div>
+    <div id="chargingstate">
+       <img src="../../images/icons/charging state.png">
+    </div>
+	<div id="charging">
+       <img src="../../images/icons/charging1.png">
+	</div>
+	<div id="finishcharging">
+       <img src="../../images/icons/finishcharging.png">
+    </div>
+    <div class="fan1">
+       <img id="fan1state" src="../../images/icons/fan.png">1
+       <img id="on" src="../../images/btu/equilibrium_open.png">
+       <!--<img id="off" src="../../images/btu/equilibrium_off.png">-->
+    </div>
+	<div class="fan2">  
+       <img id="fan2state" src="../../images/icons/fan.png">2
+       <img id="on" src="../../images/btu/equilibrium_open.png">
+       <!--<img id="off" src="../../images/btu/equilibrium_off.png">-->
+    </div>
+	<div class="fan3">
+       <img id="fan3state" src="../../images/icons/fan.png">3
+       <img id="on" src="../../images/btu/equilibrium_open.png">
+       <!--<img id="off" src="../../images/btu/equilibrium_off.png">-->
+    </div>
+</div>
+</body>
+</html>

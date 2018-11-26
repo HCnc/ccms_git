@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="../../js/jQuery3.2.1.js" type="text/javascript"charset="utf-8"></script>
+    <script src="../../config.js"></script>
+	<script src="../../js/adddate.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../js/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	<meta charset="utf-8" />
+	<title>故障查询</title>
+</head>
+<style type="text/css">
+	th,td
+	{
+		width:190px;
+		text-align: center;
+	}
+	.timetable{
+		position:absolute;
+		top:10px;
+		left:36px;
+		font-size:18px;
+	}
+	.loadImage
+	{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+
+	.errTitle
+	{
+		color: #fff;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		font-size: 18px;
+	}
+	.navbar-inverse{
+		background-color: #c0c0c0;
+	}
+</style>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="errTitle"></div>
+</nav>
+<div class="timetable">
+	起始日期：<input type="text" style="width: 25%;" readonly="readonly"  value="2018-07-16 09:39:58" id="start_time" onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')">
+	截止日期：<input type="text" style="width: 25%;" readonly="readonly"  value="2018-07-16 10:49:25" id="end_time" onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')">
+	<button type="button" id="find_history">查询</button>
+</div>
+<div id="table" class="table-responsiv">
+	<table id="tb" class="table-condensed table" align="center">
+		<thead>
+		<tr>
+			<th>时间</th>
+			<th>故障等级</th>
+			<th>故障名称</th>
+			<th>电源ID</th>
+			<th>模组ID</th>
+			<th>模块ID</th>
+		</tr>
+		</thead>
+		<tbody id="tbBody">
+		</tbody>
+	</table>
+	<img id="lodaImage" src="img/5-121204193R0-50.gif" class="loadImage"/>
+</div>
+<script type="application/javascript">
+    $(document).ready(function(){
+        $("#lodaImage").hide();
+        $("#find_history").on("click",function () {
+            $("#tbBody").html("")
+            $("#lodaImage").show();
+            var start_time = $("#start_time").val();
+            var end_time = $("#end_time").val();
+            var start_time_arr = start_time.split(" ");
+            var end_time_arr = end_time.split(" ");
+            var start_time_arr_fenduan = start_time_arr[0].split("-")
+            var end_time_arr_fenduan = end_time_arr[0].split("-")
+
+            var start_time_month_quling = start_time_arr_fenduan[1].replace(/\b(0+)/gi,"")
+            var end_time_month_quling = end_time_arr_fenduan[1].replace(/\b(0+)/gi,"")
+
+            var starttime_month_date_year = start_time_month_quling+"-"+start_time_arr_fenduan[2]+"-"+start_time_arr_fenduan[0]
+            var endtime_month_date_year = end_time_month_quling+"-"+end_time_arr_fenduan[2]+"-"+end_time_arr_fenduan[0]
+
+            var start_time_finsh = starttime_month_date_year + " " + start_time_arr[1]
+
+            var end_time_finsh = endtime_month_date_year + " " + end_time_arr[1]
+            console.log("处理后开始时间"+start_time_finsh)
+            console.log("处理后结束时间"+end_time_finsh)
+            var socket = new WebSocket(config.ipAdress)
+            var a =  {"getErr":{
+                    "startTime": start_time_finsh,
+                    "endTime": end_time_finsh
+				}
+            };
+            socket.onopen = function(){
+                console.log('连接成功')
+                socket.send(
+                    JSON.stringify(a)
+                )
+            }
+            socket.onclose = function(){
+                console.log('连接关闭')
+            }
+
+            socket.onmessage = function(evt){
+                _dealMsg(evt)
+            }
+            socket.onerr = function(){
+                console.log('连接发生错误')
+            }
+            _dealMsg = function (evt) {
+                console.log("接受到的数据" + evt.data)
+                var dataStr = evt.data
+                var result =  JSON.parse(dataStr)
+                $.each(result.ErrList, function(index,item) {
+					var startTime = item.time;
+					var errLevel = item.errType;
+					var errName = item.errName;
+					var powID = item.powId;
+					var modID = item.modId;
+					var blockID = item.blockId;
+					$("#tbBody").append("<tr><td>"+startTime+"</td><td>" +errLevel+"</td><td>"+errName+"</td><td>"+powID+"</td><td>"+modID+"</td><td>"+blockID+"</td></tr>");
+				});
+            }
+            $("#lodaImage").hide();
+        })
+    })
+</script>
+</body>
+</html>

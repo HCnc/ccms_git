@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+    <script type="text/javascript" src="../../js/jquery/jquery.min.js" charset="UTF-8"></script>
+    <script src = "../../config.js"></script>
+    <script src="../../js/main/onePowerModSingleNow.js"></script>
+    <script src="../../js/echarts/echarts.min.js"></script>
+    <link href="../../js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script href="../../js/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script href="../../js/bootstrap-select/dist/js/i18n/defaults-zh_CN.min.js"></script>
+    <link rel="stylesheet" href="../../js/bootstrap-select/dist/css/bootstrap-select.min.css" />
+    <link href="../../js/bootstrap-3.3.7-dist/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <script src="../../js/bootstrap-3.3.7-dist/js/bootstrap-switch.min.js"></script>
+    
+    <script type="text/javascript">
+    function deal_data2(data){
+		deal2(data);
+	};
+	function deal_data3(data){
+		deal3(data);
+	};
+	function deal_data4(data){
+		deal4(data);
+	};
+	
+    </script>
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+
+/*最高电压开始*/
+.voltageHigh{ 
+	width:100%;
+	height:400px;
+}
+
+
+.VHchartPhoto{ 
+	height:400px;
+	background-color:#000000 !important;
+	position:absolute;
+	top:130px;
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*最高电压结束*/
+</style>
+
+
+</head>
+
+<body>
+	<div>
+		<div class="title">一号电源————模块状况</div>
+		<!--
+		<div class="ModChoose">
+			<form>
+				<div class="col-sm-4">
+	                <div class="input-group">
+	                    <input type="text" class="form-control" id="input-item" placeholder="Input 1-43">
+	                    <span class="input-group-btn">
+	                        <button class="btn btn-default" type="button" id="select-button">Search!</button>
+	                    </span>
+	                </div>
+	            </div>
+			</form>
+		</div>
+		-->
+		<div class="container">
+		    <div class="voltageHigh">
+				<div class="VHchartPhoto" id="oneModVoltPhoto">
+		        电压图
+
+		   		</div>
+		    </div>
+
+		</div>
+	</div>
+
+	<div>
+		
+		<div class="row" style="position: absolute;left: 5%;top:0px; pointer-events: none;">
+			<div class="col-md-1" style="position: absolute;left: 60px;top: 550px;">
+				<input name="status1" type="checkbox" />
+			</div>
+			<div class="col-md-1" style="position: absolute;left: 190px;top: 550px;">
+				<input name="status2" type="checkbox" />
+			</div>
+			<div class="col-md-1" style="position: absolute;left: 320px;top: 550px;">
+				<input name="status3" type="checkbox" />
+			</div>
+			<div class="col-md-1" style="position: absolute;left: 450px;top: 550px;">
+				<input name="status4" type="checkbox" />
+			</div>
+		  <div class="col-md-1" style="position: absolute;left: 580px;top: 550px;">
+		  	<input name="status5" type="checkbox" />
+		  </div>
+		  <div class="col-md-1" style="position: absolute;left: 710px;top: 550px;">
+		  	<input name="status6" type="checkbox" />
+		  </div>
+		  <div class="col-md-1" style="position: absolute;left: 840px;top: 550px;">
+		  	<input name="status7" type="checkbox" />		
+		  </div>
+
+		</div>
+		<div class="row">
+				<button onclick="sub1()">change1</button>
+				<button onclick="sub2()">change2</button>
+			</div>
+	</div>
+
+
+
+</body>
+</html>

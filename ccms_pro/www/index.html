@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储能电源系统控制管理系统</title>
+</head>
+<script src="./js/jQuery3.2.1.js"></script>
+<script src="./js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<link href="./js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
+<script src="js/Websocket/websocketstore.js"></script>
+
+<!-- <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script> -->
+<script src="build/eventemitter2.min.js"></script>
+<script src="build/roslib.js"></script>
+<script src="build/bean.js"></script>
+
+<script>
+  // Connecting to ROS
+  // -----------------
+  var ros = new ROSLIB.Ros();
+
+  // If there is an error on the backend, an 'error' emit will be emitted.
+  ros.on('error', function(error) {
+    document.getElementById('connecting').style.display = 'none';
+    document.getElementById('connected').style.display = 'none';
+    document.getElementById('closed').style.display = 'none';
+    document.getElementById('error').style.display = 'inline';
+    console.log(error);
+  });
+
+  // Find out exactly when we made a connection.
+  ros.on('connection', function() {
+    console.log('Connection made!');
+    document.getElementById('connecting').style.display = 'none';
+    document.getElementById('error').style.display = 'none';
+    document.getElementById('closed').style.display = 'none';
+    document.getElementById('connected').style.display = 'inline';
+  });
+
+  ros.on('close', function() {
+    console.log('Connection closed.');
+    document.getElementById('connecting').style.display = 'none';
+    document.getElementById('connected').style.display = 'none';
+    document.getElementById('closed').style.display = 'inline';
+  });
+
+  // Create a connection to the rosbridge WebSocket server.
+  //ros.connect('ws://localhost:8888');
+  ros.connect('ws://192.168.30.103:8888');
+  
+  var send_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/send',
+    messageType : 'msg_test/sendData'
+  });
+
+  //create message
+  // var send = new ROSLIB.Message({
+  //    data1 : 1
+  // });
+
+  //publish
+  //send_data.publish(send);
+
+  send_msg = function(msg){
+    send_data.publish(msg);
+  }
+  
+	var d2_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can_msg_block1',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData2'//'ccms_pro/UnpackingCanData1'
+  });
+	d2_data.subscribe(function(message) {
+			console.log('in d2_data');
+			data = [message.Module_Block_Voltage1, message.Module_Block_Voltage2,
+							message.Module_Block_Voltage3, message.Module_Block_Voltage4];
+			console.log('data2: ' + data);
+			child.window.deal_data2(data);
+			
+	});
+
+	var d3_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can_msg_block2',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData3'//'ccms_pro/UnpackingCanData1'
+  });
+	d3_data.subscribe(function(message) {
+			console.log('in d3_data');
+			data = [message.Module_Block_Voltage5, message.Module_Block_Voltage6,
+							message.Module_Block_Voltage7, message.Module_Block_Voltage8];
+			console.log('data2: ' + data);
+			child.window.deal_data3(data);
+	});
+
+	var d4_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can4_msg',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData4'//'ccms_pro/UnpackingCanData1'
+  });
+	d4_data.subscribe(function(message) {
+			console.log('in d4_data');
+			data = message.data;
+			console.log('data: ' + data);
+			child.window.deal_data4(data);
+	});
+
+	var d6_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can6_msg',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData6'//'ccms_pro/UnpackingCanData1'
+  });
+	d6_data.subscribe(function(message) {
+			console.log('in d6_data');
+			data6.setting(
+				   message.Energy_Storage_Voltage,                                  
+                   message.Energy_Storage_Current,                      
+                   message.Energy_Storage_Temperature);
+
+    // //data1.getting();
+	 child.window.change_pic_fan(message.Fandata);
+	 child.window.change_pic_power(message.otherdata);
+     child.window.deal_data6(data6);
+	});
+
+	var d1_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can_msg',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData1'//'ccms_pro/UnpackingCanData1'
+  });
+  d1_data.subscribe(function(message) {
+			console.log('in d1_data');
+      data1.setting(message.id,
+					message.Module_Voltage,                                  
+                   message.Module_Capacitance_Temperature);
+
+    // //data1.getting();
+     child.window.deal_data1(data1);
+  });
+
+  var d5_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can5_msg',
+    messageType : 'ccms_pro/UnpackingCanData5'//'ccms_pro/UnpackingCanData5'
+  });
+
+  d5_data.subscribe(function(message){
+    console.log("in d5_data");
+    data5.setting(message.Balanced_data_number,
+                  message.Modules_Above_Threshold_Voltage,
+                  message.Moduel_Average_Voltage,
+                  message.Module_Voltage_Threshold,
+                  message.Minimum_Module_Voltage)
+	console.log("data5: " + data5.Moduel_Average_Voltage);
+    child.window.deal_data5(data5);
+  });
+
+  var detect = new ROSLIB.Topic({
+    ros : ros,
+    name : '/block_detect',
+    messageType : 'ccms_pro/BlockResult'//'ccms_pro/UnpackingCanData5'
+  });
+
+  detect.subscribe(function(message){
+    console.log("in detect");
+  });
+
+  var addTwoIntsClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/history_power_msg',
+    serviceType : 'msg_test/WordCount'
+  });
+
+  function send_time_and_id(id){
+    // var timestamp1 = (new Date()).valueOf();
+    // console.log(timestamp1)
+    var start_time = document.getElementById("s").value;
+    var end_time = document.getElementById("e").value;
+    start_time = parseInt(start_time);
+    end_time = parseInt(end_time)
+    
+    realtime = timestampToTime(start_time);
+    console.log(realtime);
+
+    var request = new ROSLIB.ServiceRequest({
+      // Power_Number : id,
+      // Module_Number : 1,
+      // Block_Number : 1,
+      StartTime :start_time,
+      EndTime :end_time
+    });
+
+    addTwoIntsClient.callService(request, function(result) {
+    //console.log('Result for service call on ' + addTwoIntsClient.name + ': ' + result.count);
+      console.log('result: ' + result);
+
+      //result [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4]
+      var a = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4];
+      var data = [];
+      var voltage = [];
+      var Temperature = [];
+      var current = [];
+
+      for (var i = 0; i<a.length; i += 4){
+        data.push(a[i]);
+        voltage.push(a[i + 1]);
+        Temperature.push(a[i + 2]);
+        current.push(a[i + 3]);
+      };
+
+      console.log('data: ' + data);
+      console.log('voltage: ' + voltage);
+      console.log('Temperature: ' + Temperature);
+      console.log('current: ' + current);
+
+      var data = [Math.random() * 300];
+
+      for (var i = 1; i < 10; i++) {
+          //var now = new Date(base += oneDay);
+          //date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+          data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+      };
+
+      var evt = {
+                date : [timestampToTime(1541753471.9654598), timestampToTime(1541753472.2190185), 
+                        timestampToTime(1541753473.2293525), timestampToTime(1541753474.9448998), 
+                        timestampToTime(1541753475.9034448), timestampToTime(1541753477.1002357),
+                        timestampToTime(1541753477.7291737), timestampToTime(1541753478.5615644),
+                        timestampToTime(1541753479.4771185), timestampToTime(1541753480.7547863)],
+                data : data
+            };
+      child.window._dealMsg(evt);
+    });
+
+  }
+
+  function timestampToTime(timestamp) {
+      var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '/';
+        var M = (date.getMonth()+1 < 10 ? +(date.getMonth()+1) : date.getMonth()+1) + '/';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() + ':';
+        var s = date.getSeconds();
+        return Y+M+D+h+m+s;
+  }
+  
+
+</script>
+<body style="overflow-y:hidden">
+<nav class="navbar navbar-inverse">
+      <div class="row">
+          <div class="col-md-12"><img src="images/bg/bg.png" width="100%" height="68px"></div>
+          </div>
+      </div>
+</nav>
+<!--左面导航开始-->
+<div class="leftMenu">
+  <input type="hidden" id="s"/>
+  <input type="hidden" id="e"/>
+
+       <dl>
+         <dt>
+           <div id="statusIndicator">
+              <p id="connecting">
+                Connecting to rosbridge...
+              </p>
+              <p id="connected" style="color:#00D600; display:none">
+                Connected
+              </p>
+              <p id="error" style="color:#FF0000; display:none">
+                Error in the backend!
+              </p>
+              <p id="closed" style="display:none">
+                Connection closed.
+              </p>
+            </div>
+         </dt>
+       </dl>
+
+        <!--实时模块开始-->
+       <dl>
+           <dt class="menuFir">实时监测</dt>
+           <dd class="ddFir" style="display: block;">
+               <dl>
+                   <dt class="menuSec">一号电源</dt>
+                   <dd >
+                       <ul>
+                           <li _link="./html/now/onePowerNow.html">电源监控</li>
+                           <li _link="./html/now/onePowerMod.html">模组监控</li>
+                           <li _link="./html/now/onePowerModSinglenow.html">模块监控</li>
+                           <li _link="./html/now/onePowerModHealth.html">模组健康状况</li>
+                           <li _link="./html/now/onePowerModnow.html">模组总体状况</li>
+                       </ul>
+                   </dd>
+               </dl>
+               <dl>
+                   <dt class="menuSec">二号电源</dt>
+                   <dd>
+                       <ul>
+                           <li _link="./html/now/twoPowerNow.html">电源监控</li>
+                           <li _link="./html/now/twoPowerMod.html">模组监控</li>
+                           <li _link="./html/now/twoPowerModSinglenow.html">模块监控</li>
+                           <li _link="./html/now/twoPowerModnow.html">模组总体状况</li>
+                       </ul>
+                   </dd>
+               </dl>
+               <dl>
+                   <dt class="menuSec">三号电源</dt>
+                   <dd>
+                       <ul>
+                           <li _link="./html/now/threePowerNow.html">电源监控</li>
+                           <li _link="./html/now/threePowerMod.html">模组监控</li>
+                           <li _link="./html/now/threePowerModSinglenow.html">模块监控</li>
+                           <li _link="./html/now/threePowerModnow.html">模组总体状况</li>
+                       </ul>
+                   </dd>
+               </dl>
+           </dd>
+       </dl>
+        <!--实时模块结束-->
+
+        <!--历史模块开始-->
+        <dl>
+            <dt class="menuFir">历史数据</dt>
+            <dd class="ddFir">
+                <dl>
+                    <dt class="menuSec">一号电源</dt>
+                    <dd>
+                        <ul>
+                             <li _link="./html/history/onePowerHistory.html">电源历史数据</li>
+                             <li _link="./html/history/onePowerModHistory.html">模组历史数据</li>
+                             <li _link="./html/history/onePowerSingleModHistory.html">模块历史数据</li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="menuSec">二号电源</dt>
+                    <dd>
+                        <ul>
+                            <li _link="./html/history/twoPowerHistory.html">电源历史数据</li>
+                            <li _link="./html/history/twoPowerModHistory.html">模组历史数据</li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="menuSec">三号电源</dt>
+                    <dd>
+                        <ul>
+                            <li _link="./html/history/threePowerHistory.html">电源历史数据</li>
+                            <li _link="./html/history/threePowerModHistory.html">模组历史数据</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </dd>
+        </dl>
+        <!--历史模块结束-->
+        
+       <!-- 故障查询模块开始-->
+       <dl>
+           <dt class="menuFir">故障检测</dt>
+           <dd class="ddFir">
+               <dl>
+                   <dt></dt>
+                   <dd>
+                       <ul>
+                           <li _link="./html/breakdown/breakdown.html">故障检测</li>
+                       </ul>
+                   </dd>
+               </dl>
+           </dd>
+       </dl>
+       <!-- 故障查询模块结束-->
+
+        <!--账户管理开始-->
+        <dl>
+            <dt class="menuFir">我的管理</dt>
+            <dd class="ddFir">
+                <dl>
+                    <dt></dt>
+                    <dd>
+                        <ul>
+                            <li _link="./html/account/account.html">我的账户</li>
+                            <li>
+                              <div>
+                                <a onclick="send_a()">test send</a>
+                              </div>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </dd>
+        </dl>
+        <!--账户管理结束-->
+</div>
+<!--左面导航结束-->
+
+<!--右面显示的内容开始-->
+<div class="rightMain">
+    <div class="rightContent">
+        <iframe name ="child" id="main" src="html/now/onePowerNow.html" scrolling="yes" frameborder="0"></iframe>
+    </div>
+</div>
+<!--右面显示的内容结束-->
+
+<script src="./js/main/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<launch>
+	<node pkg="ccms_pro" type="topic_publisher" name="topic_publisher" output="screen"/>
+	<node pkg="ccms_pro" type="topic_block1_publisher" name="topic_block1_publisher" output="screen"/>
+	<node pkg="ccms_pro" type="topic_block2_publisher" name="topic_block2_publisher" output="screen"/>
+	<node pkg="ccms_pro" type="topic_can4_publisher" name="topic_can4_publisher" output="screen"/>
+	<node pkg="ccms_pro" type="topic_can5_publisher" name="topic_can5_publisher" output="screen"/>
+	<node pkg="ccms_pro" type="topic_can6_publisher" name="topic_can6_publisher" output="screen"/>
+	
+</launch>

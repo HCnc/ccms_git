@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="ccms_pro" type="history_Power_data" name="history_Power_data" output="screen"/>
+	<node pkg="ccms_pro" type="history_module_data" name="history_module_data" output="screen"/>
+	<node pkg="ccms_pro" type="history_block_data" name="history_block_data" output="screen"/>
+	<node pkg="ccms_pro" type="history_average_data" name="history_average_data" output="screen"/>
+	<node pkg="ccms_pro" type="history_error_data" name="history_error_data" output="screen"/>	
+</launch>

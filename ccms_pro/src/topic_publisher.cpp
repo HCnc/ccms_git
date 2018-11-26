@@ -1,0 +1,82 @@
+#include "ros/ros.h"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <net/if.h>
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <linux/can.h>
+#include <linux/can/raw.h>
+#include <sys/time.h>
+#include "ccms_pro/UnpackingCanData1.h"
+
+uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
+{
+    uint16_t volt0 = Voltage0;
+    uint16_t volt1 = Voltage1;
+    volt0<<=8;
+    volt0|=volt1;
+    return volt0;
+}
+
+		
+int main(int argc, char** argv)
+{
+
+	ros::init(argc,argv,"topic_publisher");
+	ros::NodeHandle n;
+	ros::Publisher can_1_pub = n.advertise<ccms_pro::UnpackingCanData1>("simple_can_msg",1000);
+		
+	ros::Rate loop_rate(10);
+
+	while(ros::ok())
+	{   
+	    int s,nbytes;
+	    struct ifreq ifr;
+	    struct can_frame frame;
+        struct sockaddr_can addr;
+
+	    struct can_filter rfilter[43];
+	    s = socket(PF_CAN,SOCK_RAW,CAN_RAW);
+	    strcpy(ifr.ifr_name,"can0");
+	    ioctl(s,SIOCGIFINDEX,&ifr);
+	    addr.can_family = AF_CAN;
+	    addr.can_ifindex = ifr.ifr_ifindex;
+	    bind(s,(struct sockaddr *)&addr,sizeof(addr));
+
+	    for(int i=0; i<43; i++)
+	    {
+			rfilter[i].can_id = 0x180 + i;
+			rfilter[i].can_mask = CAN_SFF_MASK;
+	    }
+	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
+	    nbytes = read(s,&frame,sizeof(frame));
+
+	    if(nbytes > 0)
+	    {
+      		 ccms_pro::UnpackingCanData1 msg;
+ 			 if((frame.can_id - 0x180) <= 43)
+			 {
+			 	msg.id = frame.can_id - 0x180 + 1;
+			 	ros::Time begin = ros::Time::now();
+			 	msg.stamp = begin;
+		     	msg.Module_Voltage = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]) - 1000;
+	         	msg.Module_Capacitance_Temperature = (uint8_t)frame.data[2] - 40;
+	         	msg.Module_Board_Temperature = (uint8_t)frame.data[3] - 40;
+			 	msg.Module_Voltage_Overvoltage_Abnormal = (uint8_t)frame.data[4];
+		 	 	ROS_INFO("can1: %d %d %d",msg.Module_Voltage,msg.Module_Capacitance_Temperature,msg.Module_Board_Temperature);
+		 	 	can_1_pub.publish(msg);
+		 	 	ros::spinOnce();
+		 	 	loop_rate.sleep();	
+			 }
+	    }
+	    else
+	    {
+	        ROS_INFO("nbytes");
+	    }
+	}
+	return 0;
+}
+

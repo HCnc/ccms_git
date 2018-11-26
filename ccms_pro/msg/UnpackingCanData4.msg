@@ -1,0 +1,11 @@
+uint32 id
+time stamp
+uint16 Undervoltage_Warning
+uint16 Internal_Resistance_Abnormality
+uint16 other_data
+uint16 Voltage_Equalization_State
+uint16 Undervoltage_Alarm
+uint16 Low_Voltage_Alarm
+uint16 Software_version_Number
+uint16 Software_Minor_version_Number
+uint64[] data
