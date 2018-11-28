@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+.container{ 
+	height:370px;
+	width:100%;
+	background-color:#CCC;
+	margin:50px -20px 20px 20px;   /*上 右 下 左*/
+	display:inline-block;
+	border-radius:10px;	
+}
+</style>
+</head>
+
+<body>
+<div class="title">一号电源———异常/预警信号</div>
+<div class="container">
+    <!--灰色——连接状态；绿色——运行；红色——故障-->
+	<div id="1error" style="position:absolute;top:128px;left:5%;font-size:20px;font-weight:800;">电压过压异常信号</div>
+    	<img id="1_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:25%;">
+        <!--<img id="1_1error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:25%;">
+        <img id="1_1error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:25%;">  -->
+
+        <img id="1_2error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:35%;">
+        <!--<img id="1_2error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:35%;">
+        <img id="1_2error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:35%;">  -->
+        
+        <img id="1_3error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:45%;">
+        <!--<img id="1_3error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:45%;">
+        <img id="1_3error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:45%;">  -->
+        
+        <img id="1_4error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:55%;">
+        <!--<img id="1_4error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:55%;">
+        <img id="1_4error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:55%;">  -->
+        
+        <img id="1_5error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:65%;">
+        <!--<img id="1_5error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:65%;">
+        <img id="1_5error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:65%;">  -->
+        
+        <img id="1_6error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:75%;">
+        <!--<img id="1_6error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:75%;">
+        <img id="1_6error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:75%;">  -->
+        
+        <img id="1_7error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:85%;">
+        <!--<img id="1_7error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:85%;">
+        <img id="1_7error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:85%;">  -->
+        
+        <img id="1_8error_connected" src="../../images/icons/connect.png" style="position:absolute;top:130px;left:95%;">
+        <!--<img id="1_8error_on" src="../../images/icons/run.png" style="position:absolute;top:130px;left:95%;">
+        <img id="1_8error_error" src="../../images/icons/error.png" style="position:absolute;top:130px;left:95%;">  -->
+        
+    <div id="2error" style="position:absolute;top:188px;left:5%;font-size:20px;font-weight:800;">容量异常信号</div>
+    	<img id="2_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:25%;">
+        <!--<img id="2_1error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:25%;">
+        <img id="2_1error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:25%;">  -->
+
+        <img id="2_2error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:35%;">
+        <!--<img id="2_2error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:35%;">
+        <img id="2_2error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:35%;">  -->
+        
+        <img id="2_3error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:45%;">
+        <!--<img id="2_3error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:45%;">
+        <img id="2_3error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:45%;">  -->
+        
+        <img id="2_4error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:55%;">
+        <!--<img id="2_4error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:55%;">
+        <img id="2_4error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:55%;">  -->
+        
+        <img id="2_5error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:65%;">
+        <!--<img id="2_5error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:65%;">
+        <img id="2_5error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:65%;">  -->
+        
+        <img id="2_6error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:75%;">
+        <!--<img id="2_6error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:75%;">
+        <img id="2_6error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:75%;">  -->
+        
+        <img id="2_7error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:85%;">
+        <!--<img id="2_7error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:85%;">
+        <img id="2_7error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:85%;">  -->
+        
+        <img id="2_8error_connected" src="../../images/icons/connect.png" style="position:absolute;top:190px;left:95%;">
+        <!--<img id="2_8error_on" src="../../images/icons/run.png" style="position:absolute;top:190px;left:95%;">
+        <img id="2_8error_error" src="../../images/icons/error.png" style="position:absolute;top:190px;left:95%;">  -->
+        
+    <div id="3error" style="position:absolute;top:248px;left:5%;font-size:20px;font-weight:800;">均压模块故障信号</div>
+        <img id="3_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:250px;left:25%;">
+        <!--<img id="3_1error_on" src="../../images/icons/run.png" style="position:absolute;top:250px;left:25%;">
+        <img id="3_1error_error" src="../../images/icons/error.png" style="position:absolute;top:250px;left:25%;">  -->
+        
+    <div id="4error" style="position:absolute;top:248px;left:45%;font-size:20px;font-weight:800;">电压采样错误</div>
+    	<img id="4_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:250px;left:65%;">
+        <!--<img id="4_1error_on" src="../../images/icons/run.png" style="position:absolute;top:250px;left:65%;">
+        <img id="4_1error_error" src="../../images/icons/error.png" style="position:absolute;top:250px;left:65%;">  -->
+        
+    <div id="5error" style="position:absolute;top:308px;left:5%;font-size:20px;font-weight:800;">温度采样错误</div>
+    	<img id="5_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:310px;left:25%;">
+        <!--<img id="5_1error_on" src="../../images/icons/run.png" style="position:absolute;top:310px;left:25%;">
+        <img id="5_1error_error" src="../../images/icons/error.png" style="position:absolute;top:310px;left:25%;">  -->
+        
+    <div id="6error" style="position:absolute;top:308px;left:45%;font-size:20px;font-weight:800;">电压数据异常</div>
+    	<img id="6_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:310px;left:65%;">
+        <!--<img id="6_1error_on" src="../../images/icons/run.png" style="position:absolute;top:310px;left:65%;">
+        <img id="6_1error_error" src="../../images/icons/error.png" style="position:absolute;top:310px;left:65%;">  -->
+    
+    <div id="7error" style="position:absolute;top:368px;left:5%;font-size:20px;font-weight:800;">电压过压预警</div>
+    	<img id="7_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:25%;">
+        <!--<img id="7_1error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:25%;">
+        <img id="7_1error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:25%;">  -->
+
+        <img id="7_2error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:35%;">
+        <!--<img id="7_2error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:35%;">
+        <img id="7_2error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:35%;">  -->
+        
+        <img id="7_3error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:45%;">
+        <!--<img id="7_3error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:45%;">
+        <img id="7_3error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:45%;">  -->
+        
+        <img id="7_4error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:55%;">
+        <!--<img id="7_4error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:55%;">
+        <img id="7_4error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:55%;">  -->
+        
+        <img id="7_5error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:65%;">
+        <!--<img id="7_5error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:65%;">
+        <img id="7_5error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:65%;">  -->
+        
+        <img id="7_6error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:75%;">
+        <!--<img id="7_6error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:75%;">
+        <img id="7_6error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:75%;">  -->
+        
+        <img id="7_7error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:85%;">
+        <!--<img id="7_7error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:85%;">
+        <img id="7_7error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:85%;">  -->
+        
+        <img id="7_8error_connected" src="../../images/icons/connect.png" style="position:absolute;top:370px;left:95%;">
+        <!--<img id="7_8error_on" src="../../images/icons/run.png" style="position:absolute;top:370px;left:95%;">
+        <img id="7_8error_error" src="../../images/icons/error.png" style="position:absolute;top:370px;left:95%;">  -->
+        
+    <div id="8error" style="position:absolute;top:428px;left:5%;font-size:20px;font-weight:800;">电压欠压预警</div>
+    	<img id="8_1error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:25%;">
+        <!--<img id="8_1error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:25%;">
+        <img id="8_1error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:25%;">  -->
+
+        <img id="8_2error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:35%;">
+        <!--<img id="8_2error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:35%;">
+        <img id="8_2error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:35%;">  -->
+        
+        <img id="8_3error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:45%;">
+        <!--<img id="8_3error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:45%;">
+        <img id="8_3error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:45%;">  -->
+        
+        <img id="7_4error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:55%;">
+        <!--<img id="8_4error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:55%;">
+        <img id="8_4error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:55%;">  -->
+        
+        <img id="8_5error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:65%;">
+        <!--<img id="8_5error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:65%;">
+        <img id="8_5error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:65%;">  -->
+        
+        <img id="8_6error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:75%;">
+        <!--<img id="8_6error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:75%;">
+        <img id="8_6error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:75%;">  -->
+        
+        <img id="8_7error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:85%;">
+        <!--<img id="8_7error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:85%;">
+        <img id="8_7error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:85%;">  -->
+        
+        <img id="8_8error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:95%;">
+        <!--<img id="8_8error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:95%;">
+        <img id="8_8error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:95%;">  -->
+    </div>
+</div>
+</body>
+</html>

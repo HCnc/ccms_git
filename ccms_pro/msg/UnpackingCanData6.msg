@@ -7,5 +7,6 @@ uint16 other_data
 uint16 Fan_Failure
 uint16 Fan_State
 uint64[] otherdata
+uint64[] FanAccident
 uint64[] Fandata
 

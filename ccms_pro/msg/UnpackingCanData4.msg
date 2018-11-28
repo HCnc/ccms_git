@@ -8,4 +8,9 @@ uint16 Undervoltage_Alarm
 uint16 Low_Voltage_Alarm
 uint16 Software_version_Number
 uint16 Software_Minor_version_Number
-uint64[] data
+uint64[] undervolt_warning
+uint64[] resistance_abnormality
+uint64[] Other_data
+uint64[] voltage_equal_state
+uint64[] undervolt_alarm
+uint64[] low_volt_alarm

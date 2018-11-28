@@ -48,6 +48,24 @@ bool fan_data(int num,uint16_t voltage_data,std::vector<uint64_t>&re_data)
 	return true;
 }
 
+bool Fan_Accident(int num,uint16_t voltage_data,std::vector<uint64_t>&fan_Accident_data)
+{
+    //int data[8];
+	for (int i=0; i<num; i++)
+    {	
+        //int Voltage_Undervoltage_Warning[i];
+        if (CapOverVolt(voltage_data,i))
+        {
+            fan_Accident_data.push_back(1);
+        }
+        else
+        {
+            fan_Accident_data.push_back(0);
+        }
+    }
+	return true;
+}
+
 bool Other_data(int num,uint16_t voltage_data,std::vector<uint64_t>&other_data)
 {
     //int data[8];
@@ -115,12 +133,14 @@ int main(int argc, char** argv)
 
 				std::vector <uint64_t> re_data;
 				std::vector <uint64_t> other_data;
+				std::vector <uint64_t> fan_Accident_data;
 				Other_data(8,(uint16_t)frame.data[5],other_data);
 			 	fan_data(8,(uint16_t)frame.data[7],re_data);
 				
 
-			 	msg.Fandata = re_data;
-				msg.otherdata = other_data;
+			 	msg.Fandata = re_data;  //charge state/ +accdient/ -accdient/ 24v / finish charge/
+				msg.otherdata = other_data;  //FAN9-12 flag1-3
+				msg.FanAccident = fan_Accident_data;  //FAN1-8
 
 		 	 	ROS_INFO("topic_can6: %d %d %d",msg.Energy_Storage_Voltage,msg.Energy_Storage_Current,msg.Energy_Storage_Temperature);
 		 	 	can_1_pub.publish(msg);
