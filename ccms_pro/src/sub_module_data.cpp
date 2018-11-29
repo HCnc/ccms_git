@@ -47,7 +47,7 @@ void Info(int res,int type)
 	}
 	else
 	{
-		ROS_INFO("fail to open %d data", type);
+		//ROS_INFO("fail to open %d data", type);
 	}
 }
 

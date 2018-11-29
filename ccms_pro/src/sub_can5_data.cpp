@@ -36,9 +36,10 @@ void sub5Callback(const ccms_pro::UnpackingCanData5::ConstPtr& msg)
     ROS_INFO("UnpackingCanData5: %d %d %d %d %d",msg->Balanced_data_number,msg->Modules_Above_Threshold_Voltage,msg->Moduel_Average_Voltage,msg->Module_Voltage_Threshold,msg->Minimum_Module_Voltage);
 
     stringstream mysql_msg;
-	 
-	mysql_msg << "insert into Module_Information(TimeStamp,Balanced_Data_Number,Modules_Above_Threshold_Voltage,Module_Average_Voltage,Module_Voltage_Threshold,Minimum_Module_Voltage) \
-values("<< msg->stamp <<","<< msg->Balanced_data_number <<","<< msg->Modules_Above_Threshold_Voltage <<","<< msg->Moduel_Average_Voltage <<","<< msg->Module_Voltage_Threshold <<","<< msg->Minimum_Module_Voltage <<")";
+/*	 
+	mysql_msg << "insert into Module_Information(TimeStamp,Balanced_Data_Number,Modules_Above_Threshold_Voltage,Module_Average_Voltage,Module_Voltage_Threshold,Minimum_Module_Voltage) values("<< msg->stamp <<","<<msg->Balanced_data_number<<","<< msg->Modules_Above_Threshold_Voltage <<","<< msg->Moduel_Average_Voltage <<","<< msg->Module_Voltage_Threshold <<","<< msg->Minimum_Module_Voltage <<")";
+*/
+mysql_msg << "insert into Module_Information(ModuleID,TimeStamp,Balanced_Data_Number,Modules_Above_Threshold_Voltage,Moduel_Average_Voltage,Module_Voltage_Threshold,Minimum_Module_Voltage) values("<< msg->id <<","<< msg->stamp <<","<< msg->Balanced_data_number << ","<< msg->Modules_Above_Threshold_Voltage <<","<< msg->Moduel_Average_Voltage <<","<< msg->Module_Voltage_Threshold << ","<< msg->Minimum_Module_Voltage << ")";
 
     std_msgs::String Msg;
     Msg.data = mysql_msg.str();
@@ -51,7 +52,7 @@ values("<< msg->stamp <<","<< msg->Balanced_data_number <<","<< msg->Modules_Abo
 	}
 	else
 	{
-		ROS_INFO("fail to insert can5 data!");
+		//ROS_INFO("fail to insert can5 data!");
 	}
 }
 

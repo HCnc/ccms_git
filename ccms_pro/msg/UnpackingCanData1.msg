@@ -7,4 +7,7 @@ uint16 Module_Voltage_Overvoltage_Abnormal
 uint16 Module_Capacity_Abnormal
 uint16 other_data
 uint16 Module_Voltage_Overvoltage_Warming                          
-
+uint64[] module_overvolt_abnormal
+uint64[] module_capacity_abnormal
+uint64[] other_data_bit
+uint64[] module_overvolt_warming

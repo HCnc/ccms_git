@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 	    }
 	    else
 	    {
-	        ROS_INFO("nbytes");
+	        ROS_INFO("block2 no bytes");
 	    }
 	}
 	return 0;

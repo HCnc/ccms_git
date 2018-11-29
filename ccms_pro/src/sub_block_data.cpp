@@ -57,7 +57,7 @@ void sub2Callback(const ccms_pro::UnpackingCanData2::ConstPtr& msg)
 	}
 	else
 	{
-		ROS_INFO("fail to open can2!\n");
+		//ROS_INFO("fail to open can2!\n");
 	}
 }
 

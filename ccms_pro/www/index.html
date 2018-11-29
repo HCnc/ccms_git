@@ -47,7 +47,7 @@
 
   // Create a connection to the rosbridge WebSocket server.
   //ros.connect('ws://localhost:8888');
-  ros.connect('ws://222.241.205.118:8888');
+  ros.connect('ws://222.241.204.172:8888');
   
   var send_data = new ROSLIB.Topic({
     ros : ros,
@@ -119,9 +119,10 @@
                    message.Energy_Storage_Temperature);
 
     // //data1.getting();
+	 
+     child.window.deal_data6(data6);
 	 child.window.change_pic_fan(message.Fandata);
 	 child.window.change_pic_power(message.otherdata);
-     child.window.deal_data6(data6);
 	});
 
 	var d1_data = new ROSLIB.Topic({

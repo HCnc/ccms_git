@@ -58,7 +58,7 @@ void Info(int res, int type)
 	}
 	else
 	{
-		ROS_INFO("fail to open %d data", type);
+		//ROS_INFO("fail to open %d data", type);
 	}
 }
 
@@ -356,7 +356,7 @@ void other_State(int i,int Error_Type_ID,int PowerID,int ModuleID,int BlockID,ro
  *@param: uint64_t id <模组编号>,uint16_t voltage_data<模块X电压低压报警>,ros::Time stamp<can总线产生数据的时间戳>
  *@return void
 */
-/*
+
 void UndervoltageWarning_DataInit(uint64_t id,uint16_t voltage_data,ros::Time stamp)
 {
     cout << "debug Undervoltage_Warning_DataInit"<< endl;
@@ -380,7 +380,6 @@ void UndervoltageWarning_DataInit(uint64_t id,uint16_t voltage_data,ros::Time st
         UndervoltageWarningState(i,errTypeID,PowerID,ModuleID,blockID,stamp,Voltage_Undervoltage_Warning);
     }
 }
-*/
 
 /**
  *将can总线的数据<模块X内阻异常故障>的每一位存入数组
@@ -554,7 +553,7 @@ public:
     	UndervoltageWarning_DataInit(msg->id,msg->Undervoltage_Warning,msg->stamp);
     	d.sleep();
   	}
-/*
+
   	void chatter2(const ccms_pro::UnpackingCanData4::ConstPtr& msg)
   	{
 		InternalResAbnormal_DataInit(msg->id,msg->Internal_Resistance_Abnormality,msg->stamp);
@@ -577,7 +576,7 @@ public:
     	other_DataInit(msg->id,msg->Undervoltage_Alarm,msg->stamp);
     	d.sleep();
  	}
-*/
+
 };
 
 int main(int argc, char **argv)

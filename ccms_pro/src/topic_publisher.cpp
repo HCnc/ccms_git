@@ -12,6 +12,8 @@
 #include <sys/time.h>
 #include "ccms_pro/UnpackingCanData1.h"
 
+using namespace std;
+
 uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
 {
     uint16_t volt0 = Voltage0;
@@ -20,6 +22,88 @@ uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
     volt0|=volt1;
     return volt0;
 }
+
+bool CapOverVolt(const uint16_t Voltage2, int index)
+{
+    uint8_t volt0 = Voltage2;
+    if(volt0&(0x01<<index))
+       return true;
+    else
+       return false;
+}
+
+bool module_overvolt_abnormal_data(int num,uint16_t voltage_data,std::vector<uint64_t>&re_module_overvolt_abnormal)
+{
+    //int data[8];
+	for (int i=0; i<num; i++)
+    {	
+        //int Voltage_Undervoltage_Warning[i];
+        if (CapOverVolt(voltage_data,i))
+        {
+            re_module_overvolt_abnormal.push_back(1);
+        }
+        else
+        {
+            re_module_overvolt_abnormal.push_back(0);
+        }
+    }
+	return true;
+}
+
+bool module_capacity_abnormal_data(int num,uint16_t voltage_data,std::vector<uint64_t>&re_module_capacity_abnormal)
+{
+    //int data[8];
+	for (int i=0; i<num; i++)
+    {	
+        //int Voltage_Undervoltage_Warning[i];
+        if (CapOverVolt(voltage_data,i))
+        {
+            re_module_capacity_abnormal.push_back(1);
+        }
+        else
+        {
+            re_module_capacity_abnormal.push_back(0);
+        }
+    }
+	return true;
+}
+
+bool other_data_bit_data(int num,uint16_t voltage_data,std::vector<uint64_t>&re_other_data_bit)
+{
+    //int data[8];
+	for (int i=0; i<num; i++)
+    {	
+        //int Voltage_Undervoltage_Warning[i];
+        if (CapOverVolt(voltage_data,i))
+        {
+            re_other_data_bit.push_back(1);
+        }
+        else
+        {
+            re_other_data_bit.push_back(0);
+        }
+    }
+	return true;
+}
+
+bool module_overvolt_warming_data(int num,uint16_t voltage_data,std::vector<uint64_t>&re_module_overvolt_warming)
+{
+    //int data[8];
+	for (int i=0; i<num; i++)
+    {	
+        //int Voltage_Undervoltage_Warning[i];
+        if (CapOverVolt(voltage_data,i))
+        {
+            re_module_overvolt_warming.push_back(1);
+        }
+        else
+        {
+            re_module_overvolt_warming.push_back(0);
+        }
+    }
+	return true;
+}
+
 
 		
 int main(int argc, char** argv)
@@ -65,7 +149,27 @@ int main(int argc, char** argv)
 		     	msg.Module_Voltage = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]) - 1000;
 	         	msg.Module_Capacitance_Temperature = (uint8_t)frame.data[2] - 40;
 	         	msg.Module_Board_Temperature = (uint8_t)frame.data[3] - 40;
-			 	msg.Module_Voltage_Overvoltage_Abnormal = (uint8_t)frame.data[4];
+			 	//msg.Module_Voltage_Overvoltage_Abnormal = (uint8_t)frame.data[4];
+
+				std::vector <uint64_t> re_module_overvolt_abnormal;
+				std::vector <uint64_t> re_module_capacity_abnormal;
+				std::vector <uint64_t> re_other_data_bit;
+				std::vector <uint64_t> re_module_overvolt_warming;
+
+				module_overvolt_abnormal_data(8,(uint16_t)frame.data[4],re_module_overvolt_abnormal);
+			 	msg.module_overvolt_abnormal = re_module_overvolt_abnormal;
+
+				module_capacity_abnormal_data(8,(uint16_t)frame.data[5],re_module_capacity_abnormal);
+			 	msg.module_capacity_abnormal = re_module_capacity_abnormal;
+
+				other_data_bit_data(8,(uint16_t)frame.data[4],re_other_data_bit);
+			 	msg.other_data_bit = re_other_data_bit;
+
+				
+				module_overvolt_warming_data(8,(uint16_t)frame.data[4],re_module_overvolt_warming);
+			 	msg.module_overvolt_warming = re_module_overvolt_warming;
+
+
 		 	 	ROS_INFO("can1: %d %d %d",msg.Module_Voltage,msg.Module_Capacitance_Temperature,msg.Module_Board_Temperature);
 		 	 	can_1_pub.publish(msg);
 		 	 	ros::spinOnce();
@@ -74,7 +178,7 @@ int main(int argc, char** argv)
 	    }
 	    else
 	    {
-	        ROS_INFO("nbytes");
+	        ROS_INFO("can1 no bytes");
 	    }
 	}
 	return 0;

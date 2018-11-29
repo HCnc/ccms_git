@@ -69,9 +69,9 @@ $(function () {
         date.push(dto);
 
         voltData.shift();
-        voltData.push(msgJson.Energy_Storage_Voltage);
+        voltData.push(msgJson.Energy_storage_voltage);
         currentData.shift();
-        currentData.push(msgJson.Energy_Storage_Current);
+        currentData.push(msgJson.Energy_storage_current);
         tempData.shift();
         tempData.push(msgJson.Energy_Storage_Temperature);
 
@@ -92,7 +92,7 @@ $(function () {
         //             msgJson.Module_Voltage
         //         ]
         //     });
-            voltOption.series.data = voltData
+            voltOption.series[0].data = voltData
 
         //     currentData.shift()
         //     currentData.push({

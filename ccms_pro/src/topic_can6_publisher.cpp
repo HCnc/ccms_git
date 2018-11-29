@@ -151,7 +151,7 @@ int main(int argc, char** argv)
 	    }
 	    else
 	    {
-	        ROS_INFO("nbytes");
+	        ROS_INFO("can6 no bytes");
 	    }
 	}
 	return 0;
