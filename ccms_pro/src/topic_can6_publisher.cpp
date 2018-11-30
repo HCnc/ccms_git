@@ -25,9 +25,18 @@ uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
 {
     uint16_t volt0 = Voltage0;
     uint16_t volt1 = Voltage1;
-    volt0<<=8;
-    volt0|=volt1;
-    return volt0;
+    volt1<<=8;
+    volt1|=volt0;
+    return volt1;
+}
+
+int16_t Module_Current(const int16_t Current0,const int16_t Current1)
+{
+    int16_t Cur0 = Current0;
+    int16_t Cur1 = Current1;
+    Cur1<<=8;
+    Cur1|=Cur0;
+    return Cur1;
 }
 
 bool fan_data(int num,uint16_t voltage_data,std::vector<uint64_t>&re_data)
@@ -112,11 +121,12 @@ int main(int argc, char** argv)
 
 	    for(int i=0; i<43; i++)
 	    {
-		rfilter[i].can_id = 0x1C2;
-		rfilter[i].can_mask = CAN_SFF_MASK;
+			rfilter[i].can_id = 0x1C2;
+			rfilter[i].can_mask = CAN_SFF_MASK;
 	    }
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
 	    nbytes = read(s,&frame,sizeof(frame));
+
 	    if(nbytes > 0)
 	    {
       		 ccms_pro::UnpackingCanData6 msg;
@@ -125,7 +135,7 @@ int main(int argc, char** argv)
 			 	msg.Power_ID = 1;
 			 	msg.stamp = ros::Time::now();
 		     	msg.Energy_Storage_Voltage = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]);
-	         	msg.Energy_Storage_Current = Module_Voltage((uint16_t)frame.data[2],(uint16_t)frame.data[3]);
+	         	msg.Energy_Storage_Current = Module_Current((int16_t)frame.data[2],(int16_t)frame.data[3]);
 	         	msg.Energy_Storage_Temperature = (uint16_t)frame.data[4] - 40;
 			 	msg.other_data = (uint16_t)frame.data[5];
 		 	 	msg.Fan_Failure = (uint16_t)frame.data[6];
@@ -135,6 +145,7 @@ int main(int argc, char** argv)
 				std::vector <uint64_t> other_data;
 				std::vector <uint64_t> fan_Accident_data;
 				Other_data(8,(uint16_t)frame.data[5],other_data);
+				Fan_Accident(8,(uint16_t)frame.data[6],fan_Accident_data);
 			 	fan_data(8,(uint16_t)frame.data[7],re_data);
 				
 

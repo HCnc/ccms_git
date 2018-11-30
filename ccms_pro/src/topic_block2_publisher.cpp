@@ -16,9 +16,9 @@ uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
 {
     uint16_t volt0 = Voltage0;
     uint16_t volt1 = Voltage1;
-    volt0<<=8;
-    volt0|=volt1;
-    return volt0;
+    volt1<<=8;
+    volt1|=volt0;
+    return volt1;
 }
 
 int main(int argc, char** argv)
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 
 			 if((frame.can_id - 0x380 + 1) <= 43)
 			 {
-			 	msg.id = frame.can_id - 0x380 + 1;
+			 	msg.id = frame.can_id - 0x380;
 			 	msg.stamp = ros::Time::now();
 			 	msg.Module_Block_Voltage5 = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]) - 1000;
 			 	msg.Module_Block_Voltage6 = Module_Voltage((uint16_t)frame.data[2],(uint16_t)frame.data[3]) - 1000;

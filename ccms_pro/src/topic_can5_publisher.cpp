@@ -15,9 +15,9 @@ uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
 {
     uint16_t volt0 = Voltage0;
     uint16_t volt1 = Voltage1;
-    volt0<<=8;
-    volt0|=volt1;
-    return volt0;
+    volt1<<=8;
+    volt1|=volt0;
+    return volt1;
 }
 
 	
@@ -47,8 +47,8 @@ int main(int argc, char** argv)
 
 	    for(int i=0; i<43; i++)
 	    {
-		rfilter[i].can_id = 0x1C1;
-		rfilter[i].can_mask = CAN_SFF_MASK;
+			rfilter[i].can_id = 0x1C1;
+			rfilter[i].can_mask = CAN_SFF_MASK;
 	    }
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
 	    nbytes = read(s,&frame,sizeof(frame));
@@ -57,7 +57,6 @@ int main(int argc, char** argv)
 	    {
       		 ccms_pro::UnpackingCanData5 msg;
 			 
-			 //msg.id = frame.can_id - 0x1C1 + 1;
 			 if((frame.can_id - 0x1C1) == 0)	
 			 {
 			 	msg.stamp = ros::Time::now();

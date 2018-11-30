@@ -26,6 +26,97 @@
 	border-radius:10px;	
 }
 </style>
+<script>
+    error1 = function(errordata1,errordata2,errordata3,errordata4){
+		console.log("in error1");
+        var error1_1 = document.getElementById("1_1error_connected");
+        var error1_2 = document.getElementById("1_2error_connected"); 
+        var error1_3 = document.getElementById("1_3error_connected"); 
+        var error1_4 = document.getElementById("1_4error_connected"); 
+        var error1_5 = document.getElementById("1_5error_connected"); 
+        var error1_6 = document.getElementById("1_6error_connected"); 
+        var error1_7 = document.getElementById("1_7error_connected"); 
+        var error1_8 = document.getElementById("1_8error_connected");
+
+        var error2_1 = document.getElementById("2_1error_connected");
+        var error2_2 = document.getElementById("2_2error_connected");
+        var error2_3 = document.getElementById("2_3error_connected");
+        var error2_4 = document.getElementById("2_4error_connected");
+        var error2_5 = document.getElementById("2_5error_connected");
+        var error2_6 = document.getElementById("2_6error_connected");
+        var error2_7 = document.getElementById("2_7error_connected");
+        var error2_8 = document.getElementById("2_8error_connected");
+
+        var error3_1 = document.getElementById("3_1error_connected");
+        var error4_1 = document.getElementById("4_1error_connected");
+        var error5_1 = document.getElementById("5_1error_connected");
+        var error6_1 = document.getElementById("6_1error_connected");
+
+        var error7_1 = document.getElementById("7_1error_connected");
+        var error7_2 = document.getElementById("7_2error_connected");
+        var error7_3 = document.getElementById("7_3error_connected");
+        var error7_4 = document.getElementById("7_4error_connected");
+        var error7_5 = document.getElementById("7_5error_connected");
+        var error7_6 = document.getElementById("7_6error_connected");
+        var error7_7 = document.getElementById("7_7error_connected");
+        var error7_8 = document.getElementById("7_8error_connected");
+
+        error1_1.src = (errordata1[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_2.src = (errordata1[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_3.src = (errordata1[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_4.src = (errordata1[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_5.src = (errordata1[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_6.src = (errordata1[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_7.src = (errordata1[6] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error1_8.src = (errordata1[7] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+        error2_1.src = (errordata2[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_2.src = (errordata2[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_3.src = (errordata2[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_4.src = (errordata2[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_5.src = (errordata2[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_6.src = (errordata2[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_7.src = (errordata2[6] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error2_8.src = (errordata2[7] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+        error3_1.src = (errordata3[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error4_1.src = (errordata3[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error5_1.src = (errordata3[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error6_1.src = (errordata3[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+        error7_1.src = (errordata4[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_2.src = (errordata4[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_3.src = (errordata4[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_4.src = (errordata4[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_5.src = (errordata4[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_6.src = (errordata4[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_7.src = (errordata4[6] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error7_8.src = (errordata4[7] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+    }
+
+    function error2(errordata){
+		console.log("errordata2 " + errordata);
+        var error8_1 = document.getElementById("8_1error_connected");
+        var error8_2 = document.getElementById("8_2error_connected");
+        var error8_3 = document.getElementById("8_3error_connected");
+        var error8_4 = document.getElementById("8_4error_connected");
+        var error8_5 = document.getElementById("8_5error_connected");
+        var error8_6 = document.getElementById("8_6error_connected");
+        var error8_7 = document.getElementById("8_7error_connected");
+        var error8_8 = document.getElementById("8_8error_connected");
+
+        error8_1.src = (errordata[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_2.src = (errordata[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_3.src = (errordata[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_4.src = (errordata[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_5.src = (errordata[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_6.src = (errordata[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_7.src = (errordata[6] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        error8_8.src = (errordata[7] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+    }
+
+
+</script>
 </head>
 
 <body>
@@ -164,7 +255,7 @@
         <!--<img id="8_3error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:45%;">
         <img id="8_3error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:45%;">  -->
         
-        <img id="7_4error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:55%;">
+        <img id="8_4error_connected" src="../../images/icons/connect.png" style="position:absolute;top:430px;left:55%;">
         <!--<img id="8_4error_on" src="../../images/icons/run.png" style="position:absolute;top:430px;left:55%;">
         <img id="8_4error_error" src="../../images/icons/error.png" style="position:absolute;top:430px;left:55%;">  -->
         

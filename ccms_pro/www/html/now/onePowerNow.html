@@ -12,23 +12,76 @@
 <script src="../../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../js/jquery/jquery.min.js" charset="UTF-8"></script>
 <script type="text/javascript">
-    function deal_data6(data){
-		deal(data);
+    function deal_data6(data1, data2, data3, data4, data5){
+		console.log("data3" + data3);
+		console.log("data4" + data4);
+		console.log("data5" + data5);
+		deal(data1);
+		change_pic_fan(data2);
+		change_pic_power(data3);
+		console.log("data3" + data3);
+		console.log("data4" + data4);
+		console.log("data5" + data5);
+		change_fan_error(data4, data5);
+		
 	}
 	function change_pic_fan(Fandata){
-		var fan1 = document.getElementById("off1");
-		var fan2 = document.getElementById("off2");
-		var fan3 = document.getElementById("off3");
-		fan1.src = (Fandata[4]==1 ? "../../images/btu/equilibrium_open.png" : "../../images/btu/equilibrium_off.png");
-		fan2.src = (Fandata[5]==1 ? "../../images/btu/equilibrium_open.png" : "../../images/btu/equilibrium_off.png");
-		fan3.src = (Fandata[6]==1 ? "../../images/btu/equilibrium_open.png" : "../../images/btu/equilibrium_off.png");
+		var fan1 = document.getElementById("connected1");
+		var fan2 = document.getElementById("connected2");
+		var fan3 = document.getElementById("connected3");
+		fan1.src = (Fandata[4]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+		fan2.src = (Fandata[5]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+		fan3.src = (Fandata[6]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
 	}
 	function change_pic_power(powerdata){
+		console.log("in change_pic_power");
 		var imgcharging = document.getElementById("imgcharging");
-		var imgfinishcharging = document.getElementById("imgfinishcharging");
+		var imgfinishcharging = document.getElementById("imgfinischarging");
+
+        var pos = document.getElementById("pos_connected");
+        var neg = document.getElementById("neg_connected");
+        var tfV = document.getElementById("24V_connected");
+        var protect = document.getElementById("protect_connected");
+
 		imgcharging.src = (powerdata[0] == 1 ? "../../images/icons/charging1.png" : "");
 		imgfinishcharging.src = (powerdata[7] == 1 ? "../../images/icons/finishcharging.png" : "");
+
+        pos.src = (powerdata[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        neg.src = (powerdata[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        tfV.src = (powerdata[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        protect.src = (powerdata[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
 	}
+    
+    function change_fan_error(errordata1,errordata2){
+		console.log("in change_fan_error");
+        var fan_error1 = document.getElementById("1connected");
+        var fan_error2 = document.getElementById("2connected");
+        var fan_error3 = document.getElementById("3connected");
+        var fan_error4 = document.getElementById("4connected");
+        var fan_error5 = document.getElementById("5connected");
+        var fan_error6 = document.getElementById("6connected");
+        var fan_error7 = document.getElementById("7connected");
+        var fan_error8 = document.getElementById("8connected");
+        var fan_error9 = document.getElementById("9connected");
+        var fan_error10 = document.getElementById("10connected");
+        var fan_error11 = document.getElementById("11connected");
+        var fan_error12 = document.getElementById("12connected");
+
+        fan_error1.src = (errordata1[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error2.src = (errordata1[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error3.src = (errordata1[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error4.src = (errordata1[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error5.src = (errordata1[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error6.src = (errordata1[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error7.src = (errordata1[6] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error8.src = (errordata1[7] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+        fan_error9.src = (errordata2[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error10.src = (errordata2[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error11.src = (errordata2[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error12.src = (errordata2[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+    }
 </script>
 <style>
 *{ 
@@ -191,62 +244,62 @@
     	<div id="12fan">
         	<!--1-6在上，7-12在下-->
     		<div id="fan1error">
-        		<div id="1connected"><img src="../../images/icons/connect.png" style="position:absolute;top:800px;right:50%;"></div>
+        		<div><img id="1connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:50%;"></div>
             	<!--<div id="1on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:50%;"></div>
            		<div id="1error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:50%;"></div>-->
         	</div>
         	<div id="fan2error">
-        		<div id="2connected"><img src="../../images/icons/connect.png"  style="position:absolute;top:800px;right:45%;"></div>
+        		<div><img id="2connected" src="../../images/icons/connect.png"  style="position:absolute;top:800px;right:45%;"></div>
             	<!--<div id="2on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:45%;"></div>
             	<div id="2error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:45%;"></div>-->
         	</div>
         	<div id="fan3error">
-        		<div id="3connected"><img src="../../images/icons/connect.png" style="position:absolute;top:800px;right:40%;"></div>
+        		<div><img id="3connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:40%;"></div>
             	<!--<div id="3on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:40%;"></div>
             	<div id="3error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:40%;"></div>-->
         	</div>
             <div id="fan4error">
-        		<div id="4connected"><img src="../../images/icons/connect.png" style="position:absolute;top:800px;right:35%;"></div>
+        		<div><img id="4connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:35%;"></div>
             	<!--<div id="4on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:35%;"></div>
             	<div id="4error"><img src="../../images/icons/error.png"  style="position:absolute;top:800px;right:35%;"></div>-->
         	</div>
             <div id="fan5error">
-        		<div id="5connected"><img src="../../images/icons/connect.png" style="position:absolute;top:800px;right:30%;"></div>
+        		<div><img id="5connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:30%;"></div>
             	<!--<div id="5on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:35%;"></div>
             	<div id="5error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:35%;"></div>-->
         	</div>
             <div id="fan6error">
-        		<div id="6connected"><img src="../../images/icons/connect.png" style="position:absolute;top:800px;right:25%;"></div>
+        		<div><img id="6connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:25%;"></div>
             	<!--<div id="6on"><img src="../../images/icons/run.png" style="position:absolute;top:730px;right:25%;"></div>
             	<div id="6error"><img src="../../images/icons/error.png" style="position:absolute;top:730px;right:25%;"></div>-->
         	</div>
             <div id="fan7error">
-        		<div id="7connected"><img src="../../images/icons/connect.png" style="position:absolute;top:860px;right:50%;"></div>
+        		<div><img id="7connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:50%;"></div>
             	<!--<div id="7on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:40%;"></div>
             	<div id="7error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:40%;"></div>-->
         	</div>
             <div id="fan8error">
-        		<div id="8connected"><img src="../../images/icons/connect.png" style="position:absolute;top:860px;right:45%;"></div>
+        		<div><img id="8connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:45%;"></div>
             	<!--<div id="8on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:35%;"></div>
             	<div id="8error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:35%;"></div>-->
         	</div>
             <div id="fan9error">
-        		<div id="9connected"><img src="../../images/icons/connect.png" style="position:absolute;top:860px;right:40%;"></div>
+        		<div><img id="9connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:40%;"></div>
             	<!--<div id="9on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:30%;"></div>
             	<div id="9error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:30%;"></div>-->
         	</div>
             <div id="fan10error">
-        		<div id="10connected"><img src="../../images/icons/connect.png" style="position:absolute;top:860px;right:35%;"></div>
+        		<div><img id="10connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:35%;"></div>
             	<!--<div id="10on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:35%;"></div>
             	<div id="10error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:35%;"></div>-->
         	</div>
             <div id="fan11error">
-        		<div id="11connected"><img src="../../images/icons/connect.png" style="position:absolute;top:860px;right:30%;"></div>
+        		<div><img id="11connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:30%;"></div>
             	<!--<div id="11on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:30%;"></div>
             	<div id="11error"><img src="../../images/icons/error.png"  style="position:absolute;top:860px;right:30%;"></div>-->
         	</div>
             <div id="fan12error">
-        		<div id="12connected"><img src="../../images/icons/connect.png" style="position:absolute;top:860px;right:25%;"></div>
+        		<div><img id="12connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:25%;"></div>
             	<!--<div id="12on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:25%;"></div>
             	<div id="12error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:25%;"></div>-->
         	</div>

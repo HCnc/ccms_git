@@ -18,9 +18,9 @@ uint16_t Module_Voltage(const uint16_t Voltage0,const uint16_t Voltage1)
 {
     uint16_t volt0 = Voltage0;
     uint16_t volt1 = Voltage1;
-    volt0<<=8;
-    volt0|=volt1;
-    return volt0;
+    volt1<<=8;
+    volt1|=volt0;
+    return volt1;
 }
 
 bool CapOverVolt(const uint16_t Voltage2, int index)
@@ -143,7 +143,7 @@ int main(int argc, char** argv)
       		 ccms_pro::UnpackingCanData1 msg;
  			 if((frame.can_id - 0x180) <= 43)
 			 {
-			 	msg.id = frame.can_id - 0x180 + 1;
+			 	msg.id = frame.can_id - 0x180;
 			 	ros::Time begin = ros::Time::now();
 			 	msg.stamp = begin;
 		     	msg.Module_Voltage = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]) - 1000;
