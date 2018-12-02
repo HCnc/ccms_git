@@ -156,11 +156,13 @@ add_executable(testpub2 src/testpub2.cpp)
 add_dependencies(testpub2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(testpub2 ${catkin_LIBRARIES})
 
-
-
 add_executable(sub_error_data src/sub_error_data.cpp)
 add_dependencies(sub_error_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(sub_error_data ${catkin_LIBRARIES} -lmysqlclient)
+
+#add_executable(file_manage src/file_manage.cpp)
+#add_dependencies(file_manage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(file_manage ${catkin_LIBRARIES} -lmysqlclient)
 
 #add_executable(service_module_data src/service_module_data.cpp)
 

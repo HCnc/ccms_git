@@ -12,7 +12,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "add_two_ints_client");
   
   // 从终端命令行获取两个加数
-  if (argc != 4)
+  if (argc != 3)
   {
     ROS_INFO("usage: add_two_ints_client X Y");
     return 1;
@@ -23,22 +23,22 @@ int main(int argc, char **argv)
   
   // 创建一个client，请求add_two_int service，service消息类型是learning_communication::AddTwoInts
    //ros::ServiceClient client = n.serviceClient<ccms_pro::ModuleData>("sub_can4_node");
-  ros::ServiceClient client = n.serviceClient<ccms_pro::ModuleData>("history_module_msg");
-  //ros::ServiceClient client = n.serviceClient<ccms_pro::ModuleData>("history_power_msg");
+  //ros::ServiceClient client = n.serviceClient<ccms_pro::ModuleData>("history_module_msg");
+  ros::ServiceClient client = n.serviceClient<ccms_pro::ModuleData>("history_power_msg");
 
   // 创建learning_communication::AddTwoInts类型的service消息
   ccms_pro::ModuleData srv;
-  srv.request.moduleID = atoll(argv[1]);
-  srv.request.StartStamp = atoll(argv[2]);
-  srv.request.EndStamp = atoll(argv[3]); 
+  //srv.request.moduleID = atoll(argv[1]);
+  srv.request.StartStamp = atoll(argv[0]);
+  srv.request.EndStamp = atoll(argv[1]); 
   
   
   // 发布service请求，等待加法运算的应答结果
   if (client.call(srv))
   {
    // for(int i =0; i<4; i++)
-    ROS_INFO("Sum: %d %d %d %d", srv.response.HModule[0],srv.response.HModule[1],srv.response.HModule[2],srv.response.HModule[3]);
-    //ROS_INFO("Sum: %d %d %d %d", srv.response.HEnergy_Storage_Voltage[0],srv.response.HEnergy_Storage_Voltage[1],srv.response.HEnergy_Storage_Voltage[2],srv.response.HEnergy_Storage_Voltage[3]);
+    //ROS_INFO("Sum: %d %d %d %d", srv.response.HModule[0],srv.response.HModule[1],srv.response.HModule[2],srv.response.HModule[3]);
+    ROS_INFO("Sum: %f %f %f %f", srv.response.HEnergy[0],srv.response.HEnergy[1],srv.response.HEnergy[2],srv.response.HEnergy[3]);
   }
   else
   {

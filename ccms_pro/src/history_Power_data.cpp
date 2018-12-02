@@ -49,6 +49,9 @@ bool add(ccms_pro::ModuleData::Request &req,ccms_pro::ModuleData::Response &res)
     DataBaseInit();
     std::vector<double> arrp;
     std::stringstream mysql_msg;
+
+	std::cout << req.StartStamp << "\t";
+
     mysql_msg << "select TimeStamp,Energy_Storage_Voltage,Energy_Storage_Current,Energy_Storage_Temperature from Energy_Storage_Data where \
     TimeStamp >= "<<req.StartStamp<<" and TimeStamp <= "<< req.EndStamp <<" ";
 
@@ -92,7 +95,7 @@ bool add(ccms_pro::ModuleData::Request &req,ccms_pro::ModuleData::Response &res)
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "history_power_data");
+  ros::init(argc, argv, "history_Power_data");
   ros::NodeHandle n;
   ros::ServiceServer service = n.advertiseService("history_power_msg",add);
   ROS_INFO("----Ready to select power database----");

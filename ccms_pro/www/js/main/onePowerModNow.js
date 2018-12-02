@@ -3,10 +3,14 @@
  */
 
 $(function () {
-    var voltData = [0,0,0,0,0,0,0,0,0,0]        //电压数据
-    var odMuMinModVolt = [0,0,0,0,0,0,0,0,0,0]   //最低模组电压
-    var odMuHigherNbr = [0,0,0,0,0,0,0,0,0,0]     //高于阈值电压的个数
-	var date = [0,0,0,0,0,0,0,0,0,0]
+    var voltData = [0,0,0,0,0,0,0,0,0,0,
+					0,0,0,0,0,0,0,0,0,0]        //电压数据
+    var odMuMinModVolt = [0,0,0,0,0,0,0,0,0,0,
+						  0,0,0,0,0,0,0,0,0,0]   //最低模组电压
+    var odMuHigherNbr = [0,0,0,0,0,0,0,0,0,0,
+						 0,0,0,0,0,0,0,0,0,0]     //高于阈值电压的个数
+	var date = [0,0,0,0,0,0,0,0,0,0,
+				0,0,0,0,0,0,0,0,0,0]
     var VoltChart = echarts.init(document.getElementById('oneModVoltPhoto'));//电压图
 	/*
     for (var ii = 0; ii < 15; ii++) {

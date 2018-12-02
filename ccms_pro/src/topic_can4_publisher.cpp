@@ -10,6 +10,7 @@
 #include <linux/can.h>
 #include <linux/can/raw.h>
 #include <sys/time.h>
+#include <errno.h>
 #include <vector>
 #include "ccms_pro/UnpackingCanData4.h"
 
@@ -164,7 +165,18 @@ int main(int argc, char** argv)
 			rfilter[i].can_mask = CAN_SFF_MASK;
 	    }
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
-	    nbytes = read(s,&frame,sizeof(frame));
+		if((s>=0) && (s<=500))
+		{
+	    	nbytes = read(s,&frame,sizeof(frame));
+			ROS_INFO("n_s_2 %d",s);
+		}
+		else		
+		{
+			s = 3;
+     		ROS_INFO("can4 n_s = 3");
+			//close(s);
+		}
+	    //nbytes = read(s,&frame,sizeof(frame));
 	    if(nbytes > 0)
 	    {
       		 ccms_pro::UnpackingCanData4 msg;
@@ -223,6 +235,7 @@ int main(int argc, char** argv)
 	    else
 	    {
 	        ROS_INFO("can4 no bytes");
+			ROS_INFO("%d,%s", errno,(char*)strerror(errno));
 	    }
 	}
 	return 0;

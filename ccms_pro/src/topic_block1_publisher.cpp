@@ -40,7 +40,7 @@ int main(int argc, char** argv)
 
 	    struct can_filter rfilter[43];
 	    s = socket(PF_CAN,SOCK_RAW,CAN_RAW);
-		ROS_INFO("n_s %d",s);
+		ROS_INFO("n_s_1 %d",s);
 	    strcpy(ifr.ifr_name,"can0");
 	    ioctl(s,SIOCGIFINDEX,&ifr);
 	    addr.can_family = AF_CAN;
@@ -54,7 +54,17 @@ int main(int argc, char** argv)
 	    }
 
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
-	    nbytes = read(s,&frame,sizeof(frame));
+        if((s>=0) && (s<=500))
+		{
+	    	nbytes = read(s,&frame,sizeof(frame));
+			ROS_INFO("n_s_2 %d",s);
+		}
+		else		
+		{
+			s = 0;
+     		ROS_INFO("n_s = 0");
+			//close(s);
+		}
 		//ROS_INFO("block1 work!");
 		ROS_INFO("nbyte %d",nbytes);
 	    if(nbytes > 0)
@@ -80,7 +90,8 @@ int main(int argc, char** argv)
 	    else
 	    {
 	        ROS_INFO("block1 no bytes");
-			//perror("read %d",errno)
+			//perror("read %d",errno);
+			ROS_INFO("%d,%s", errno,(char*)strerror(errno));
 			//close(s);
 /*
 			 ccms_pro::UnpackingCanData2 msg;

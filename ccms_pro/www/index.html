@@ -47,7 +47,8 @@
 
   // Create a connection to the rosbridge WebSocket server.
   //ros.connect('ws://localhost:8888');
-  ros.connect('ws://222.241.204.92:8888');
+  //ros.connect('ws://222.241.204.92:8888');
+	ros.connect('ws://192.168.0.3:8888');
   
   var send_data = new ROSLIB.Topic({
     ros : ros,
@@ -104,13 +105,23 @@
 			// data = message.voltage_equal_state;
 			// console.log('data: ' + voltage_equal_state);
 			console.log('1');
-			child.window.error2(message.undervolt_warning);
+			try{
+				child.window.error2(message.undervolt_warning);
+			}catch(err){
+				console.log(err);
+				console.log(err.message);
+			}
 			console.log('2');
-			child.window.deal_data4(message.voltage_equal_state,
+			try{
+				child.window.deal_data4(message.voltage_equal_state,
                               message.Other_data,
                               message.resistance_abnormality,
                               message.undervolt_alarm,
                               message.low_volt_alarm);
+			}catch(err){
+				console.log(err);
+				console.log(err.message);
+			}
 			console.log('3');
 		
 	});
@@ -149,10 +160,22 @@
       data1.setting(message.id,
 					message.Module_Voltage,                                  
                    message.Module_Capacitance_Temperature);
+	try{
+		child.window.deal_data1(data1);
+	}catch(err){
+		console.log(err);
+		console.log(err.message);
+	}
+
+	try{
+		child.window.error1(message.module_overvolt_abnormal, message.module_capacity_abnormal, message.other_data_bit, message.module_overvolt_warming);
+	}catch(err){
+		console.log(err);
+		console.log(err.message);
+	}
 	//child.window.error1(message.module_overvolt_abnormal, message.module_capacity_abnormal, message.other_data_bit, message.module_overvolt_warming);
     // //data1.getting();
-	console.log("deal data1");
-     child.window.deal_data1(data1);
+     
      
   });
 
@@ -186,7 +209,7 @@
   var addTwoIntsClient = new ROSLIB.Service({
     ros : ros,
     name : '/history_power_msg',
-    serviceType : 'msg_test/WordCount'
+    serviceType : 'ccms_pro/ModuleData'
   });
 
   function send_time_and_id(id){
@@ -204,48 +227,44 @@
       // Power_Number : id,
       // Module_Number : 1,
       // Block_Number : 1,
-      StartTime :start_time,
-      EndTime :end_time
+      StartStamp :start_time/1000,
+      EndStamp :end_time/1000
     });
 
     addTwoIntsClient.callService(request, function(result) {
     //console.log('Result for service call on ' + addTwoIntsClient.name + ': ' + result.count);
-      console.log('result: ' + result);
-
+      console.log('result: ' + result.HEnergy);
+	  var result = result.HEnergy;
       //result [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4]
       var a = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4];
-      var data = [];
+      var date = [];
       var voltage = [];
       var Temperature = [];
       var current = [];
 
-      for (var i = 0; i<a.length; i += 4){
-        data.push(a[i]);
-        voltage.push(a[i + 1]);
-        Temperature.push(a[i + 2]);
-        current.push(a[i + 3]);
+      for (var i = 0; i<result.length; i += 4){
+        date.push(timestampToTime(result[i]));
+        voltage.push(result[i + 1]);
+        Temperature.push(result[i + 2]);
+        current.push(result[i + 3]);
       };
 
-      console.log('data: ' + data);
+      console.log('date: ' + date);
       console.log('voltage: ' + voltage);
       console.log('Temperature: ' + Temperature);
       console.log('current: ' + current);
 
-      var data = [Math.random() * 300];
+      //var data = [Math.random() * 300];
 
-      for (var i = 1; i < 10; i++) {
+      //for (var i = 1; i < 10; i++) {
           //var now = new Date(base += oneDay);
           //date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
-          data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
-      };
+     //     data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+      //};
 
       var evt = {
-                date : [timestampToTime(1541753471.9654598), timestampToTime(1541753472.2190185), 
-                        timestampToTime(1541753473.2293525), timestampToTime(1541753474.9448998), 
-                        timestampToTime(1541753475.9034448), timestampToTime(1541753477.1002357),
-                        timestampToTime(1541753477.7291737), timestampToTime(1541753478.5615644),
-                        timestampToTime(1541753479.4771185), timestampToTime(1541753480.7547863)],
-                data : data
+                date : date,
+                data : [voltage, Temperature, current]
             };
       child.window._dealMsg(evt);
     });
@@ -253,7 +272,7 @@
   }
 
   function timestampToTime(timestamp) {
-      var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      var date = new Date(timestamp*1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
         var Y = date.getFullYear() + '/';
         var M = (date.getMonth()+1 < 10 ? +(date.getMonth()+1) : date.getMonth()+1) + '/';
         var D = date.getDate() + ' ';
