@@ -47,8 +47,13 @@
 
   // Create a connection to the rosbridge WebSocket server.
   //ros.connect('ws://localhost:8888');
+<<<<<<< HEAD
   //ros.connect('ws://222.241.205.86:8888');
 	ros.connect('ws://192.168.0.100:8888');
+=======
+  //ros.connect('ws://222.241.204.92:8888');
+	ros.connect('ws://192.168.0.3:8888');
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
   
   var send_data = new ROSLIB.Topic({
     ros : ros,
@@ -68,6 +73,7 @@
     send_data.publish(msg);
   }
   
+<<<<<<< HEAD
 
   var d1_data = new ROSLIB.Topic({
     ros : ros,
@@ -116,10 +122,25 @@
         console.log(err);
         console.log(err.message);
       }
+=======
+	var d2_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can_msg_block1',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData2'//'ccms_pro/UnpackingCanData1'
+  });
+	d2_data.subscribe(function(message) {
+			console.log('in d2_data');
+			data = [message.Module_Block_Voltage1, message.Module_Block_Voltage2,
+							message.Module_Block_Voltage3, message.Module_Block_Voltage4];
+			console.log('data2: ' + data);
+			child.window.deal_data2(data);
+			
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	});
 
 	var d3_data = new ROSLIB.Topic({
     ros : ros,
+<<<<<<< HEAD
     name : '/simple_can_msg_block2',
     messageType : 'ccms_pro/UnpackingCanData3'
   });
@@ -134,10 +155,22 @@
         console.log(err);
         console.log(err.message);
       }
+=======
+    name : '/simple_can_msg_block2',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData3'//'ccms_pro/UnpackingCanData1'
+  });
+	d3_data.subscribe(function(message) {
+			console.log('in d3_data');
+			data = [message.Module_Block_Voltage5, message.Module_Block_Voltage6,
+							message.Module_Block_Voltage7, message.Module_Block_Voltage8];
+			console.log('data2: ' + data);
+			child.window.deal_data3(data);
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	});
 
 	var d4_data = new ROSLIB.Topic({
     ros : ros,
+<<<<<<< HEAD
     name : '/simple_can4_msg',
     messageType : 'ccms_pro/UnpackingCanData4'
   });
@@ -147,17 +180,40 @@
 			try{
 				child.window.error2(message.undervolt_warning, message.resistance_abnormality, message.undervolt_alarm,
                             message.low_volt_alarm);
+=======
+    name : '/simple_can4_msg',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData4'//'ccms_pro/UnpackingCanData1'
+  });
+	d4_data.subscribe(function(message) {
+			console.log('in d4_data');
+			// data = message.voltage_equal_state;
+			// console.log('data: ' + voltage_equal_state);
+			console.log('1');
+			try{
+				child.window.error2(message.undervolt_warning);
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 			}catch(err){
 				console.log(err);
 				console.log(err.message);
 			}
+<<<<<<< HEAD
 
 			try{
 				child.window.deal_data_state(message.voltage_equal_state, message.Other_data);
+=======
+			console.log('2');
+			try{
+				child.window.deal_data4(message.voltage_equal_state,
+                              message.Other_data,
+                              message.resistance_abnormality,
+                              message.undervolt_alarm,
+                              message.low_volt_alarm);
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 			}catch(err){
 				console.log(err);
 				console.log(err.message);
 			}
+<<<<<<< HEAD
 	});
 
   var d5_data = new ROSLIB.Topic({
@@ -225,11 +281,90 @@
 
 
 
+=======
+			console.log('3');
+		
+	});
+
+	var d6_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can6_msg',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData6'//'ccms_pro/UnpackingCanData1'
+  });
+	d6_data.subscribe(function(message) {
+			console.log('in d6_data');
+			data6.setting(
+				   message.Energy_Storage_Voltage,                                  
+                   message.Energy_Storage_Current,                      
+                   message.Energy_Storage_Temperature);
+	console.log("message.other " + message.otherdata);
+    // //data1.getting();
+     child.window.deal_data6(data6, message.Fandata, message.otherdata, message.FanAccident, message.Fandata);
+	 
+     //child.window.change_pic_fan(message.Fandata);
+     //child.window.change_pic_power(message.otherdata);
+     //child.window.change_fan_error(message.FanAccident, message.Fandata);
+	});
+
+	var d1_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can_msg',//'/simple_can_msg',
+    messageType : 'ccms_pro/UnpackingCanData1'//'ccms_pro/UnpackingCanData1'
+  });
+  d1_data.subscribe(function(message) {
+			console.log('in d1_data');
+	  console.log("message1 " + message.module_overvolt_abnormal);
+	  console.log("message2 " + message.module_capacity_abnormal);
+	  console.log("message3 " + message.other_data_bit);
+	  console.log("message4 " + message.module_overvolt_warming);
+      data1.setting(message.id,
+					message.Module_Voltage,                                  
+                   message.Module_Capacitance_Temperature);
+	try{
+		child.window.deal_data1(data1);
+	}catch(err){
+		console.log(err);
+		console.log(err.message);
+	}
+
+	try{
+		child.window.error1(message.module_overvolt_abnormal, message.module_capacity_abnormal, message.other_data_bit, message.module_overvolt_warming);
+	}catch(err){
+		console.log(err);
+		console.log(err.message);
+	}
+	//child.window.error1(message.module_overvolt_abnormal, message.module_capacity_abnormal, message.other_data_bit, message.module_overvolt_warming);
+    // //data1.getting();
+     
+     
+  });
+
+  var d5_data = new ROSLIB.Topic({
+    ros : ros,
+    name : '/simple_can5_msg',
+    messageType : 'ccms_pro/UnpackingCanData5'//'ccms_pro/UnpackingCanData5'
+  });
+
+  d5_data.subscribe(function(message){
+    console.log("in d5_data");
+    data5.setting(message.Balanced_data_number,
+                  message.Modules_Above_Threshold_Voltage,
+                  message.Moduel_Average_Voltage,
+                  message.Module_Voltage_Threshold,
+                  message.Minimum_Module_Voltage)
+	  console.log("data5: " + data5.Moduel_Average_Voltage);
+    child.window.deal_data5(data5);
+  });
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 
   var detect = new ROSLIB.Topic({
     ros : ros,
     name : '/block_detect',
+<<<<<<< HEAD
     messageType : 'ccms_pro/BlockResult'
+=======
+    messageType : 'ccms_pro/BlockResult'//'ccms_pro/UnpackingCanData5'
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
   });
 
   detect.subscribe(function(message){
@@ -291,6 +426,10 @@
           //date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
      //     data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
       //};
+<<<<<<< HEAD
+=======
+
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
       var evt = {
                 date : date,
                 data : [voltage, Temperature, current]
@@ -310,6 +449,11 @@
         var s = date.getSeconds();
         return Y+M+D+h+m+s;
   }
+<<<<<<< HEAD
+=======
+  
+
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 </script>
 <body style="overflow-y:hidden">
 <nav class="navbar navbar-inverse">
@@ -352,9 +496,15 @@
                        <ul>
                            <li _link="./html/now/onePowerNow.html">电源监控</li>
                            <li _link="./html/now/onePowerMod.html">模组监控</li>
+<<<<<<< HEAD
                            <!-- <li _link="./html/now/onePowerModSinglenow(buyao).html">不要了（模块监控）</li> -->
                            <li _link="./html/now/onePowerModHealth.html">模组健康状况</li>
                            <!-- <li _link="./html/now/onePowerModnow(buyao).html">不要了（模组总体状况）</li> -->
+=======
+                           <li _link="./html/now/onePowerModSinglenow.html">模块监控</li>
+                           <li _link="./html/now/onePowerModHealth.html">模组健康状况</li>
+                           <li _link="./html/now/onePowerModnow.html">模组总体状况</li>
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
                            <li _link="./html/now/onePowerError.html">异常/预警信号</li>
                        </ul>
                    </dd>

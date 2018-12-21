@@ -54,18 +54,31 @@ int main(int argc, char** argv)
 	    }
 
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
+<<<<<<< HEAD
         if(s>=0)
+=======
+        if((s>=0) && (s<=500))
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 		{
 	    	nbytes = read(s,&frame,sizeof(frame));
 			ROS_INFO("n_s_2 %d",s);
 		}
 		else		
 		{
+<<<<<<< HEAD
 			s = 6;
      		ROS_INFO("n_s = 6");
 			//close(s);
 		}
 		//ROS_INFO("nbyte %d",nbytes);
+=======
+			s = 0;
+     		ROS_INFO("n_s = 0");
+			//close(s);
+		}
+		//ROS_INFO("block1 work!");
+		ROS_INFO("nbyte %d",nbytes);
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	    if(nbytes > 0)
 	    {
       		 ccms_pro::UnpackingCanData2 msg;
@@ -89,8 +102,34 @@ int main(int argc, char** argv)
 	    else
 	    {
 	        ROS_INFO("block1 no bytes");
+<<<<<<< HEAD
 			ROS_INFO("%d,%s", errno,(char*)strerror(errno));
 	    }
+=======
+			//perror("read %d",errno);
+			ROS_INFO("%d,%s", errno,(char*)strerror(errno));
+			//close(s);
+/*
+			 ccms_pro::UnpackingCanData2 msg;
+			 if((frame.can_id - 0x280 + 1) <= 43)
+			 {
+	         	msg.id = frame.can_id - 0x280;
+			 	msg.stamp = ros::Time::now();
+		     	msg.Module_Block_Voltage1 = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]) - 1000;
+			 	msg.Module_Block_Voltage2 = Module_Voltage((uint16_t)frame.data[2],(uint16_t)frame.data[3]) - 1000;
+			 	msg.Module_Block_Voltage3 = Module_Voltage((uint16_t)frame.data[4],(uint16_t)frame.data[5]) - 1000;
+ 			 	msg.Module_Block_Voltage4 = Module_Voltage((uint16_t)frame.data[6],(uint16_t)frame.data[7]) - 1000;
+	         
+		 		ROS_INFO("topic_block1:%d %d %d %d",msg.id,msg.Module_Block_Voltage1,msg.Module_Block_Voltage2,msg.Module_Block_Voltage3,msg.Module_Block_Voltage4);
+		 	 	can_1_pub.publish(msg);
+
+		 	 	ros::spinOnce();
+		 		loop_rate.sleep();	
+*/
+			//}
+	    }
+		//ROS_INFO("block1 work end");
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	}
 	return 0;
 }

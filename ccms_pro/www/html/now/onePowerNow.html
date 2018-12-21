@@ -12,6 +12,7 @@
 <script src="../../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../js/jquery/jquery.min.js" charset="UTF-8"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 	function deal_data_p5(data){
 		deal2(data);
 	}
@@ -64,14 +65,90 @@
         var dto = [d.getHours(), minute, second].join(':');
 
         return dto
+=======
+    function deal_data6(data1, data2, data3, data4, data5){
+		console.log("data3" + data3);
+		console.log("data4" + data4);
+		console.log("data5" + data5);
+		deal(data1);
+		change_pic_fan(data2);
+		change_pic_power(data3);
+		console.log("data3" + data3);
+		console.log("data4" + data4);
+		console.log("data5" + data5);
+		change_fan_error(data4, data5);
+		
+	}
+	function change_pic_fan(Fandata){
+		var fan1 = document.getElementById("connected1");
+		var fan2 = document.getElementById("connected2");
+		var fan3 = document.getElementById("connected3");
+		fan1.src = (Fandata[4]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+		fan2.src = (Fandata[5]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+		fan3.src = (Fandata[6]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+	}
+	function change_pic_power(powerdata){
+		console.log("in change_pic_power");
+		var imgcharging = document.getElementById("imgcharging");
+		var imgfinishcharging = document.getElementById("imgfinischarging");
+
+        var pos = document.getElementById("pos_connected");
+        var neg = document.getElementById("neg_connected");
+        var tfV = document.getElementById("24V_connected");
+        var protect = document.getElementById("protect_connected");
+
+		imgcharging.src = (powerdata[0] == 1 ? "../../images/icons/charging1.png" : "");
+		imgfinishcharging.src = (powerdata[7] == 1 ? "../../images/icons/finishcharging.png" : "");
+
+        pos.src = (powerdata[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        neg.src = (powerdata[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        tfV.src = (powerdata[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        protect.src = (powerdata[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+	}
+    
+    function change_fan_error(errordata1,errordata2){
+		console.log("in change_fan_error");
+        var fan_error1 = document.getElementById("1connected");
+        var fan_error2 = document.getElementById("2connected");
+        var fan_error3 = document.getElementById("3connected");
+        var fan_error4 = document.getElementById("4connected");
+        var fan_error5 = document.getElementById("5connected");
+        var fan_error6 = document.getElementById("6connected");
+        var fan_error7 = document.getElementById("7connected");
+        var fan_error8 = document.getElementById("8connected");
+        var fan_error9 = document.getElementById("9connected");
+        var fan_error10 = document.getElementById("10connected");
+        var fan_error11 = document.getElementById("11connected");
+        var fan_error12 = document.getElementById("12connected");
+
+        fan_error1.src = (errordata1[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error2.src = (errordata1[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error3.src = (errordata1[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error4.src = (errordata1[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error5.src = (errordata1[4] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error6.src = (errordata1[5] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error7.src = (errordata1[6] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error8.src = (errordata1[7] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+        fan_error9.src = (errordata2[0] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error10.src = (errordata2[1] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error11.src = (errordata2[2] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan_error12.src = (errordata2[3] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
     }
 </script>
 <style>
 *{ 
 	padding:0;
 	margin:0;
+<<<<<<< HEAD
 
 }
+=======
+}
+
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 .title{
 	text-align:left;
 	line-height:60px;
@@ -80,6 +157,7 @@
 	height:60px;
 	background-color:rgb(153,153,153);
 }
+<<<<<<< HEAD
 /**********************储能电源数据开始************************/
 
 /*图开始*/
@@ -103,13 +181,36 @@
 	display:inline-block;
 	border-radius:15px;
 }
+=======
+
+/*电压开始*/
+.voltage{ 
+	width:100%;
+	height:400px;
+}
+
+.VchartPhoto{
+    background-color: #000000 !important;
+	height:400px;
+	position:absolute;
+	top:15%;
+	left:60px;
+	right:80px;
+	border-radius:15px;
+}
+/*电压结束*/
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 
 /*状态*/
 .state{ 
 	height:80px;
 	width:100%;
 	background-color:#CCC;
+<<<<<<< HEAD
 	/*margin:-100px 0px 0px -20px;   /*上 右 下 左*/  
+=======
+	margin:100px 0px 35px -20px;   /*上 右 下 左*/
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	display:inline-block;
 	border-radius:10px;
 }
@@ -144,6 +245,7 @@
 	top:-130px;
 	left:65%;
 }
+<<<<<<< HEAD
 /**********************储能电源数据结束***********************/
 
 
@@ -170,13 +272,19 @@
 }
 /*模组当前结束*/
 /**********************模组总体状况结束***********************/
+=======
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 
 /*故障*/
 .error{ 
 	height:230px;
 	width:100%;
 	background-color:#CCC;
+<<<<<<< HEAD
 	/*margin:0px 0px 50px -20px;   /*上 右 下 左*/ 
+=======
+	margin:-60px 0px 50px -20px;   /*上 右 下 左*/
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	display:inline-block;
 	border-radius:10px;	
 }
@@ -190,6 +298,7 @@
 <div class="title">一号电源————储能电源主控单元</div>
 <div class="container">
 
+<<<<<<< HEAD
 
 <!--***************************储能电源数据开始****************************-->
 
@@ -221,6 +330,17 @@
 
 <!--状态 -->  
 <div class="state"  style="position:relative;top:40px;left:0%;">
+=======
+<!--图-->
+<div class="voltage">
+	<div class="VchartPhoto" id="oneVPhoto"> 
+    电压图
+   	</div>  
+</div>
+
+<!--状态 -->  
+<div class="state">
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	<div id="text_state">状态</div>
     <div id="chargingstate">
        <img src="../../images/icons/charging state.png">
@@ -250,6 +370,7 @@
        <img id="connected3" src="../../images/icons/connect.png">
     </div>
 </div>   
+<<<<<<< HEAD
 <!--***************************储能电源数据结束****************************-->
 
 
@@ -294,5 +415,100 @@
 <!--***************************模组总体状况结束****************************-->
 
 
+=======
+
+<!--故障-->
+<div class="error">
+	<div id="text_error">故障</div>
+    <div class="error1">
+    	<div id="pos" style="position:relative;top:0px;left:10%;font-size:20px;font-weight:800;">正极熔断故障</div>
+        	<img id="pos_connected" src="../../images/icons/connect.png" style="position:relative;top:-25px;left:30%;">
+            <!--<img id="pos_on" src="../../images/icons/run.png" style="position:relative;top:-25px;left:30%;">
+            <img id="pos_error" src="../../images/icons/error.png" style="position:relative;top:-25px;left:30%;">-->     
+            <!--灰色——连接状态；绿色——运行；红色——故障-->
+    	<div id="neg" style="position:relative;top:0px;left:10%;font-size:20px;font-weight:800;">负极熔断故障</div>
+        	<img id="neg_connected" src="../../images/icons/connect.png" style="position:relative;top:-25px;left:30%;">
+            <!--<img id="neg_on" src="../../images/icons/run.png" style="position:absolute;top:740px;left:30%;">
+            <img id="neg_error" src="../../images/icons/error.png" style="position:absolute;top:740px;left:30%;">--> 
+            <!--灰色——连接状态；绿色——运行；红色——故障-->
+    	<div id="24V" style="position:relative;top:0px;left:10%;font-size:20px;font-weight:800;">24V隔离电源故障</div>
+        	<img id="24V_connected" src="../../images/icons/connect.png" style="position:relative;top:-25px;left:30%;">
+            <!--<img id="24V_on" src="../../images/icons/run.png"  style="position:absolute;top:790px;left:30%;">
+            <img id="24V_error" src="../../images/icons/error.png"  style="position:absolute;top:790px;left:30%;">--> 
+            <!--灰色——连接状态；绿色——运行；红色——故障-->     
+   		<div id="protect" style="position:relative;top:0px;left:10%;font-size:20px;font-weight:840;">浪涌保护故障</div>
+        	<img id="protect_connected" src="../../images/icons/connect.png" style="position:relative;top:-25px;left:30%;">
+            <!--<img id="protect_on" src="../../images/icons/run.png" style="position:absolute;top:840px;left:30%;">
+            <img id="protect_error" src="../../images/icons/error.png" style="position:absolute;top:840px;left:30%;">-->      
+            <!--灰色——连接状态；绿色——运行；红色——故障-->
+    </div>
+	<div class="error2">
+    	<div id="fan_img"><img src="../../images/icons/fan.png" style="position:relative;top:-125px;left:42%;"></div>
+    	<div id="12fan">
+        	<!--1-6在上，7-12在下-->
+    		<div id="fan1error">
+        		<div><img id="1connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:50%;"></div>
+            	<!--<div id="1on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:50%;"></div>
+           		<div id="1error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:50%;"></div>-->
+        	</div>
+        	<div id="fan2error">
+        		<div><img id="2connected" src="../../images/icons/connect.png"  style="position:absolute;top:800px;right:45%;"></div>
+            	<!--<div id="2on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:45%;"></div>
+            	<div id="2error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:45%;"></div>-->
+        	</div>
+        	<div id="fan3error">
+        		<div><img id="3connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:40%;"></div>
+            	<!--<div id="3on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:40%;"></div>
+            	<div id="3error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:40%;"></div>-->
+        	</div>
+            <div id="fan4error">
+        		<div><img id="4connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:35%;"></div>
+            	<!--<div id="4on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:35%;"></div>
+            	<div id="4error"><img src="../../images/icons/error.png"  style="position:absolute;top:800px;right:35%;"></div>-->
+        	</div>
+            <div id="fan5error">
+        		<div><img id="5connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:30%;"></div>
+            	<!--<div id="5on"><img src="../../images/icons/run.png" style="position:absolute;top:800px;right:35%;"></div>
+            	<div id="5error"><img src="../../images/icons/error.png" style="position:absolute;top:800px;right:35%;"></div>-->
+        	</div>
+            <div id="fan6error">
+        		<div><img id="6connected" src="../../images/icons/connect.png" style="position:absolute;top:800px;right:25%;"></div>
+            	<!--<div id="6on"><img src="../../images/icons/run.png" style="position:absolute;top:730px;right:25%;"></div>
+            	<div id="6error"><img src="../../images/icons/error.png" style="position:absolute;top:730px;right:25%;"></div>-->
+        	</div>
+            <div id="fan7error">
+        		<div><img id="7connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:50%;"></div>
+            	<!--<div id="7on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:40%;"></div>
+            	<div id="7error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:40%;"></div>-->
+        	</div>
+            <div id="fan8error">
+        		<div><img id="8connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:45%;"></div>
+            	<!--<div id="8on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:35%;"></div>
+            	<div id="8error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:35%;"></div>-->
+        	</div>
+            <div id="fan9error">
+        		<div><img id="9connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:40%;"></div>
+            	<!--<div id="9on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:30%;"></div>
+            	<div id="9error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:30%;"></div>-->
+        	</div>
+            <div id="fan10error">
+        		<div><img id="10connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:35%;"></div>
+            	<!--<div id="10on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:35%;"></div>
+            	<div id="10error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:35%;"></div>-->
+        	</div>
+            <div id="fan11error">
+        		<div><img id="11connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:30%;"></div>
+            	<!--<div id="11on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:30%;"></div>
+            	<div id="11error"><img src="../../images/icons/error.png"  style="position:absolute;top:860px;right:30%;"></div>-->
+        	</div>
+            <div id="fan12error">
+        		<div><img id="12connected" src="../../images/icons/connect.png" style="position:absolute;top:860px;right:25%;"></div>
+            	<!--<div id="12on"><img src="../../images/icons/run.png" style="position:absolute;top:860px;right:25%;"></div>
+            	<div id="12error"><img src="../../images/icons/error.png" style="position:absolute;top:860px;right:25%;"></div>-->
+        	</div>
+    	</div>
+	</div>
+</div>
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 </body>
 </html>

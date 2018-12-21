@@ -53,12 +53,17 @@ $(function () {
     },
     legend: {
         data:[{name:'Health',
+<<<<<<< HEAD
                 textStyle:{color:"#00FF00"}},  /*健康*/
 				/*{name:'Sub-Health',
                 textStyle:{color:"#FFA500"}},  /*亚健康*/
 				/*{name:'Fault',
                 textStyle:{color:"#FF0000"}},*/  /*不健康*/
 			]
+=======
+                textStyle:{color:"yellow"}
+            }]
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
     },
     toolbox: {
         show: true,
@@ -111,6 +116,7 @@ $(function () {
                 }
             },
             data:healthData
+<<<<<<< HEAD
         },
 		/*{
             name:'Sub-Health',
@@ -134,6 +140,9 @@ $(function () {
             },
             data:faultData
         }*/
+=======
+        }
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
     ]
     };
     VoltChart.setOption(voltOption);

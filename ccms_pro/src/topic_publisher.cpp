@@ -116,6 +116,7 @@ int main(int argc, char** argv)
 		
 	ros::Rate loop_rate(10);
 
+<<<<<<< HEAD
 	int s,nbytes;
 	struct ifreq ifr;
 	struct can_frame frame;
@@ -133,10 +134,22 @@ int main(int argc, char** argv)
 			close(s);
 			s = socket(PF_CAN,SOCK_RAW,CAN_RAW);
 		}
+=======
+	while(ros::ok())
+	{   
+	    int s,nbytes;
+	    struct ifreq ifr;
+	    struct can_frame frame;
+        struct sockaddr_can addr;
+
+	    struct can_filter rfilter[43];
+	    s = socket(PF_CAN,SOCK_RAW,CAN_RAW);
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	    strcpy(ifr.ifr_name,"can0");
 	    ioctl(s,SIOCGIFINDEX,&ifr);
 	    addr.can_family = AF_CAN;
 	    addr.can_ifindex = ifr.ifr_ifindex;
+<<<<<<< HEAD
 	    int ret = bind(s,(struct sockaddr *)&addr,sizeof(addr));
 /*
 		if(ret < 0)
@@ -144,10 +157,15 @@ int main(int argc, char** argv)
 			exit(0);
 		}
 */
+=======
+	    bind(s,(struct sockaddr *)&addr,sizeof(addr));
+
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	    for(int i=0; i<43; i++)
 	    {
 			rfilter[i].can_id = 0x180 + i;
 			rfilter[i].can_mask = CAN_SFF_MASK;
+<<<<<<< HEAD
 	   	}
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
 /*
@@ -170,6 +188,29 @@ int main(int argc, char** argv)
  			if((frame.can_id - 0x180) <= 43)
 			{
 				msg.id = frame.can_id - 0x180;
+=======
+	    }
+	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
+		if((s>=0) && (s<=500))
+		{
+	    	nbytes = read(s,&frame,sizeof(frame));
+			ROS_INFO("n_s_2 %d",s);
+		}
+		else		
+		{
+			s = 5;
+     		ROS_INFO("can4 n_s = 5");
+			//close(s);
+		}
+	    //nbytes = read(s,&frame,sizeof(frame));
+
+	    if(nbytes > 0)
+	    {
+      		 ccms_pro::UnpackingCanData1 msg;
+ 			 if((frame.can_id - 0x180) <= 43)
+			 {
+			 	msg.id = frame.can_id - 0x180;
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 			 	ros::Time begin = ros::Time::now();
 			 	msg.stamp = begin;
 		     	msg.Module_Voltage = Module_Voltage((uint16_t)frame.data[0],(uint16_t)frame.data[1]) - 1000;
@@ -204,8 +245,13 @@ int main(int argc, char** argv)
 	    }
 	    else
 	    {
+<<<<<<< HEAD
 	        	ROS_INFO("can1 no bytes");
 				ROS_INFO("%d,%s", errno,(char*)strerror(errno));
+=======
+	        ROS_INFO("can1 no bytes");
+			ROS_INFO("%d,%s", errno,(char*)strerror(errno));
+>>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	    }
 	}
 	return 0;
