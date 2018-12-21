@@ -1,0 +1,63 @@
+<div id="12fan">
+        	<!--1-6在上，7-12在下-->
+    		<div id="fan1error">
+        		<div id="1connected"><img src="../../images/icons/connect.png" style="position:relative;top:-200px;left:50%;"></div>
+            	<!--<div id="1on"><img src="../../images/icons/run.png" style="position:relative;top:-200px;left:50%;"></div>
+           		<div id="1error"><img src="../../images/icons/error.png" style="position:relative;top:-200px;left:50%;"></div>-->
+        	</div>
+        	<div id="fan2error">
+        		<div id="2connected"><img src="../../images/icons/connect.png" style="position:relative;top:-223px;left:59%;"></div>
+            	<!--<div id="2on"><img src="../../images/icons/run.png" style="position:relative;top:-223px;left:58%;"></div>
+            	<div id="2error"><img src="../../images/icons/error.png" style="position:relative;top:-223px;left:58%;"></div>-->
+        	</div>
+        	<div id="fan3error">
+        		<div id="3connected"><img src="../../images/icons/connect.png" style="position:relative;top:-246px;left:68%;"></div>
+            	<!--<div id="3on"><img src="../../images/icons/run.png" style="position:relative;top:-246px;left:68%;"></div>
+            	<div id="3error"><img src="../../images/icons/error.png" style="position:relative;top:-246px;left:68%;"></div>-->
+        	</div>
+            <div id="fan4error">
+        		<div id="4connected"><img src="../../images/icons/connect.png" style="position:relative;top:-269px;left:77%;"></div>
+            	<!--<div id="4on"><img src="../../images/icons/run.png" style="position:relative;top:-269px;left:77%;"></div>
+            	<div id="4error"><img src="../../images/icons/error.png" style="position:relative;top:-269px;left:77%;"></div>-->
+        	</div>
+            <div id="fan5error">
+        		<div id="5connected"><img src="../../images/icons/connect.png" style="position:relative;top:-292px;left:86%;"></div>
+            	<!--<div id="5on"><img src="../../images/icons/run.png" style="position:relative;top:-292px;left:86%;"></div>
+            	<div id="5error"><img src="../../images/icons/error.png" style="position:relative;top:-292px;left:86%;"></div>-->
+        	</div>
+            <div id="fan6error">
+        		<div id="6connected"><img src="../../images/icons/connect.png" style="position:relative;top:-315px;left:95%;"></div>
+            	<!--<div id="6on"><img src="../../images/icons/run.png" style="position:relative;top:-315px;left:95%;"></div>
+            	<div id="6error"><img src="../../images/icons/error.png" style="position:relative;top:-315px;left:95%;"></div>-->
+        	</div>
+            <div id="fan7error">
+        		<div id="7connected"><img src="../../images/icons/connect.png" style="position:relative;top:-250px;left:50%;"></div>
+            	<!--<div id="7on"><img src="../../images/icons/run.png" style="position:relative;top:-250px;left:50%;"></div>
+            	<div id="7error"><img src="../../images/icons/error.png" style="position:relative;top:-250px;left:50%;"></div>-->
+        	</div>
+            <div id="fan8error">
+        		<div id="8connected"><img src="../../images/icons/connect.png" style="position:relative;top:-273px;left:59%;"></div>
+            	<!--<div id="8on"><img src="../../images/icons/run.png" style="position:relative;top:-273px;left:59%;"></div>
+            	<div id="8error"><img src="../../images/icons/error.png" style="position:relative;top:-273px;left:59%;"></div>-->
+        	</div>
+            <div id="fan9error">
+        		<div id="9connected"><img src="../../images/icons/connect.png" style="position:relative;top:-296px;left:68%;"></div>
+            	<!--<div id="9on"><img src="../../images/icons/run.png" style="position:relative;top:-296px;left:68%;"></div>
+            	<div id="9error"><img src="../../images/icons/error.png" style="position:relative;top:-296px;left:68%;"></div>-->
+        	</div>
+            <div id="fan10error">
+        		<div id="10connected"><img src="../../images/icons/connect.png" style="position:relative;top:-319px;left:77%;"></div>
+            	<!--<div id="10on"><img src="../../images/icons/run.png" style="position:relative;top:-319px;left:77%;"></div>
+            	<div id="10error"><img src="../../images/icons/error.png" style="position:relative;top:-319px;left:77%;"></div>-->
+        	</div>
+            <div id="fan11error">
+        		<div id="11connected"><img src="../../images/icons/connect.png" style="position:relative;top:-342px;left:86%;"></div>
+            	<!--<div id="11on"><img src="../../images/icons/run.png" style="position:relative;top:-342px;left:86%;"></div>
+            	<div id="11error"><img src="../../images/icons/error.png" style="position:relative;top:-342px;left:86%;"></div>-->
+        	</div>
+            <div id="fan12error">
+        		<div id="12connected"><img src="../../images/icons/connect.png" style="position:relative;top:-365px;left:95%;"></div>
+            	<!--<div id="12on"><img src="../../images/icons/run.png" style="position:relative;top:-365px;left:95%;"></div>
+            	<div id="12error"><img src="../../images/icons/error.png" style="position:relative;top:-365px;left:95%;"></div>-->
+        	</div>
+    	</div>

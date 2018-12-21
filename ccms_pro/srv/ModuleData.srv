@@ -1,0 +1,14 @@
+uint64 ErrorTypeID
+uint64 powerID
+uint64 moduleID
+uint64 blockID
+float64 StartStamp
+float64 EndStamp
+---
+float64[] HEnergy
+float64[] HModule
+float64[] HBlock
+float64[] HModule_Average
+float64[] HError
+
+ 

@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="../../js/jQuery3.2.1.js"></script>
+<script src="../../config.js"></script>
+<script src="../../js/main/onePowerNow.js"></script>
+<script src="../../js/echarts/echarts.min.js"></script>
+
+<link href="../../js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="../../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/jquery/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	function deal_data_p5(data){
+		deal2(data);
+	}
+
+	function deal_data_p6(data){
+		deal1(data);
+	}
+
+    function deal_data6(data1, data2, data3){
+        deal1(data1);
+        change_pic_fan(data2);
+        change_pic_power(data3);
+		console.log("before fill");
+        fill_with_data(data1);
+    }
+    function change_pic_fan(Fandata){
+        var fan1 = document.getElementById("connected1");
+        var fan2 = document.getElementById("connected2");
+        var fan3 = document.getElementById("connected3");
+        fan1.src = (Fandata[4]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan2.src = (Fandata[5]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+        fan3.src = (Fandata[6]==1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+    }
+    function change_pic_power(powerdata){
+        console.log("in change_pic_power");
+        var imgcharging = document.getElementById("imgcharging");
+        var imgfinishcharging = document.getElementById("imgfinischarging");
+
+        imgcharging.src = (powerdata[0] == 1 ? "../../images/icons/charging1.png" : "");
+        imgfinishcharging.src = (powerdata[7] == 1 ? "../../images/icons/finishcharging.png" : "");
+    }
+
+    function fill_with_data(data){
+		console.log("in fill_with_data");
+        var text1 = document.getElementById("text_currenttime_time_text");
+        var text2 = document.getElementById("text_voltage_text");
+        var text3 = document.getElementById("text_an_text");
+        var text4 = document.getElementById("text_temperature_text");
+        text1.value = currentTime();
+        text2.value = data.Energy_Storage_Voltage;
+        text3.value = data.Energy_Storage_Current;
+        text4.value = data.Energy_Storage_Temperature;
+    }
+
+    function currentTime(){
+        var d = new Date();
+        var minute = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+        var second = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
+
+        var dto = [d.getHours(), minute, second].join(':');
+
+        return dto
+    }
+</script>
+<style>
+*{ 
+	padding:0;
+	margin:0;
+
+}
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+/**********************储能电源数据开始************************/
+
+/*图开始*/
+.VchartPhoto{
+    background-color: #000000 !important;
+	height:250px;
+	width:100%;
+	position:relative;
+	top:30px;
+	left:0px;
+	border-radius:15px;
+}
+/*图结束*/
+
+/*当前数据*/
+.currenttime{
+	height:120px;
+	width:100%;
+	background-color:#CCC;
+	/*margin:150px 0px 0px -20px;   /*上 右 下 左*/ 
+	display:inline-block;
+	border-radius:15px;
+}
+
+/*状态*/
+.state{ 
+	height:80px;
+	width:100%;
+	background-color:#CCC;
+	/*margin:-100px 0px 0px -20px;   /*上 右 下 左*/  
+	display:inline-block;
+	border-radius:10px;
+}
+
+#chargingstate{ 
+    position:relative;
+	top:7px;
+	left:13%;
+}
+#charging{ 
+	position:relative;
+	top:-20px;
+	left:18%;
+}
+#finishcharging{ 
+	position:relative;
+	top:-52px;
+	left:23%;
+}
+#fan1{
+	position:relative;
+	top:-80px;
+	left:35%;
+}
+#fan2{
+	position:relative;
+	top:-105px;
+	left:50%;
+}
+#fan3{
+	position:relative;
+	top:-130px;
+	left:65%;
+}
+/**********************储能电源数据结束***********************/
+
+
+/**********************模组总体状况开始***********************/
+/*图开始*/
+.ModPhoto{ 
+	height:250px;
+	width:100%;
+	background-color:#000000 !important;
+	position:relative;
+	top:0px;
+	border-radius:15px;
+}
+/*图结束*/
+
+/*模组当前开始*/
+.Modcurrenttime{
+	height:160px;
+	width:100%;
+	background-color:#CCC;
+	/*margin:150px 0px 0px -20px;   /*上 右 下 左*/ */ 
+	display:inline-block;
+	border-radius:10px;
+}
+/*模组当前结束*/
+/**********************模组总体状况结束***********************/
+
+/*故障*/
+.error{ 
+	height:230px;
+	width:100%;
+	background-color:#CCC;
+	/*margin:0px 0px 50px -20px;   /*上 右 下 左*/ 
+	display:inline-block;
+	border-radius:10px;	
+}
+
+
+</style>
+
+</head>
+
+<body>
+<div class="title">一号电源————储能电源主控单元</div>
+<div class="container">
+
+
+<!--***************************储能电源数据开始****************************-->
+
+<!--图-->
+<div id="Photo_name" style="position:relative;top:20px;left:0%;font-size:16px;font-weight:600;">一号储能电源数据</div>
+	<div class="VchartPhoto" id="oneVPhoto"> 
+    图
+   	</div>  
+
+<!--当前数据-->
+<div class="currenttime" style="position:relative;top:110px;left:0%;">
+	<div id="text_currenttime">当前</div>
+	<!--当前时间-->
+	<div style="position:relative;top:5px;left:10%;font-size:16px;font-weight:600;">时间</div>
+	<input id="text_currenttime_time_text" type="text" style="width:200px;height:25px;position:relative;top:-20px;left:16%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+	<!--电压-->
+	<div id="time_text" style="position:relative;top:5px;left:10%;font-size:16px;font-weight:600;">电压</div>
+	<input id="text_voltage_text" type="text" style="width:80px;height:25px;position:relative;top:-20px;left:16%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+	<div class="fute" style="position:relative;top:-42px;left:26%;font-size:16px;font-weight:600;">V</div>
+	<!--电流-->
+	<div id="time_text" style="position:relative;top:-62px;left:35%;font-size:16px;font-weight:600;">电流</div>
+	<input id="text_an_text" type="text" style="width:80px;height:25px;position:relative;top:-88px;left:41%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+	<div class="an" style="position:relative;top:-110px;left:51%;font-size:16px;font-weight:600;">A</div>
+	<!--温度-->
+	<div id="time_text" style="position:relative;top:-135px;left:60%;font-size:16px;font-weight:800;">温度</div>
+	<input id="text_temperature_text" type="text" style="width:80px;height:25px;position:relative;top:-160px;left:66%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+	<div class="sheshidu" style="position:relative;top:-183px;left:76%;font-size:16px;font-weight:600;">℃</div>
+</div>
+
+<!--状态 -->  
+<div class="state"  style="position:relative;top:40px;left:0%;">
+	<div id="text_state">状态</div>
+    <div id="chargingstate">
+       <img src="../../images/icons/charging state.png">
+    </div>
+	<div id="charging">
+		<img src="../../images/icons/charging1.png" id="imgcharging">
+	</div>
+	<div id="finishcharging">
+		<img src="../../images/icons/finishcharging.png" id="imgfinischarging">
+    </div>
+    <div id="fan1">
+       <img id="fan1state" src="../../images/icons/fan.png">1
+      <!-- <img id="on" src="../../images/icons/run.png"> 
+       <img id="off1" src="../../images/icons/error.png">-->
+       <img id="connected1" src="../../images/icons/connect.png"> <!--灰色——连接状态；绿色——开；红色——关-->
+    </div>
+	<div id="fan2">  
+       <img id="fan2state" src="../../images/icons/fan.png">2
+       <!--<img id="on" src="../../images/icons/run.png"> 
+       <img id="off2" src="../../images/icons/error.png">-->
+       <img id="connected2" src="../../images/icons/connect.png">
+    </div>
+	<div id="fan3">
+       <img id="fan3state" src="../../images/icons/fan.png">3
+      <!-- <img id="on" src="../../images/icons/run.png"> 
+       <img id="off3" src="../../images/icons/error.png">-->
+       <img id="connected3" src="../../images/icons/connect.png">
+    </div>
+</div>   
+<!--***************************储能电源数据结束****************************-->
+
+
+
+<!--***************************模组总体状况开始****************************-->
+
+<!--图-->
+<div id="Photo_name" style="position:relative;top:-10px;left:0%;font-size:16px;font-weight:600;">一号储能电源模组总体状况数据</div>
+<div class="Mod">
+    <div class="ModPhoto" id="oneModVoltPhoto">
+	图
+	<div>
+</div>
+
+<!--当前-->
+<div class="Modcurrenttime" style="position:relative;top:280px;left:0%;">
+	<div class="Mod_text_currenttime">当前</div>
+	<!--当前时间-->
+	<div style="position:relative;top:5px;left:10%;font-size:16px;font-weight:600;">时间</div>
+	<input id="time_text" type="text" style="width:200px;height:25px;position:relative;top:-20px;left:16%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+	<!--均衡数据编号-->
+	<div style="position:relative;top:5px;left:10%;font-size:16px;font-weight:600;">均衡数据编号</div>
+	<input id="2_text" type="text" style="width:80px;height:25px;position:relative;top:-20px;left:22%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+	<!--高于阈值电压模组数量-->
+	<div style="position:relative;top:-43px;left:42%;font-size:16px;font-weight:600;">高于阈值电压模组数量</div>
+	<input id="num_higher_text" type="text" style="width:80px;height:25px;position:relative;top:-70px;left:60%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:25px;text-align:center;""/>
+    <div class="ge" style="position:relative;top:-95px;left:70%;font-size:16px;font-weight:600;">个</div>
+	<!--平均电压-->
+	<div style="position:relative;top:-65px;left:10%;font-size:16px;font-weight:600;">平均电压</div>
+	<input id="average_text" type="text" style="width:80px;height:25px;position:relative;top:-90px;left:18%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:25px;text-align:center;"/>
+    <div class="fute" style="position:relative;top:-115px;left:28%;font-size:16px;font-weight:600;">V</div>
+    <!--最低电压-->
+	<div style="position:relative;top:-135px;left:35%;font-size:16px;font-weight:600;">最低电压</div>
+	<input id="min_text" type="text" style="width:80px;height:25px;position:relative;top:-160px;left:43%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:25px;text-align:center;"/>
+    <div class="fute" style="position:relative;top:-185px;left:53%;font-size:16px;font-weight:600;">V</div>
+    <!--最高电压-->
+	<div style="position:relative;top:-205px;left:65%;font-size:16px;font-weight:600;">最高电压</div>
+	<input id="max_text" type="text" style="width:80px;height:25px;position:relative;top:-230px;left:73%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:25px;text-align:center;"/>
+    <div class="fute" style="position:relative;top:-255px;left:83%;font-size:16px;font-weight:600;">V</div>
+</div>   
+
+<!--***************************模组总体状况结束****************************-->
+
+
+</body>
+</html>

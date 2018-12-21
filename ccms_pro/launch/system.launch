@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find ccms_pro)/launch/can.launch"/>
+	<include file="$(find ccms_pro)/launch/history.launch"/>
+	<include file="$(find ccms_pro)/launch/sub.launch"/>
+</launch>

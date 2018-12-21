@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="ccms_pro" type="ProcessData2.py" name="block_detect_subscribe" output="screen"/>
+  <node pkg="ccms_pro" type="Block_Detect.py" name="block_detect_publisher" output="screen"/>
+</launch>
+

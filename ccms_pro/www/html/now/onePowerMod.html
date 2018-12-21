@@ -1,0 +1,2371 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+    <script src="../../js/jQuery3.2.1.js"></script>
+    <script src = "../../config.js"></script>
+    <script src="../../js/main/onePowerMod.js"></script>
+    <script src="../../js/echarts/echarts.min.js"></script>
+    <script type="text/javascript">
+    function deal_data_p(data){
+		console.log("in onePowerMod msg1");
+		deal1(data);
+		fill_with_data_1(data);
+	}
+	function deal(){
+		console.log("in deal");	
+	}
+	function deal_data_state(data1, data2){
+		fill_with_data_state(data1);
+	}
+
+	function deal_data_avg(data){
+		deal5(data);
+	}
+
+	function deal_data_p3(id, data){
+		var box1_1 = document.getElementById("box1_1");
+		var box1_2 = document.getElementById("box1_2");
+		var box1_3 = document.getElementById("box1_3");
+		var box1_4 = document.getElementById("box1_4");
+
+		var box2_1 = document.getElementById("box2_1");
+		var box2_2 = document.getElementById("box2_2");
+		var box2_3 = document.getElementById("box2_3");
+		var box2_4 = document.getElementById("box2_4");
+
+		var box3_1 = document.getElementById("box3_1");
+		var box3_2 = document.getElementById("box3_2");
+		var box3_3 = document.getElementById("box3_3");
+		var box3_4 = document.getElementById("box3_4");
+
+		var box4_1 = document.getElementById("box4_1");
+		var box4_2 = document.getElementById("box4_2");
+		var box4_3 = document.getElementById("box4_3");
+		var box4_4 = document.getElementById("box4_4");
+
+		var box5_1 = document.getElementById("box5_1");
+		var box5_2 = document.getElementById("box5_2");
+		var box5_3 = document.getElementById("box5_3");
+		var box5_4 = document.getElementById("box5_4");
+
+		var box6_1 = document.getElementById("box6_1");
+		var box6_2 = document.getElementById("box6_2");
+		var box6_3 = document.getElementById("box6_3");
+		var box6_4 = document.getElementById("box6_4");
+
+		var box7_1 = document.getElementById("box7_1");
+		var box7_2 = document.getElementById("box7_2");
+		var box7_3 = document.getElementById("box7_3");
+		var box7_4 = document.getElementById("box7_4");
+
+		var box8_1 = document.getElementById("box8_1");
+		var box8_2 = document.getElementById("box8_2");
+		var box8_3 = document.getElementById("box8_3");
+		var box8_4 = document.getElementById("box8_4");
+
+		var box9_1 = document.getElementById("box9_1");
+		var box9_2 = document.getElementById("box9_2");
+		var box9_3 = document.getElementById("box9_3");
+		var box9_4 = document.getElementById("box9_4");
+
+		var box10_1 = document.getElementById("box10_1");
+		var box10_2 = document.getElementById("box10_2");
+		var box10_3 = document.getElementById("box10_3");
+		var box10_4 = document.getElementById("box10_4");
+
+		var box11_1 = document.getElementById("box11_1");
+		var box11_2 = document.getElementById("box11_2");
+		var box11_3 = document.getElementById("box11_3");
+		var box11_4 = document.getElementById("box11_4");
+
+		var box12_1 = document.getElementById("box12_1");
+		var box12_2 = document.getElementById("box12_2");
+		var box12_3 = document.getElementById("box12_3");
+		var box12_4 = document.getElementById("box12_4");
+
+		var box13_1 = document.getElementById("box13_1");
+		var box13_2 = document.getElementById("box13_2");
+		var box13_3 = document.getElementById("box13_3");
+		var box13_4 = document.getElementById("box13_4");
+
+		var box14_1 = document.getElementById("box14_1");
+		var box14_2 = document.getElementById("box14_2");
+		var box14_3 = document.getElementById("box14_3");
+		var box14_4 = document.getElementById("box14_4");
+
+		var box15_1 = document.getElementById("box15_1");
+		var box15_2 = document.getElementById("box15_2");
+		var box15_3 = document.getElementById("box15_3");
+		var box15_4 = document.getElementById("box15_4");
+
+		var box16_1 = document.getElementById("box16_1");
+		var box16_2 = document.getElementById("box16_2");
+		var box16_3 = document.getElementById("box16_3");
+		var box16_4 = document.getElementById("box16_4");
+
+		var box17_1 = document.getElementById("box17_1");
+		var box17_2 = document.getElementById("box17_2");
+		var box17_3 = document.getElementById("box17_3");
+		var box17_4 = document.getElementById("box17_4");
+
+		var box18_1 = document.getElementById("box18_1");
+		var box18_2 = document.getElementById("box18_2");
+		var box18_3 = document.getElementById("box18_3");
+		var box18_4 = document.getElementById("box18_4");
+
+		var box19_1 = document.getElementById("box19_1");
+		var box19_2 = document.getElementById("box19_2");
+		var box19_3 = document.getElementById("box19_3");
+		var box19_4 = document.getElementById("box19_4");
+
+		var box20_1 = document.getElementById("box20_1");
+		var box20_2 = document.getElementById("box20_2");
+		var box20_3 = document.getElementById("box20_3");
+		var box20_4 = document.getElementById("box20_4");
+
+		var box21_1 = document.getElementById("box21_1");
+		var box21_2 = document.getElementById("box21_2");
+		var box21_3 = document.getElementById("box21_3");
+		var box21_4 = document.getElementById("box21_4");
+
+		var box22_1 = document.getElementById("box22_1");
+		var box22_2 = document.getElementById("box22_2");
+		var box22_3 = document.getElementById("box22_3");
+		var box22_4 = document.getElementById("box22_4");
+
+		var box23_1 = document.getElementById("box23_1");
+		var box23_2 = document.getElementById("box23_2");
+		var box23_3 = document.getElementById("box23_3");
+		var box23_4 = document.getElementById("box23_4");
+
+		var box24_1 = document.getElementById("box24_1");
+		var box24_2 = document.getElementById("box24_2");
+		var box24_3 = document.getElementById("box24_3");
+		var box24_4 = document.getElementById("box24_4");
+
+		var box25_1 = document.getElementById("box25_1");
+		var box25_2 = document.getElementById("box25_2");
+		var box25_3 = document.getElementById("box25_3");
+		var box25_4 = document.getElementById("box25_4");
+
+		var box26_1 = document.getElementById("box26_1");
+		var box26_2 = document.getElementById("box26_2");
+		var box26_3 = document.getElementById("box26_3");
+		var box26_4 = document.getElementById("box26_4");
+
+		var box27_1 = document.getElementById("box27_1");
+		var box27_2 = document.getElementById("box27_2");
+		var box27_3 = document.getElementById("box27_3");
+		var box27_4 = document.getElementById("box27_4");
+
+		var box28_1 = document.getElementById("box28_1");
+		var box28_2 = document.getElementById("box28_2");
+		var box28_3 = document.getElementById("box28_3");
+		var box28_4 = document.getElementById("box28_4");
+
+		var box29_1 = document.getElementById("box29_1");
+		var box29_2 = document.getElementById("box29_2");
+		var box29_3 = document.getElementById("box29_3");
+		var box29_4 = document.getElementById("box29_4");
+
+		var box30_1 = document.getElementById("box30_1");
+		var box30_2 = document.getElementById("box30_2");
+		var box30_3 = document.getElementById("box30_3");
+		var box30_4 = document.getElementById("box30_4");
+
+		var box31_1 = document.getElementById("box31_1");
+		var box31_2 = document.getElementById("box31_2");
+		var box31_3 = document.getElementById("box31_3");
+		var box31_4 = document.getElementById("box31_4");
+
+		var box32_1 = document.getElementById("box32_1");
+		var box32_2 = document.getElementById("box32_2");
+		var box32_3 = document.getElementById("box32_3");
+		var box32_4 = document.getElementById("box32_4");
+
+		var box33_1 = document.getElementById("box33_1");
+		var box33_2 = document.getElementById("box33_2");
+		var box33_3 = document.getElementById("box33_3");
+		var box33_4 = document.getElementById("box33_4");
+
+		var box34_1 = document.getElementById("box34_1");
+		var box34_2 = document.getElementById("box34_2");
+		var box34_3 = document.getElementById("box34_3");
+		var box34_4 = document.getElementById("box34_4");
+
+		var box35_1 = document.getElementById("box35_1");
+		var box35_2 = document.getElementById("box35_2");
+		var box35_3 = document.getElementById("box35_3");
+		var box35_4 = document.getElementById("box35_4");
+
+		var box36_1 = document.getElementById("box36_1");
+		var box36_2 = document.getElementById("box36_2");
+		var box36_3 = document.getElementById("box36_3");
+		var box36_4 = document.getElementById("box36_4");
+
+		var box37_1 = document.getElementById("box37_1");
+		var box37_2 = document.getElementById("box37_2");
+		var box37_3 = document.getElementById("box37_3");
+		var box37_4 = document.getElementById("box37_4");
+
+		var box38_1 = document.getElementById("box38_1");
+		var box38_2 = document.getElementById("box38_2");
+		var box38_3 = document.getElementById("box38_3");
+		var box38_4 = document.getElementById("box38_4");
+
+		var box39_1 = document.getElementById("box39_1");
+		var box39_2 = document.getElementById("box39_2");
+		var box39_3 = document.getElementById("box39_3");
+		var box39_4 = document.getElementById("box39_4");
+
+		var box40_1 = document.getElementById("box40_1");
+		var box40_2 = document.getElementById("box40_2");
+		var box40_3 = document.getElementById("box40_3");
+		var box40_4 = document.getElementById("box40_4");
+
+		var box41_1 = document.getElementById("box41_1");
+		var box41_2 = document.getElementById("box41_2");
+		var box41_3 = document.getElementById("box41_3");
+		var box41_4 = document.getElementById("box41_4");
+
+		var box42_1 = document.getElementById("box42_1");
+		var box42_2 = document.getElementById("box42_2");
+		var box42_3 = document.getElementById("box42_3");
+		var box42_4 = document.getElementById("box42_4");
+
+		var box43_1 = document.getElementById("box43_1");
+		var box43_2 = document.getElementById("box43_2");
+		var box43_3 = document.getElementById("box43_3");
+		var box43_4 = document.getElementById("box43_4");
+
+		switch(id){
+			case 1 :
+					box1_1.value = data[0];
+					box1_2.value = data[1];
+					box1_3.value = data[2];
+					box1_4.value = data[3];
+					break;
+			case 2 : box2_1.value = data[0];
+					box2_2.value = data[1];
+					box2_3.value = data[2];
+					box2_4.value = data[3];
+					break;
+			case 3 : box3_1.value = data[0];
+					box3_2.value = data[1];
+					box3_3.value = data[2];
+					box3_4.value = data[3];
+					break;
+			case 4 :box4_1.value = data[0];
+					box4_2.value = data[1];
+					box4_3.value = data[2];
+					box4_4.value = data[3];
+					break;
+			case 5 :box5_1.value = data[0];
+					box5_2.value = data[1];
+					box5_3.value = data[2];
+					box5_4.value = data[3];
+					break;
+			case 6 :box6_1.value = data[0];
+					box6_2.value = data[1];
+					box6_3.value = data[2];
+					box6_4.value = data[3];
+					break;
+			case 7 :box7_1.value = data[0];
+					box7_2.value = data[1];
+					box7_3.value = data[2];
+					box7_4.value = data[3];
+					break;
+			case 8 :box8_1.value = data[0];
+					box8_2.value = data[1];
+					box8_3.value = data[2];
+					box8_4.value = data[3];
+					break;
+			case 9 :box9_1.value = data[0];
+					box9_2.value = data[1];
+					box9_3.value = data[2];
+					box9_4.value = data[3];
+					break;
+			case 10 :box10_1.value = data[0];
+					box10_2.value = data[1];
+					box10_3.value = data[2];
+					box10_4.value = data[3];
+					break;
+			case 11 : box11_1.value = data[0];
+					box11_2.value = data[1];
+					box11_3.value = data[2];
+					box11_4.value = data[3];
+					break;
+			case 12 : box12_1.value = data[0];
+					box12_2.value = data[1];
+					box12_3.value = data[2];
+					box12_4.value = data[3];
+					break;
+			case 13 :box13_1.value = data[0];
+					box13_2.value = data[1];
+					box13_3.value = data[2];
+					box13_4.value = data[3];
+					break;
+			case 14 :box14_1.value = data[0];
+					box14_2.value = data[1];
+					box14_3.value = data[2];
+					box14_4.value = data[3];
+					break;
+			case 15 :box15_1.value = data[0];
+					box15_2.value = data[1];
+					box15_3.value = data[2];
+					box15_4.value = data[3];
+					break;
+			case 16 :box16_1.value = data[0];
+					box16_2.value = data[1];
+					box16_3.value = data[2];
+					box16_4.value = data[3];
+					break;
+			case 17 :box17_1.value = data[0];
+					box17_2.value = data[1];
+					box17_3.value = data[2];
+					box17_4.value = data[3];
+					break;
+			case 18 :box18_1.value = data[0];
+					box18_2.value = data[1];
+					box18_3.value = data[2];
+					box18_4.value = data[3];
+					break;
+			case 19 :box19_1.value = data[0];
+					box19_2.value = data[1];
+					box19_3.value = data[2];
+					box19_4.value = data[3];
+					break;
+			case 20 :box20_1.value = data[0];
+					box20_2.value = data[1];
+					box20_3.value = data[2];
+					box20_4.value = data[3];
+					break;
+			case 21 :box21_1.value = data[0];
+					box21_2.value = data[1];
+					box21_3.value = data[2];
+					box21_4.value = data[3];
+					break;
+			case 22 :box22_1.value = data[0];
+					box22_2.value = data[1];
+					box22_3.value = data[2];
+					box22_4.value = data[3];
+					break;
+			case 23 :box23_1.value = data[0];
+					box23_2.value = data[1];
+					box23_3.value = data[2];
+					box23_4.value = data[3];
+					break;
+			case 24 :box24_1.value = data[0];
+					box24_2.value = data[1];
+					box24_3.value = data[2];
+					box24_4.value = data[3];
+					break;
+			case 25 :box25_1.value = data[0];
+					box25_2.value = data[1];
+					box25_3.value = data[2];
+					box25_4.value = data[3];
+					break;
+			case 26 :box26_1.value = data[0];
+					box26_2.value = data[1];
+					box26_3.value = data[2];
+					box26_4.value = data[3];
+					break;
+			case 27 :box27_1.value = data[0];
+					box27_2.value = data[1];
+					box27_3.value = data[2];
+					box27_4.value = data[3];
+					break;
+			case 28 :box28_1.value = data[0];
+					box28_2.value = data[1];
+					box28_3.value = data[2];
+					box28_4.value = data[3];
+					break;
+			case 29 :box29_1.value = data[0];
+					box29_2.value = data[1];
+					box29_3.value = data[2];
+					box29_4.value = data[3];
+					break;
+			case 30 :box30_1.value = data[0];
+					box30_2.value = data[1];
+					box30_3.value = data[2];
+					box30_4.value = data[3];
+					break;
+			case 31 :box31_1.value = data[0];
+					box31_2.value = data[1];
+					box31_3.value = data[2];
+					box31_4.value = data[3];
+					break;
+			case 32 :box32_1.value = data[0];
+					box32_2.value = data[1];
+					box32_3.value = data[2];
+					box32_4.value = data[3];
+					break;
+			case 33 :box33_1.value = data[0];
+					box33_2.value = data[1];
+					box33_3.value = data[2];
+					box33_4.value = data[3];
+					break;
+			case 34 :box34_1.value = data[0];
+					box34_2.value = data[1];
+					box34_3.value = data[2];
+					box34_4.value = data[3];
+					break;
+			case 35 :box35_1.value = data[0];
+					box35_2.value = data[1];
+					box35_3.value = data[2];
+					box35_4.value = data[3];
+					break;
+			case 36 :box36_1.value = data[0];
+					box36_2.value = data[1];
+					box36_3.value = data[2];
+					box36_4.value = data[3];
+					break;
+			case 37 :box37_1.value = data[0];
+					box37_2.value = data[1];
+					box37_3.value = data[2];
+					box37_4.value = data[3];
+					break;
+			case 38 :box38_1.value = data[0];
+					box38_2.value = data[1];
+					box38_3.value = data[2];
+					box38_4.value = data[3];
+					break;
+			case 39 :box39_1.value = data[0];
+					box39_2.value = data[1];
+					box39_3.value = data[2];
+					box39_4.value = data[3];
+					break;
+			case 40 :box40_1.value = data[0];
+					box40_2.value = data[1];
+					box40_3.value = data[2];
+					box40_4.value = data[3];
+					break;
+			case 41 :box41_1.value = data[0];
+					box41_2.value = data[1];
+					box41_3.value = data[2];
+					box41_4.value = data[3];
+					break;
+			case 42 :box42_1.value = data[0];
+					box42_2.value = data[1];
+					box42_3.value = data[2];
+					box42_4.value = data[3];
+					break;
+			case 43 :box43_1.value = data[0];
+					box43_2.value = data[1];
+					box43_3.value = data[2];
+					box43_4.value = data[3];
+					break;
+			
+		}
+	}
+
+	function deal_data_p4(id, data){
+		var box1_5 = document.getElementById("box1_5");
+		var box1_6 = document.getElementById("box1_6");
+		var box1_7 = document.getElementById("box1_7");
+		var box1_8 = document.getElementById("box1_8");
+
+		var box2_5 = document.getElementById("box2_5");
+		var box2_6 = document.getElementById("box2_6");
+		var box2_7 = document.getElementById("box2_7");
+		var box2_8 = document.getElementById("box2_8");
+
+		var box3_5 = document.getElementById("box3_5");
+		var box3_6 = document.getElementById("box3_6");
+		var box3_7 = document.getElementById("box3_7");
+		var box3_8 = document.getElementById("box3_8");
+
+		var box4_5 = document.getElementById("box4_5");
+		var box4_6 = document.getElementById("box4_6");
+		var box4_7 = document.getElementById("box4_7");
+		var box4_8 = document.getElementById("box4_8");
+
+		var box5_5 = document.getElementById("box5_5");
+		var box5_6 = document.getElementById("box5_6");
+		var box5_7 = document.getElementById("box5_7");
+		var box5_8 = document.getElementById("box5_8");
+
+		var box6_5 = document.getElementById("box6_5");
+		var box6_6 = document.getElementById("box6_6");
+		var box6_7 = document.getElementById("box6_7");
+		var box6_8 = document.getElementById("box6_8");
+
+		var box7_5 = document.getElementById("box7_5");
+		var box7_6 = document.getElementById("box7_6");
+		var box7_7 = document.getElementById("box7_7");
+		var box7_8 = document.getElementById("box7_8");
+
+		var box8_5 = document.getElementById("box8_5");
+		var box8_6 = document.getElementById("box8_6");
+		var box8_7 = document.getElementById("box8_7");
+		var box8_8 = document.getElementById("box8_8");
+
+		var box9_5 = document.getElementById("box9_5");
+		var box9_6 = document.getElementById("box9_6");
+		var box9_7 = document.getElementById("box9_7");
+		var box9_8 = document.getElementById("box9_8");
+
+		var box10_5 = document.getElementById("box10_5");
+		var box10_6 = document.getElementById("box10_6");
+		var box10_7 = document.getElementById("box10_7");
+		var box10_8 = document.getElementById("box10_8");
+
+		var box11_5 = document.getElementById("box11_5");
+		var box11_6 = document.getElementById("box11_6");
+		var box11_7 = document.getElementById("box11_7");
+		var box11_8 = document.getElementById("box11_8");
+
+		var box12_5 = document.getElementById("box12_5");
+		var box12_6 = document.getElementById("box12_6");
+		var box12_7 = document.getElementById("box12_7");
+		var box12_8 = document.getElementById("box12_8");
+
+		var box13_5 = document.getElementById("box13_5");
+		var box13_6 = document.getElementById("box13_6");
+		var box13_7 = document.getElementById("box13_7");
+		var box13_8 = document.getElementById("box13_8");
+
+		var box14_5 = document.getElementById("box14_5");
+		var box14_6 = document.getElementById("box14_6");
+		var box14_7 = document.getElementById("box14_7");
+		var box14_8 = document.getElementById("box14_8");
+
+		var box15_5 = document.getElementById("box15_5");
+		var box15_6 = document.getElementById("box15_6");
+		var box15_7 = document.getElementById("box15_7");
+		var box15_8 = document.getElementById("box15_8");
+
+		var box16_5 = document.getElementById("box16_5");
+		var box16_6 = document.getElementById("box16_6");
+		var box16_7 = document.getElementById("box16_7");
+		var box16_8 = document.getElementById("box16_8");
+
+		var box17_5 = document.getElementById("box17_5");
+		var box17_6 = document.getElementById("box17_6");
+		var box17_7 = document.getElementById("box17_7");
+		var box17_8 = document.getElementById("box17_8");
+
+		var box18_5 = document.getElementById("box18_5");
+		var box18_6 = document.getElementById("box18_6");
+		var box18_7 = document.getElementById("box18_7");
+		var box18_8 = document.getElementById("box18_8");
+
+		var box19_5 = document.getElementById("box19_5");
+		var box19_6 = document.getElementById("box19_6");
+		var box19_7 = document.getElementById("box19_7");
+		var box19_8 = document.getElementById("box19_8");
+
+		var box20_5 = document.getElementById("box20_5");
+		var box20_6 = document.getElementById("box20_6");
+		var box20_7 = document.getElementById("box20_7");
+		var box20_8 = document.getElementById("box20_8");
+
+		var box21_5 = document.getElementById("box21_5");
+		var box21_6 = document.getElementById("box21_6");
+		var box21_7 = document.getElementById("box21_7");
+		var box21_8 = document.getElementById("box21_8");
+
+		var box22_5 = document.getElementById("box22_5");
+		var box22_6 = document.getElementById("box22_6");
+		var box22_7 = document.getElementById("box22_7");
+		var box22_8 = document.getElementById("box22_8");
+
+		var box23_5 = document.getElementById("box23_5");
+		var box23_6 = document.getElementById("box23_6");
+		var box23_7 = document.getElementById("box23_7");
+		var box23_8 = document.getElementById("box23_8");
+
+		var box24_5 = document.getElementById("box24_5");
+		var box24_6 = document.getElementById("box24_6");
+		var box24_7 = document.getElementById("box24_7");
+		var box24_8 = document.getElementById("box24_8");
+
+		var box25_5 = document.getElementById("box25_5");
+		var box25_6 = document.getElementById("box25_6");
+		var box25_7 = document.getElementById("box25_7");
+		var box25_8 = document.getElementById("box25_8");
+
+		var box26_5 = document.getElementById("box26_5");
+		var box26_6 = document.getElementById("box26_6");
+		var box26_7 = document.getElementById("box26_7");
+		var box26_8 = document.getElementById("box26_8");
+
+		var box27_5 = document.getElementById("box27_5");
+		var box27_6 = document.getElementById("box27_6");
+		var box27_7 = document.getElementById("box27_7");
+		var box27_8 = document.getElementById("box27_8");
+
+		var box28_5 = document.getElementById("box28_5");
+		var box28_6 = document.getElementById("box28_6");
+		var box28_7 = document.getElementById("box28_7");
+		var box28_8 = document.getElementById("box28_8");
+
+		var box29_5 = document.getElementById("box29_5");
+		var box29_6 = document.getElementById("box29_6");
+		var box29_7 = document.getElementById("box29_7");
+		var box29_8 = document.getElementById("box29_8");
+
+		var box30_5 = document.getElementById("box30_5");
+		var box30_6 = document.getElementById("box30_6");
+		var box30_7 = document.getElementById("box30_7");
+		var box30_8 = document.getElementById("box30_8");
+
+		var box31_5 = document.getElementById("box31_5");
+		var box31_6 = document.getElementById("box31_6");
+		var box31_7 = document.getElementById("box31_7");
+		var box31_8 = document.getElementById("box31_8");
+
+		var box32_5 = document.getElementById("box32_5");
+		var box32_6 = document.getElementById("box32_6");
+		var box32_7 = document.getElementById("box32_7");
+		var box32_8 = document.getElementById("box32_8");
+
+		var box33_5 = document.getElementById("box33_5");
+		var box33_6 = document.getElementById("box33_6");
+		var box33_7 = document.getElementById("box33_7");
+		var box33_8 = document.getElementById("box33_8");
+
+		var box34_5 = document.getElementById("box34_5");
+		var box34_6 = document.getElementById("box34_6");
+		var box34_7 = document.getElementById("box34_7");
+		var box34_8 = document.getElementById("box34_8");
+
+		var box35_5 = document.getElementById("box35_5");
+		var box35_6 = document.getElementById("box35_6");
+		var box35_7 = document.getElementById("box35_7");
+		var box35_8 = document.getElementById("box35_8");
+
+		var box36_5 = document.getElementById("box36_5");
+		var box36_6 = document.getElementById("box36_6");
+		var box36_7 = document.getElementById("box36_7");
+		var box36_8 = document.getElementById("box36_8");
+
+		var box37_5 = document.getElementById("box37_5");
+		var box37_6 = document.getElementById("box37_6");
+		var box37_7 = document.getElementById("box37_7");
+		var box37_8 = document.getElementById("box37_8");
+
+		var box38_5 = document.getElementById("box38_5");
+		var box38_6 = document.getElementById("box38_6");
+		var box38_7 = document.getElementById("box38_7");
+		var box38_8 = document.getElementById("box38_8");
+
+		var box39_5 = document.getElementById("box39_5");
+		var box39_6 = document.getElementById("box39_6");
+		var box39_7 = document.getElementById("box39_7");
+		var box39_8 = document.getElementById("box39_8");
+
+		var box40_5 = document.getElementById("box40_5");
+		var box40_6 = document.getElementById("box40_6");
+		var box40_7 = document.getElementById("box40_7");
+		var box40_8 = document.getElementById("box40_8");
+
+		var box41_5 = document.getElementById("box41_5");
+		var box41_6 = document.getElementById("box41_6");
+		var box41_7 = document.getElementById("box41_7");
+		var box41_8 = document.getElementById("box41_8");
+
+		var box42_5 = document.getElementById("box42_5");
+		var box42_6 = document.getElementById("box42_6");
+		var box42_7 = document.getElementById("box42_7");
+		var box42_8 = document.getElementById("box42_8");
+
+		var box43_5 = document.getElementById("box43_5");
+		var box43_6 = document.getElementById("box43_6");
+		var box43_7 = document.getElementById("box43_7");
+		var box43_8 = document.getElementById("box43_8");
+
+		switch(id){
+			case 1 :
+					box1_5.value = data[0];
+					box1_6.value = data[1];
+					box1_7.value = data[2];
+					box1_8.value = data[3];
+					break;
+			case 2 : box2_5.value = data[0];
+					box2_6.value = data[1];
+					box2_7.value = data[2];
+					box2_8.value = data[3];
+					break;
+			case 3 : box3_5.value = data[0];
+					box3_6.value = data[1];
+					box3_7.value = data[2];
+					box3_8.value = data[3];
+					break;
+			case 4 :box4_5.value = data[0];
+					box4_6.value = data[1];
+					box4_7.value = data[2];
+					box4_8.value = data[3];
+					break;
+			case 5 :box5_5.value = data[0];
+					box5_6.value = data[1];
+					box5_7.value = data[2];
+					box5_8.value = data[3];
+					break;
+			case 6 :box6_5.value = data[0];
+					box6_6.value = data[1];
+					box6_7.value = data[2];
+					box6_8.value = data[3];
+					break;
+			case 7 :box7_5.value = data[0];
+					box7_6.value = data[1];
+					box7_7.value = data[2];
+					box7_8.value = data[3];
+					break;
+			case 8 :box8_5.value = data[0];
+					box8_6.value = data[1];
+					box8_7.value = data[2];
+					box8_8.value = data[3];
+					break;
+			case 9 :box9_5.value = data[0];
+					box9_6.value = data[1];
+					box9_7.value = data[2];
+					box9_8.value = data[3];
+					break;
+			case 10 :box10_5.value = data[0];
+					box10_6.value = data[1];
+					box10_7.value = data[2];
+					box10_8.value = data[3];
+					break;
+			case 11 : box11_5.value = data[0];
+					box11_6.value = data[1];
+					box11_7.value = data[2];
+					box11_8.value = data[3];
+					break;
+			case 12 : box12_5.value = data[0];
+					box12_6.value = data[1];
+					box12_7.value = data[2];
+					box12_8.value = data[3];
+					break;
+			case 13 :box13_5.value = data[0];
+					box13_6.value = data[1];
+					box13_7.value = data[2];
+					box13_8.value = data[3];
+					break;
+			case 14 :box14_5.value = data[0];
+					box14_6.value = data[1];
+					box14_7.value = data[2];
+					box14_8.value = data[3];
+					break;
+			case 15 :box15_5.value = data[0];
+					box15_6.value = data[1];
+					box15_7.value = data[2];
+					box15_8.value = data[3];
+					break;
+			case 16 :box16_5.value = data[0];
+					box16_6.value = data[1];
+					box16_7.value = data[2];
+					box16_8.value = data[3];
+					break;
+			case 17 :box17_5.value = data[0];
+					box17_6.value = data[1];
+					box17_7.value = data[2];
+					box17_8.value = data[3];
+					break;
+			case 18 :box18_5.value = data[0];
+					box18_6.value = data[1];
+					box18_7.value = data[2];
+					box18_8.value = data[3];
+					break;
+			case 19 :box19_5.value = data[0];
+					box19_6.value = data[1];
+					box19_7.value = data[2];
+					box19_8.value = data[3];
+					break;
+			case 20 :box20_5.value = data[0];
+					box20_6.value = data[1];
+					box20_7.value = data[2];
+					box20_8.value = data[3];
+					break;
+			case 21 :box21_5.value = data[0];
+					box21_6.value = data[1];
+					box21_7.value = data[2];
+					box21_8.value = data[3];
+					break;
+			case 22 :box22_5.value = data[0];
+					box22_6.value = data[1];
+					box22_7.value = data[2];
+					box22_8.value = data[3];
+					break;
+			case 23 :box23_5.value = data[0];
+					box23_6.value = data[1];
+					box23_7.value = data[2];
+					box23_8.value = data[3];
+					break;
+			case 24 :box24_5.value = data[0];
+					box24_6.value = data[1];
+					box24_7.value = data[2];
+					box24_8.value = data[3];
+					break;
+			case 25 :box25_5.value = data[0];
+					box25_6.value = data[1];
+					box25_7.value = data[2];
+					box25_8.value = data[3];
+					break;
+			case 26 :box26_5.value = data[0];
+					box26_6.value = data[1];
+					box26_7.value = data[2];
+					box26_8.value = data[3];
+					break;
+			case 27 :box27_5.value = data[0];
+					box27_6.value = data[1];
+					box27_7.value = data[2];
+					box27_8.value = data[3];
+					break;
+			case 28 :box28_5.value = data[0];
+					box28_6.value = data[1];
+					box28_7.value = data[2];
+					box28_8.value = data[3];
+					break;
+			case 29 :box29_5.value = data[0];
+					box29_6.value = data[1];
+					box29_7.value = data[2];
+					box29_8.value = data[3];
+					break;
+			case 30 :box30_5.value = data[0];
+					box30_6.value = data[1];
+					box30_7.value = data[2];
+					box30_8.value = data[3];
+					break;
+			case 31 :box31_5.value = data[0];
+					box31_6.value = data[1];
+					box31_7.value = data[2];
+					box31_8.value = data[3];
+					break;
+			case 32 :box32_5.value = data[0];
+					box32_6.value = data[1];
+					box32_7.value = data[2];
+					box32_8.value = data[3];
+					break;
+			case 33 :box33_5.value = data[0];
+					box33_6.value = data[1];
+					box33_7.value = data[2];
+					box33_8.value = data[3];
+					break;
+			case 34 :box34_5.value = data[0];
+					box34_6.value = data[1];
+					box34_7.value = data[2];
+					box34_8.value = data[3];
+					break;
+			case 35 :box35_5.value = data[0];
+					box35_6.value = data[1];
+					box35_7.value = data[2];
+					box35_8.value = data[3];
+					break;
+			case 36 :box36_5.value = data[0];
+					box36_6.value = data[1];
+					box36_7.value = data[2];
+					box36_8.value = data[3];
+					break;
+			case 37 :box37_5.value = data[0];
+					box37_6.value = data[1];
+					box37_7.value = data[2];
+					box37_8.value = data[3];
+					break;
+			case 38 :box38_5.value = data[0];
+					box38_6.value = data[1];
+					box38_7.value = data[2];
+					box38_8.value = data[3];
+					break;
+			case 39 :box39_5.value = data[0];
+					box39_6.value = data[1];
+					box39_7.value = data[2];
+					box39_8.value = data[3];
+					break;
+			case 40 :box40_5.value = data[0];
+					box40_6.value = data[1];
+					box40_7.value = data[2];
+					box40_8.value = data[3];
+					break;
+			case 41 :box41_5.value = data[0];
+					box41_6.value = data[1];
+					box41_7.value = data[2];
+					box41_8.value = data[3];
+					break;
+			case 42 :box42_5.value = data[0];
+					box42_6.value = data[1];
+					box42_7.value = data[2];
+					box42_8.value = data[3];
+					break;
+			case 43 :box43_5.value = data[0];
+					box43_6.value = data[1];
+					box43_7.value = data[2];
+					box43_8.value = data[3];
+					break;
+			
+		}
+
+	}
+
+	function fill_with_data_1(data){
+		var box1_9 = document.getElementById("box1_9");
+		var box1_10 = document.getElementById("box1_10");
+
+		var box2_9 = document.getElementById("box2_9");
+		var box2_10 = document.getElementById("box2_10");
+
+		var box3_9 = document.getElementById("box3_9");
+		var box3_10 = document.getElementById("box3_10");
+
+		var box4_9 = document.getElementById("box4_9");
+		var box4_10 = document.getElementById("box4_10");
+
+		var box5_9 = document.getElementById("box5_9");
+		var box5_10 = document.getElementById("box5_10");
+
+		var box6_9 = document.getElementById("box6_9");
+		var box6_10 = document.getElementById("box6_10");
+
+		var box7_9 = document.getElementById("box7_9");
+		var box7_10 = document.getElementById("box7_10");
+
+		var box8_9 = document.getElementById("box8_9");
+		var box8_10 = document.getElementById("box8_10");
+
+		var box9_9 = document.getElementById("box9_9");
+		var box9_10 = document.getElementById("box9_10");
+
+		var box10_9 = document.getElementById("box10_9");
+		var box10_10 = document.getElementById("box10_10");
+
+		var box11_9 = document.getElementById("box11_9");
+		var box11_10 = document.getElementById("box11_10");
+
+		var box12_9 = document.getElementById("box12_9");
+		var box12_10 = document.getElementById("box12_10");
+
+		var box13_9 = document.getElementById("box13_9");
+		var box13_10 = document.getElementById("box13_10");
+
+		var box14_9 = document.getElementById("box14_9");
+		var box14_10 = document.getElementById("box14_10");
+
+		var box15_9 = document.getElementById("box15_9");
+		var box15_10 = document.getElementById("box15_10");
+
+		var box16_9 = document.getElementById("box16_9");
+		var box16_10 = document.getElementById("box16_10");
+
+		var box17_9 = document.getElementById("box17_9");
+		var box17_10 = document.getElementById("box17_10");
+
+		var box18_9 = document.getElementById("box18_9");
+		var box18_10 = document.getElementById("box18_10");
+
+		var box19_9 = document.getElementById("box19_9");
+		var box19_10 = document.getElementById("box19_10");
+
+		var box20_9 = document.getElementById("box20_9");
+		var box20_10 = document.getElementById("box20_10");
+
+		var box21_9 = document.getElementById("box21_9");
+		var box21_10 = document.getElementById("box21_10");
+
+		var box22_9 = document.getElementById("box22_9");
+		var box22_10 = document.getElementById("box22_10");
+
+		var box23_9 = document.getElementById("box23_9");
+		var box23_10 = document.getElementById("box23_10");
+
+		var box24_9 = document.getElementById("box24_9");
+		var box24_10 = document.getElementById("box24_10");
+
+		var box25_9 = document.getElementById("box25_9");
+		var box25_10 = document.getElementById("box25_10");
+
+		var box26_9 = document.getElementById("box26_9");
+		var box26_10 = document.getElementById("box26_10");
+
+		var box27_9 = document.getElementById("box27_9");
+		var box27_10 = document.getElementById("box27_10");
+
+		var box28_9 = document.getElementById("box28_9");
+		var box28_10 = document.getElementById("box28_10");
+
+		var box29_9 = document.getElementById("box29_9");
+		var box29_10 = document.getElementById("box29_10");
+
+		var box30_9 = document.getElementById("box30_9");
+		var box30_10 = document.getElementById("box30_10");
+
+		var box31_9 = document.getElementById("box31_9");
+		var box31_10 = document.getElementById("box31_10");
+
+		var box32_9 = document.getElementById("box32_9");
+		var box32_10 = document.getElementById("box32_10");
+
+		var box33_9 = document.getElementById("box33_9");
+		var box33_10 = document.getElementById("box33_10");
+
+		var box34_9 = document.getElementById("box34_9");
+		var box34_10 = document.getElementById("box34_10");
+
+		var box35_9 = document.getElementById("box35_9");
+		var box35_10 = document.getElementById("box35_10");
+
+		var box36_9 = document.getElementById("box36_9");
+		var box36_10 = document.getElementById("box36_10");
+
+		var box37_9 = document.getElementById("box37_9");
+		var box37_10 = document.getElementById("box37_10");
+
+		var box38_9 = document.getElementById("box38_9");
+		var box38_10 = document.getElementById("box38_10");
+
+		var box39_9 = document.getElementById("box39_9");
+		var box39_10 = document.getElementById("box39_10");
+
+		var box40_9 = document.getElementById("box40_9");
+		var box40_10 = document.getElementById("box40_10");
+
+		var box41_9 = document.getElementById("box41_9");
+		var box41_10 = document.getElementById("box41_10");
+
+		var box42_9 = document.getElementById("box42_9");
+		var box42_10 = document.getElementById("box42_10");
+
+		var box43_9 = document.getElementById("box43_9");
+		var box43_10 = document.getElementById("box43_10");
+
+
+		switch(data.id){
+			case 1 :
+					box1_9.value = data.Module_Voltage;
+					box1_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 2 : box2_9.value = data.Module_Voltage;
+					box2_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 3 : box3_9.value = data.Module_Voltage;
+					box3_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 4 :box4_9.value = data.Module_Voltage;
+					box4_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 5 :box5_9.value = data.Module_Voltage;
+					box5_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 6 :box6_9.value = data.Module_Voltage;
+					box6_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 7 :box7_9.value = data.Module_Voltage;
+					box7_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 8 :box8_9.value = data.Module_Voltage;
+					box8_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 9 :box9_9.value = data.Module_Voltage;
+					box9_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 10 :box10_9.value = data.Module_Voltage;
+					box10_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 11 : box11_9.value = data.Module_Voltage;
+					box11_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 12 : box12_9.value = data.Module_Voltage;
+					box12_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 13 :box13_9.value = data.Module_Voltage;
+					box13_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 14 :box14_9.value = data.Module_Voltage;
+					box14_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 15 :box15_9.value = data.Module_Voltage;
+					box15_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 16 :box16_9.value = data.Module_Voltage;
+					box16_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 17 :box17_9.value = data.Module_Voltage;
+					box17_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 18 :box18_9.value = data.Module_Voltage;
+					box18_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 19 :box19_9.value = data.Module_Voltage;
+					box19_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 20 :box20_9.value = data.Module_Voltage;
+					box20_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 21 :box21_9.value = data.Module_Voltage;
+					box21_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 22 :box22_9.value = data.Module_Voltage;
+					box22_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 23 :box23_9.value = data.Module_Voltage;
+					box23_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 24 :box24_9.value = data.Module_Voltage;
+					box24_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 25 :box25_9.value = data.Module_Voltage;
+					box25_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 26 :box26_9.value = data.Module_Voltage;
+					box26_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 27 :box27_9.value = data.Module_Voltage;
+					box27_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 28 :box28_9.value = data.Module_Voltage;
+					box28_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 29 :box29_9.value = data.Module_Voltage;
+					box29_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 30 :box30_9.value = data.Module_Voltage;
+					box30_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 31 :box31_9.value = data.Module_Voltage;
+					box31_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 32 :box32_9.value = data.Module_Voltage;
+					box32_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 33 :box33_9.value = data.Module_Voltage;
+					box33_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 34 :box34_9.value = data.Module_Voltage;
+					box34_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 35 :box35_9.value = data.Module_Voltage;
+					box35_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 36 :box36_9.value = data.Module_Voltage;
+					box36_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 37 :box37_9.value = data.Module_Voltage;
+					box37_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 38 :box38_9.value = data.Module_Voltage;
+					box38_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 39 :box39_9.value = data.Module_Voltage;
+					box39_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 40 :box40_9.value = data.Module_Voltage;
+					box40_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 41 :box41_9.value = data.Module_Voltage;
+					box41_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 42 :box42_9.value = data.Module_Voltage;
+					box42_10.value = data.Module_Capacitance_Temperature;
+					break;
+			case 43 :box43_9.value = data.Module_Voltage;
+					box43_10.value = data.Module_Capacitance_Temperature;
+					break;
+			
+		}
+	}
+
+
+	function fill_with_data_state(data){
+		var time_text = document.getElementById("time_text");
+		time_text.value = currentTime();
+
+		
+		
+		var box1_11 = document.getElementById("box1_11_connected");
+		var box1_12 = document.getElementById("box1_12_connected");
+
+		
+		
+		var box2_11 = document.getElementById("box2_11_connected");
+		var box2_12 = document.getElementById("box2_12_connected");
+
+		
+		
+		var box3_11 = document.getElementById("box3_11_connected");
+		var box3_12 = document.getElementById("box3_12_connected");
+
+		
+		
+		var box4_11 = document.getElementById("box4_11_connected");
+		var box4_12 = document.getElementById("box4_12_connected");
+
+		
+		
+		var box5_11 = document.getElementById("box5_11_connected");
+		var box5_12 = document.getElementById("box5_12_connected");
+
+		
+		
+		var box6_11 = document.getElementById("box6_11_connected");
+		var box6_12 = document.getElementById("box6_12_connected");
+
+		
+		
+		var box7_11 = document.getElementById("box7_11_connected");
+		var box7_12 = document.getElementById("box7_12_connected");
+
+		
+		
+		var box8_11 = document.getElementById("box8_11_connected");
+		var box8_12 = document.getElementById("box8_12_connected");
+
+		
+		
+		var box9_11 = document.getElementById("box9_11_connected");
+		var box9_12 = document.getElementById("box9_12_connected");
+
+		
+		
+		var box10_11 = document.getElementById("box10_11_connected");
+		var box10_12 = document.getElementById("box10_12_connected");
+
+		
+		
+		var box11_11 = document.getElementById("box11_11_connected");
+		var box11_12 = document.getElementById("box11_12_connected");
+
+		
+		
+		var box12_11 = document.getElementById("box12_11_connected");
+		var box12_12 = document.getElementById("box12_12_connected");
+
+		
+		
+		var box13_11 = document.getElementById("box13_11_connected");
+		var box13_12 = document.getElementById("box13_12_connected");
+
+		
+		
+		var box14_11 = document.getElementById("box14_11_connected");
+		var box14_12 = document.getElementById("box14_12_connected");
+
+		
+		
+		var box15_11 = document.getElementById("box15_11_connected");
+		var box15_12 = document.getElementById("box15_12_connected");
+
+		
+		
+		var box16_11 = document.getElementById("box16_11_connected");
+		var box16_12 = document.getElementById("box16_12_connected");
+
+		
+		
+		var box17_11 = document.getElementById("box17_11_connected");
+		var box17_12 = document.getElementById("box17_12_connected");
+
+		
+		
+		var box18_11 = document.getElementById("box18_11_connected");
+		var box18_12 = document.getElementById("box18_12_connected");
+
+		
+		
+		var box19_11 = document.getElementById("box19_11_connected");
+		var box19_12 = document.getElementById("box19_12_connected");
+
+		
+		
+		var box20_11 = document.getElementById("box20_11_connected");
+		var box20_12 = document.getElementById("box20_12_connected");
+
+		
+		
+		var box21_11 = document.getElementById("box21_11_connected");
+		var box21_12 = document.getElementById("box21_12_connected");
+
+		
+		
+		var box22_11 = document.getElementById("box22_11_connected");
+		var box22_12 = document.getElementById("box22_12_connected");
+
+		
+		
+		var box23_11 = document.getElementById("box23_11_connected");
+		var box23_12 = document.getElementById("box23_12_connected");
+
+		
+		
+		var box24_11 = document.getElementById("box24_11_connected");
+		var box24_12 = document.getElementById("box24_12_connected");
+
+		
+		
+		var box25_11 = document.getElementById("box25_11_connected");
+		var box25_12 = document.getElementById("box25_12_connected");
+
+		
+		
+		var box26_11 = document.getElementById("box26_11_connected");
+		var box26_12 = document.getElementById("box26_12_connected");
+
+		
+		
+		var box27_11 = document.getElementById("box27_11_connected");
+		var box27_12 = document.getElementById("box27_12_connected");
+
+		
+		
+		var box28_11 = document.getElementById("box28_11_connected");
+		var box28_12 = document.getElementById("box28_12_connected");
+
+		
+		
+		var box29_11 = document.getElementById("box29_11_connected");
+		var box29_12 = document.getElementById("box29_12_connected");
+
+		
+		
+		var box30_11 = document.getElementById("box30_11_connected");
+		var box30_12 = document.getElementById("box30_12_connected");
+
+		
+		
+		var box31_11 = document.getElementById("box31_11_connected");
+		var box31_12 = document.getElementById("box31_12_connected");
+
+		
+		
+		var box32_11 = document.getElementById("box32_11_connected");
+		var box32_12 = document.getElementById("box32_12_connected");
+
+		
+		
+		var box33_11 = document.getElementById("box33_11_connected");
+		var box33_12 = document.getElementById("box33_12_connected");
+
+		
+		
+		var box34_11 = document.getElementById("box34_11_connected");
+		var box34_12 = document.getElementById("box34_12_connected");
+
+		
+		
+		var box35_11 = document.getElementById("box35_11_connected");
+		var box35_12 = document.getElementById("box35_12_connected");
+
+		
+		
+		var box36_11 = document.getElementById("box36_11_connected");
+		var box36_12 = document.getElementById("box36_12_connected");
+
+		
+		
+		var box37_11 = document.getElementById("box37_11_connected");
+		var box37_12 = document.getElementById("box37_12_connected");
+
+		
+		
+		var box38_11 = document.getElementById("box38_11_connected");
+		var box38_12 = document.getElementById("box38_12_connected");
+
+		
+		
+		var box39_11 = document.getElementById("box39_11_connected");
+		var box39_12 = document.getElementById("box39_12_connected");
+
+		
+		
+		var box40_11 = document.getElementById("box40_11_connected");
+		var box40_12 = document.getElementById("box40_12_connected");
+
+		
+		
+		var box41_11 = document.getElementById("box41_11_connected");
+		var box41_12 = document.getElementById("box41_12_connected");
+
+		
+		
+		var box42_11 = document.getElementById("box42_11_connected");
+		var box42_12 = document.getElementById("box42_12_connected");
+
+		
+		
+		var box43_11 = document.getElementById("box43_11_connected");
+		var box43_12 = document.getElementById("box43_12_connected");
+
+		for(var i=0; i<data.length; i++){
+			var box_11 = document.getElementById("box" + (i+1) + "_11_connected");
+			box_11.src = (data[i] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
+		}
+	}
+
+	function currentTime(){
+        var d = new Date();
+        var minute = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+        var second = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
+
+        var dto = [d.getHours(), minute, second].join(':');
+
+        return dto
+    }
+    </script>
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+
+/*模组图开始*/
+
+.VHchartPhoto1{ 
+	height:250px;
+	width:85%;
+	background-color:#000000 !important;
+	position:relative;
+	top:30px;;
+	left:100px;
+	border-radius:15px;
+}
+/*模组图结束*/
+
+/*模块图开始*/
+.VHchartPhoto2{ 
+	height:250px;
+	width:85%;
+	background-color:#000000 !important;
+	position:relative;
+	top:70px;
+	left:100px;
+	border-radius:15px;
+}
+/*模块图结束*/
+
+/*当前数据*/
+.currenttime{
+	height:1250px;
+	width:85%;
+	background-color:#CCC;
+	display:inline-block;
+	border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="title">一号电源————模组状况</div>
+<div class="container">
+<!--模组图-->
+<div class="Photo_name" style="position:relative;top:20px;left:100px;font-size:16px;font-weight:600;">一号储能电源模组数据</div>
+	<div class="VHchartPhoto1" id="oneVPhoto">
+    模组图
+   	</div>  
+<!--模块图-->
+<div class="Photo_name" style="position:relative;top:60px;left:100px;font-size:16px;font-weight:600;">一号储能电源模块数据</div>
+        <select class="custom-select" id="selection" onclick="select_click()" style="position:relative;top:60px;left:100px;">
+              <option selected>请选择模组</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+              <option value="32">32</option>
+              <option value="33">33</option>
+              <option value="34">34</option>
+              <option value="35">35</option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+        </select>
+<div class="voltageHigh">
+	<div class="VHchartPhoto2" id="oneModVoltPhoto">
+	模块图
+	</div>
+</div>
+	
+	<!--当前-->
+	<div class="currenttime" style="position:relative;top:120px;left:100px;">
+		<div class="text_currenttime">当前</div>
+        <!--当前时间-->
+        <div style="position:relative;top:8px;left:10%;font-size:16px;font-weight:600;">时间</div>
+		<input id="time_text" type="text" style="width:200px;height:25px;position:relative;top:-15px;left:15%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+		<!--强制均衡-->
+		<div style="position:relative;top:-40px;left:45%;font-size:16px;font-weight:600;">强制均衡</div>
+		<button type="button" style="width:50px;height:25px;font-size:16px;position:relative;top:-63px;left:53%;">开启</button>
+		<input  type="text" style="width:200px;height:25px;position:relative;top:-65px;left:58%;background-color:#CCC;border-width:0.5px;border-color:black;font-size:16px;text-align:center;"/>
+		
+		<!--43个电压数据-->
+        <div id="box0" style="position:relative;left:16%">
+		<input id="box0_1" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块1(V)"/>
+		<input id="box0_2" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块2(V)"/>
+		<input id="box0_3" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块3(V)"/>
+		<input id="box0_4" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块4(V)"/>
+		<input id="box0_5" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块5(V)"/>
+		<input id="box0_6" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块6(V)"/>
+		<input id="box0_7" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块7(V)"/>
+		<input id="box0_8" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块8(V)"/>
+		<input id="box0_9" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="总电压(V)"/>
+		<input id="box0_10" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="温度(℃)"/>
+        <input id="box0_11" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="通讯状态"/>
+        <input id="box0_12" style="width:60px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="均衡状态"/>
+		</div>
+
+		<div id="box1" style="position:relative;left:10%">模组01
+			<input id="box1_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box1_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box1_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box1_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box1_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box1_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box1_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box1_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box1_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+		<div id="box2" style="position:relative;left:10%">模组02
+			<input id="box2_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box2_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box2_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box2_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box2_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box2_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box2_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box2_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box2_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box3" style="position:relative;left:10%">模组03
+			<input id="box3_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box3_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box3_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box3_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box3_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box3_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box3_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box3_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box3_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box4" style="position:relative;left:10%">模组04
+			<input id="box4_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box4_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box4_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box4_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box4_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box4_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box4_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box4_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box4_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box5" style="position:relative;left:10%">模组05
+			<input id="box5_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box5_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box5_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box5_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box5_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box5_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box5_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box5_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box5_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box6" style="position:relative;left:10%">模组06
+			<input id="box6_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box6_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box6_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box6_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box6_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box6_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box6_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box6_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box6_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box7" style="position:relative;left:10%">模组07
+			<input id="box7_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box7_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box7_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box7_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box7_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box7_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box7_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box7_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box7_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box8" style="position:relative;left:10%">模组08
+			<input id="box8_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box8_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box8_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box8_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box8_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box8_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box8_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box8_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box8_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box9" style="position:relative;left:10%">模组09
+			<input id="box9_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box9_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box9_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box9_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box9_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box9_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box9_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box9_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box9_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box10" style="position:relative;left:10%">模组10
+			<input id="box10_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box10_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box10_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box10_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box10_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box10_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box10_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box10_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box10_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box11" style="position:relative;left:10%">模组11
+			<input id="box11_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box11_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box11_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box11_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box11_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box11_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box11_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box11_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box11_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box12" style="position:relative;left:10%">模组12
+			<input id="box12_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box12_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box12_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box12_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box12_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box12_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box12_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box12_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box12_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box13" style="position:relative;left:10%">模组13
+			<input id="box13_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box13_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box13_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box13_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box13_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box13_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box13_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box13_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box13_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box14" style="position:relative;left:10%">模组14
+			<input id="box14_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box14_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box14_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box14_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box14_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box14_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box14_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box14_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box14_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box15" style="position:relative;left:10%">模组15
+			<input id="box15_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box15_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box15_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box15_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box15_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box15_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box15_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box15_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box15_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box16" style="position:relative;left:10%">模组16
+			<input id="box16_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box16_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box16_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box16_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box16_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box16_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box16_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box16_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box16_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box17" style="position:relative;left:10%">模组17
+			<input id="box17_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box17_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box17_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box17_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box17_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box17_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box17_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box17_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box17_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box8" style="position:relative;left:10%">模组18
+			<input id="box18_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box18_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box18_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box18_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box18_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box18_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box18_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box18_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box18_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box19" style="position:relative;left:10%">模组19
+			<input id="box19_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box19_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box19_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box19_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box19_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box19_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box19_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box19_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box19_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box20" style="position:relative;left:10%">模组20
+			<input id="box20_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box20_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box20_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box20_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box20_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box20_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box20_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box20_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box20_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        
+        <div id="box21" style="position:relative;left:10%">模组21
+			<input id="box21_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box21_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box21_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box21_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box21_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box21_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box21_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box21_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box21_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+		<div id="box22" style="position:relative;left:10%">模组22
+			<input id="box22_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box22_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box22_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box22_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box22_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box22_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box22_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box22_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box22_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box23" style="position:relative;left:10%">模组23
+			<input id="box23_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box23_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box23_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box23_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box23_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box23_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box23_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box23_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box23_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box24" style="position:relative;left:10%">模组24
+			<input id="box24_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box24_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box24_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box24_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box24_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box24_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box24_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box24_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box24_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box25" style="position:relative;left:10%">模组25
+			<input id="box25_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box25_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box25_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box25_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box25_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box25_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box25_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box25_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box25_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box26" style="position:relative;left:10%">模组26
+			<input id="box26_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box26_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box26_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box26_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box26_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box26_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box26_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box26_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box26_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box27" style="position:relative;left:10%">模组27
+			<input id="box27_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box27_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box27_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box27_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box27_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box27_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box27_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box27_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box27_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box28" style="position:relative;left:10%">模组28
+			<input id="box28_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box28_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box28_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box28_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box28_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box28_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box28_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box28_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box28_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box29" style="position:relative;left:10%">模组29
+			<input id="box29_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box29_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box29_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box29_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box29_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box29_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box29_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box29_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box29_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box30" style="position:relative;left:10%">模组30
+			<input id="box30_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box30_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box30_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box30_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box30_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box30_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box30_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box30_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box30_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+		
+		<div id="box31" style="position:relative;left:10%">模组31
+			<input id="box31_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box31_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box31_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box31_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box31_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box31_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box31_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box31_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box31_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box32" style="position:relative;left:10%">模组32
+			<input id="box32_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box32_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box32_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box32_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box32_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box32_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box32_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box32_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box32_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box33" style="position:relative;left:10%">模组33
+			<input id="box33_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box33_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box33_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box33_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box33_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box33_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box33_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box33_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box33_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box34" style="position:relative;left:10%">模组34
+			<input id="box34_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box34_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box34_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box34_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box34_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box34_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box34_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box34_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box34_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box35" style="position:relative;left:10%">模组35
+			<input id="box35_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box35_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box35_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box35_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box35_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box35_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box35_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box35_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box35_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box36" style="position:relative;left:10%">模组36
+			<input id="box36_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box36_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box36_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box36_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box36_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box36_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box36_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box36_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box36_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box37" style="position:relative;left:10%">模组37
+			<input id="box37_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box37_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box37_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box37_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box37_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box37_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box37_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box37_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box37_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box38" style="position:relative;left:10%">模组38
+			<input id="box38_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box38_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box38_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box38_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box38_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box38_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box38_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box38_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box38_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box39" style="position:relative;left:10%">模组39
+			<input id="box39_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box39_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box39_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box39_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box39_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box39_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box39_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box39_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box39_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+        
+        <div id="box40" style="position:relative;left:10%">模组40
+			<input id="box40_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box40_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box40_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box40_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box40_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box40_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box40_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box40_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box40_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+		
+		<div id="box41" style="position:relative;left:10%">模组41
+			<input id="box41_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box41_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box41_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box41_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box41_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box41_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box41_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box41_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box41_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+		<div id="box42" style="position:relative;left:10%">模组42
+			<input id="box42_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box42_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box42_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box42_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box42_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box42_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box42_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box42_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box42_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+
+        <div id="box43" style="position:relative;left:10%">模组43
+			<input id="box43_1" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_2" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_3" style="width:60px;height:20px;border:thin;text-align:center;" />
+			<input id="box43_4" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_5" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_6" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_7" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_8" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_9" style="width:60px;height:20px;border:thin;text-align:center;"/>
+			<input id="box43_10" style="width:60px;height:20px;border:thin;text-align:center;"/>
+            <img id="box43_11_connected" src="../../images/icons/connect_small.png" style="position:relative;top:5px;left:3%">
+            <!--<img id="box43_11_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:3%">
+            <img id="box43_11_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:3%">-->
+            <img id="box43_12_connected" src="../../images/icons/connect_small.png"style="position:relative;top:5px;left:7%">
+            <!--<img id="box43_12_run" src="../../images/icons/run_small.png" style="position:relative;top:5px;left:7%">
+            <img id="box43_12_error" src="../../images/icons/error_small.png" style="position:relative;top:5px;left:7%">-->
+		</div>
+	
+		
+	</div>
+	
+	
+</div>
+</body>
+</html>

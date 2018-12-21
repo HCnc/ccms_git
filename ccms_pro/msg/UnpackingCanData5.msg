@@ -1,0 +1,7 @@
+uint32 id
+time stamp
+uint16 Balanced_data_number
+uint16 Modules_Above_Threshold_Voltage
+uint16 Moduel_Average_Voltage
+uint16 Module_Voltage_Threshold
+uint16 Minimum_Module_Voltage

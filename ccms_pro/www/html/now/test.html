@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title></title>
+		<link href="../../js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    	<link href="../../js/bootstrap-3.3.7-dist/css/bootstrap-switch.min.css" rel="stylesheet" />
+   		<script src="../../js/jQuery3.2.1.js"></script>
+   		<script src="../../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    	<script src="../../js/bootstrap-3.3.7-dist/js/bootstrap-switch.min.js"></script>
+
+    	<script type="text/javascript">
+    		$(function(){
+    			$('[name="status1"]').bootstrapSwitch({
+    				onText:"",
+    				offText:"",
+    				onColor:"success",
+    				offColor:"default",
+    				size:"mini",
+    				onInit:function(event,state){
+    					if(state==true){
+    						console.log("true");
+    					}else{
+    						console.log("false");
+    					}
+    				}
+    			});
+
+    			change = function(bit1){
+    				if (bit1 == 1){
+    					$('input[name="status1"]').bootstrapSwitch('state',true,true);
+    				}else{
+    					$('input[name="status1"]').bootstrapSwitch('state',false,false);
+    				}
+    			}
+    		});
+		
+		sub1 = function(){
+			bit1 = 1;
+			change(bit1);
+		}
+
+		sub2 = function(){
+			bit1 = 0;
+			change(bit1);
+		}
+
+		</script>
+	</head>
+	<body>
+
+		<div class="row">
+			<div class="col-md-1">.col-md-1
+				<input name="status1" type="checkbox" />
+			</div>
+			<div class="col-md-1">.col-md-1
+				<input name="status1" type="checkbox" />
+			</div>
+			<div class="col-md-1">.col-md-1
+				<input name="status1" type="checkbox" />
+			</div>
+			<div class="col-md-1">.col-md-1
+				<input name="status1" type="checkbox" />
+			</div>
+		  <div class="col-md-1">.col-md-1
+		  	<input name="status1" type="checkbox" />
+		  </div>
+		  <div class="col-md-1">.col-md-1
+		  	<input name="status1" type="checkbox" />
+		  </div>
+		  <div class="col-md-1">.col-md-1
+		  	<input name="status1" type="checkbox" />
+		  </div>
+		</div>
+		<div>
+			<button onclick="sub1()">change1</button>
+			<button onclick="sub2()">change2</button>
+		</div>
+		<div>
+			<button onclick="sub1()">change1</button>
+			<button onclick="sub2()">change2</button>
+		</div>
+			 
+	</body>
+</html>

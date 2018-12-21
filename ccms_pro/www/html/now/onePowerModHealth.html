@@ -1,0 +1,1567 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+    <script src="../../js/jQuery3.2.1.js"></script>
+    <script src = "../../config.js"></script>
+    <script src="../../js/main/onePowerModHealth.js"></script>
+    <script src="../../js/echarts/echarts.min.js"></script>
+    <script type="text/javascript">
+    function deal_data6(data){
+		deal(data);
+	}
+    </script>
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+
+/*电源级开始*/
+#dianyuanji{ 
+	height:50px;
+	width:85%;
+	background-color:#CCC;
+	position:relative;
+	top:30px;
+	left:80px;
+	border-radius:10px;
+}
+/*电源级结束*/
+
+/*图开始*/
+.VHchartPhoto{ 
+	height:250px;
+	width:85%;
+	background-color:#000000 !important;
+	position:relative;
+	top:70px;
+	left:80px;
+	border-radius:15px;
+}
+/*图压结束*/
+
+/*模组级开始*/
+#mozuji{ 
+	height:1500px;
+	width:85%;
+	background-color:#CCC;
+	position:relative;
+	top:130px;
+	left:80px;
+	border-radius:10px;
+}
+
+/*模组级结束*/
+
+</style>
+
+</head>
+
+<body>
+<div class="title">一号电源————Health状况</div>
+<div class="container">
+	
+	<!--电源级-->
+	<div id="dianyuanji">
+		<div style="position:relative;top:15px;left:5%;font-size:16px;font-weight:600;">电源</div>
+		<input style="width:50px;height:20px;position:relative;top:-8px;left:10%;font-size:16px;font-weight:600;text-align:center;"/>
+		<div style="position:relative;top:-30px;left:25%;font-size:16px;font-weight:600;">健康状况</div>
+		<img class="jiankang" src="../../images/icons/jiankang.png" style="position:relative;top:-52px;left:35%">
+       <!-- <img class="yajiankang" src="../../images/icons/yajiankang.png" style="position:relative;top:-52px;left:35%">
+        <img class="bujiankang" src="../../images/icons/bujianakng.png" style="position:relative;top:-52px;left:35%">-->
+        <div class="shuoming" style="position:relative;top:-80px;left:40%">(绿色——健康;橘色——亚健康;红色——不健康)</div>
+	</div>
+	
+	<!--图-->
+    <div class="voltageHigh">
+		<div class="VHchartPhoto" id="oneVPhoto">
+        图
+   		</div>  
+    </div>
+    <!--模组级-->
+    <div id="mozuji">
+    	<div id="box0" style="position:relative;left:7%">
+		<input id="box0_1" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块1"/>
+		<input id="box0_2" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块2"/>
+		<input id="box0_3" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块3"/>
+		<input id="box0_4" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块4"/>
+		<input id="box0_5" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块5"/>
+		<input id="box0_6" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块6"/>
+		<input id="box0_7" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块7"/>
+		<input id="box0_8" style="width:90px;height:25px;background-color:#CCC;border:thin;border-color:#CCC;text-align:center;" value="模块8"/>
+		</div>
+        <!--43个-->
+        <div id="box1" style="position:relative;top:10px;left:3%">模组01
+			<img id="box1_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box1_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box1_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box1_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box1_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box1_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box1_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box1_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box1_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box1_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box2" style="position:relative;top:20px;left:3%">模组02
+			<img id="box2_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box2_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box2_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box2_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box2_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box2_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box2_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box2_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box2_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box2_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box2_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box3" style="position:relative;top:30px;left:3%">模组03
+			<img id="box3_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box3_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box3_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box3_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box3_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box3_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box3_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box3_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box3_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box3_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box3_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box4" style="position:relative;top:40px;left:3%">模组04
+			<img id="box4_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box4_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box4_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box4_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box4_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box4_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box4_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box4_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box4_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box4_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box4_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box5" style="position:relative;top:50px;left:3%">模组05
+			<img id="box5_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box5_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box5_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box5_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box5_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box5_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box5_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box5_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box5_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box5_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box5_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box6" style="position:relative;top:60px;left:3%">模组06
+			<img id="box6_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box6_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box6_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box6_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box6_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box6_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box6_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box6_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box6_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box6_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box6_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box7" style="position:relative;top:70px;left:3%">模组07
+			<img id="box7_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box7_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box7_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box7_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box7_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box7_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box7_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box7_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box7_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box7_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box7_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+    	</div>
+    	
+        <div id="box8" style="position:relative;top:80px;left:3%">模组08
+			<img id="box8_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box8_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box8_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box8_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box8_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box8_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box8_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box8_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box8_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+    	</div>
+        
+        <div id="box9" style="position:relative;top:90px;left:3%">模组09
+			<img id="box9_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box9_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box9_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box9_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box9_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box9_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box9_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box9_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box9_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box9_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box9_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+		</div>
+        
+          <div id="box10" style="position:relative;top:100px;left:3%">模组10
+			<img id="box10_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box10_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box10_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box10_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box10_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box10_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box10_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box10_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box10_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box10_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box10_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box11" style="position:relative;top:110px;left:3%">模组11
+			<img id="box11_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box11_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box11_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box11_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box11_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box11_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box11_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box1_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box11_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box11_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box11_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box12" style="position:relative;top:120px;left:3%">模组12
+			<img id="box12_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box12_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box12_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box12_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box12_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box12_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box12_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box12_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box12_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box12_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box12_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box13" style="position:relative;top:130px;left:3%">模组13
+			<img id="box13_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box13_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box13_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box13_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box13_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box13_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box13_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box13_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box13_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box13_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box13_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box14" style="position:relative;top:140px;left:3%">模组14
+			<img id="box14_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box14_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box14_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box14_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box14_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box14_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box14_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box14_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box14_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box14_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box14_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box15" style="position:relative;top:150px;left:3%">模组15
+			<img id="box15_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box15_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box15_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box15_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box15_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box15_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box15_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box15_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box15_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box15_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box15_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box16" style="position:relative;top:160px;left:3%">模组16
+			<img id="box16_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box16_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box16_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box16_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box16_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box16_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box16_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box16_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box16_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box16_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box16_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box16_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box1_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box16_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box16_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box16_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box16_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box17" style="position:relative;top:170px;left:3%">模组17
+			<img id="box17_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box17_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box17_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box17_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box17_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box17_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box17_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box17_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box17_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box17_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box17_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box18" style="position:relative;top:180px;left:3%">模组18
+			<img id="box18_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box18_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box18_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box18_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box18_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box18_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box18_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box18_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box18_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box18_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box18_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box19" style="position:relative;top:190px;left:3%">模组19
+			<img id="box19_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box19_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box19_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box19_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box19_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box19_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box19_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box19_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box19_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box19_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box19_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box20" style="position:relative;top:200px;left:3%">模组20
+			<img id="box20_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box20_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box20_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box20_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box20_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box20_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box20_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box20_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box20_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box20_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box20_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box21" style="position:relative;top:210px;left:3%">模组21
+			<img id="box21_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box21_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box21_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box21_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box21_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box21_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box21_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box21_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box21_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box21_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box21_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box22" style="position:relative;top:220px;left:3%">模组22
+			<img id="box22_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box22_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box22_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box2_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box22_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box22_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box22_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box22_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box22_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box22_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box22_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box23" style="position:relative;top:230px;left:3%">模组23
+			<img id="box23_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box23_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box23_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box23_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box23_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box23_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box23_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box23_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box23_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box23_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box23_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box24" style="position:relative;top:240px;left:3%">模组24
+			<img id="box24_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box24_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box24_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box24_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box24_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box24_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box24_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box24_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box24_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box24_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box24_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box25" style="position:relative;top:250px;left:3%">模组25
+			<img id="box25_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box25_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box25_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box25_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box25_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box25_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box25_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box25_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box25_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box25_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box25_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box26" style="position:relative;top:260px;left:3%">模组26
+			<img id="box26_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box26_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box26_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box26_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box26_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box26_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box26_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box26_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box26_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box26_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box26_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box27" style="position:relative;top:270px;left:3%">模组27
+			<img id="box27_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box27_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box27_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box27_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box27_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box27_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box27_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box27_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box27_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box27_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box27_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+    	</div>
+    	
+        <div id="box28" style="position:relative;top:280px;left:3%">模组28
+			<img id="box28_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box28_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="bo2x8_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box28_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box28_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box28_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box28_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box28_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box28_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box28_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box28_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box28_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box28_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box28_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box28_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box28_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box28_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box28_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box8_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box8_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box8_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box28_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box28_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box28_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+    	</div>
+        
+        <div id="box29" style="position:relative;top:290px;left:3%">模组29
+			<img id="box29_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box29_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box29_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box29_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box29_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box29_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box29_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box29_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box29_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box29_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box29_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+		</div>
+        
+          <div id="box30" style="position:relative;top:300px;left:3%">模组30
+			<img id="box30_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box30_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box30_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box30_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box30_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box30_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box30_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box30_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box30_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box30_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box30_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box31" style="position:relative;top:310px;left:3%">模组31
+			<img id="box31_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box31_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box31_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box31_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box31_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box31_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box31_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box31_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box31_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box31_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box31_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box32" style="position:relative;top:320px;left:3%">模组32
+			<img id="box32_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box32_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box32_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box32_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box32_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box32_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box32_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box32_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box32_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box32_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box32_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box33" style="position:relative;top:330px;left:3%">模组33
+			<img id="box33_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box33_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box33_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box33_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box33_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box33_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box33_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box33_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box33_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box33_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box33_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box34" style="position:relative;top:340px;left:3%">模组34
+			<img id="box34_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box34_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box34_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box34_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box34_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box34_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box34_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box34_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box34_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box34_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box34_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box35" style="position:relative;top:350px;left:3%">模组35
+			<img id="box35_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box35_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box35_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box35_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box35_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box35_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box35_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box35_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box35_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box35_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box35_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box36" style="position:relative;top:360px;left:3%">模组36
+			<img id="box36_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box36_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box36_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box36_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box36_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box36_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box36_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box36_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box36_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box36_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box36_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box37" style="position:relative;top:370px;left:3%">模组37
+			<img id="box37_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box37_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box37_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box37_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box37_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box37_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box37_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box37_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box37_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box37_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box37_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+    	</div>
+    	
+        <div id="box38" style="position:relative;top:380px;left:3%">模组38
+			<img id="box38_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box38_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box38_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box38_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box38_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box38_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box38_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box38_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box38_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box38_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box38_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+    	</div>
+        
+        <div id="box39" style="position:relative;top:390px;left:3%">模组39
+			<img id="box39_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box39_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box39_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box39_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box39_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box39_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box39_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box39_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box39_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box39_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box39_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">--> 
+		</div>
+        
+          <div id="box40" style="position:relative;top:400px;left:3%">模组40
+			<img id="box40_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box40_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box40_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box40_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box40_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box40_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box40_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box40_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box40_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box40_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box40_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box41" style="position:relative;top:410px;left:3%">模组41
+			<img id="box41_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box41_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box41_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box41_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box41_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box41_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box41_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box41_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box41_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box41_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box41_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+         <div id="box42" style="position:relative;top:420px;left:3%">模组42
+			<img id="box42_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box42_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box42_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box42_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box42_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box42_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box42_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box42_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box42_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box42_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box42_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+        
+        <div id="box43" style="position:relative;top:430px;left:3%">模组43
+			<img id="box43_1_jiankang" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:3%;">
+            <!--<img id="box43_1_yajiankang" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_1_bujiankang" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_2_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:100px;">
+            <!--<img id="box43_2_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_2_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_3_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:170px;">
+            <!--<img id="box43_3_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_3_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_4_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:250px;">
+            <!--<img id="box43_4_yajianakng src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_4_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_5_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:330px;">
+            <!--<img id="box43_5_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_5_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_6_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:400px;">
+            <!--<img id="box43_6_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_6_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_7_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:480px;">
+            <!--<img id="box43_7_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_7_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+            
+            <img id="box43_8_jianakng" src="../../images/icons/jiankang_small.png" style="position:relative;top:4px;left:550px;">
+            <!--<img id="box43_8_yajianakng" src="../../images/icons/yajiankang_small.png" style="position:relative;top:4px;left:2%;">
+            <img id="box43_8_bujianakng" src="../../images/icons/bujiankang_small.png" style="position:relative;top:4px;left:2%;">-->
+		</div>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+    <script src="../../js/echarts/echarts.min.js"></script>
+
+    <script type="text/javascript" src="../../js/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <link href="../../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../../js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<style>
+*{ 
+	padding:0;
+	margin:0;
+}
+
+.title{
+	text-align:left;
+	line-height:60px;
+	font-size:16px;
+	width:100%;
+	height:60px;
+	background-color:rgb(153,153,153);
+}
+/*模组选择开始*/
+select{ 
+	width:120px;
+	height:25px;
+	position:absolute;
+	top:80px;
+	left:32px;
+}
+/*模组选择结束*/
+
+/*时间选择开始*/
+.timetable{ 
+	position:absolute;
+	top:120px;
+	left:36px;
+	font-size:18px;
+}
+.timeline{ 
+	position:absolute;
+	top:150px;
+	left:35px;
+	right:90px;
+	color:rgb(204,204,204);
+}
+/*时间选择结束*/
+.container {
+       top:50%
+}
+/*电压开始*/
+.voltage{ 
+	width:100%;
+	height:202px;
+}
+
+.VchartTextLeft{ 	
+	position:absolute;
+	top:166px;
+	left:65px;
+}
+.VchartTextRight{ 
+	position:absolute;
+	top:166px;
+	right:86px;
+}
+
+.Vimg{        /*小图标*/
+	position:absolute;
+	top:164px;
+	left:32px;
+}
+.line1{ 
+	border:dotted;
+	position:absolute;
+	top:174px;
+	left:129px;
+	right:126px;
+}
+.VchartPhoto{ 
+	height:400px;
+	background-color:#000000 !important;
+	position:absolute;
+	top:30%;
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*电压结束*/
+
+/*电流开始*/
+.current{ 
+	width:100%;
+	height:196px;
+}
+
+.CchartTextLeft{ 	
+	position:absolute;
+	top:368px;  /*96+202*/
+	left:65px;
+}
+.CchartTextRight{ 
+	position:absolute;
+	top:368px;
+	right:86px;
+}
+
+.Cimg{ 
+	position:absolute;
+	top:366px;
+	left:32px;
+}
+.line2{ 
+	border:dotted;
+	position:absolute;
+	top:376px;/*104+202*/
+	left:129px;
+	right:126px;
+}
+.CchartPhoto{ 
+	height:120px;
+	background-color:rgb(204,204,204);
+	position:absolute;
+	top:402px; /*130+202*/
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*电流结束*/
+/*温度开始*/
+.temperature{ 
+	width:100%;
+	height:196px;
+}
+
+.TchartTextLeft{ 	
+	position:absolute;
+	top:564px;  /*298+196*/
+	left:65px;
+}
+.TchartTextRight{ 
+	position:absolute;
+	top:564px;
+	right:86px;
+}
+
+.Timg{ 
+	position:absolute;
+	top:560px;
+	left:32px;
+}
+.line3{ 
+	border:dotted;
+	position:absolute;
+	top:572px;/*306+196*/
+	left:129px;
+	right:126px;
+}
+.TchartPhoto{ 
+	height:120px;
+	background-color:rgb(204,204,204);
+	position:absolute;
+	top:598px; /*332+196*/
+	left:60px;
+	right:86px;
+	border-radius:15px;
+}
+/*温度结束*/
+
+</style>
+</head>
+<body>
+<div class="title">一号电源———模组历史数据</div>
+<div class="text">
+	<!--模组选择-->
+    <!-- <div class="ModChoose">
+	<form>
+		<div class="col-sm-4">
+            <div class="input-group">
+                <input type="text" class="form-control" id="input-item" placeholder="Input 1-43">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="select-button">Search!</button>
+                </span>
+            </div>
+        </div>
+	</form>
+    </div> -->
+    
+	<!--时间选择-->
+	<div class="timetable">
+
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" class="form-control" id="input-item" placeholder="Input 1-43">
+                <!-- <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="select-button">Search!</button>
+                </span> -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        
+        <div class="input-group date form_datetime col-md-3" data-date="2017-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+            <input class="form-control" size="16" type="text" value="" id="start_time" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+
+        <div class="input-group date form_datetime col-md-3" data-date="2017-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+            <input class="form-control" size="16" type="text" value="" id="end_time" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+        <button type="button" class="btn btn-primary" id="find_history_mod">查询</button>
+	</div>
+    
+    <!--图表-->
+    <div class="container">
+    	<div class="voltage">
+        <hr class="timeline"/>
+		<div class="VchartPhoto" id="VchartPhoto">
+        电压图
+   		</div>  
+    </div>
+</div>
+<script>
+$(function () {
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+
+    });
+
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+
+    });
+
+    var date = [];
+    var data = [];
+
+    var VoltChart = echarts.init(document.getElementById('VchartPhoto'));//电压图
+    VchartOption = {
+        tooltip: {
+                trigger: 'axis',
+                position: function (pt) {
+                    return [pt[0], '10%'];
+                }
+            },
+            title: {
+                left: 'center',
+                text: '模组历史数据面积图',
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: date
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 10
+            }, {
+                start: 0,
+                end: 10,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                }
+            }],
+            series: [
+                {
+                    name:'模拟数据',
+                    type:'line',
+                    smooth:true,
+                    symbol: 'none',
+                    sampling: 'average',
+                    itemStyle: {
+                        color: 'rgb(255, 70, 131)'
+                    },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgb(255, 158, 68)'
+                        }, {
+                            offset: 1,
+                            color: 'rgb(255, 70, 131)'
+                        }])
+                    },
+                    data: data
+                }
+            ]
+        };
+    VoltChart.setOption(VchartOption);
+
+    $("#find_history_mod").on("click",function () {
+        var item_id = $("#input-item").val();
+        var start_time = $("#start_time").val();
+        var end_time = $("#end_time").val();
+
+        start_time = start_time.substring(0,19);
+        start_time = start_time.replace(/-/g,'/');
+        var start_timestamp = new Date(start_time).getTime();
+
+        end_time = end_time.substring(0,19);
+        end_time = end_time.replace(/-/g,'/');
+        var end_timestamp = new Date(end_time).getTime();
+
+        console.log("item_id: " + item_id);
+        console.log("...start_time...");
+        console.log(start_timestamp);
+        console.log("...end_time...");
+        console.log(end_timestamp);
+
+        window.parent.document.getElementById("s").value = start_timestamp;
+        window.parent.document.getElementById("e").value = end_timestamp;
+        window.parent.send_time_and_id(1);
+
+        //_dealMsg(evt);
+        console.log("_dealMsg down");
+    });
+
+
+        _dealMsg = function (evt) {
+            console.log("接受到的数据" + evt.data)
+            var dataStr = evt.data
+            var dataJson =  JSON.parse(dataStr)
+
+            VchartOption.xAxis.data = VxAxisData
+            VchartOption.series[0].data = VseriesData
+            VchartOption.series[1].data = CseriesData
+            VchartOption.series[2].data = PseriesData
+
+            console.log("加载的data是" + VseriesData)
+            VoltChart.setOption(VchartOption);
+
+            console.log("option里面的数据是：" + VchartOption.series[0].data)
+        }
+    })
+
+</script>
+</body>
+</html>
