@@ -1,9 +1,5 @@
 <launch>
 	<include file="$(find ccms_pro)/launch/can.launch"/>
-<<<<<<< HEAD
-=======
-	<include file="$(find ccms_pro)/launch/msg_test.launch"/>
->>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 	<include file="$(find ccms_pro)/launch/history.launch"/>
 	<include file="$(find ccms_pro)/launch/sub.launch"/>
 </launch>

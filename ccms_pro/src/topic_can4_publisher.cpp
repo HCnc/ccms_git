@@ -165,11 +165,7 @@ int main(int argc, char** argv)
 			rfilter[i].can_mask = CAN_SFF_MASK;
 	    }
 	    setsockopt(s,SOL_CAN_RAW,CAN_RAW_FILTER,&rfilter,sizeof(rfilter));
-<<<<<<< HEAD
 		if(s>=0)
-=======
-		if((s>=0) && (s<=500))
->>>>>>> 27c573caa411224057a532fe854a3352e1be0c39
 		{
 	    	nbytes = read(s,&frame,sizeof(frame));
 			ROS_INFO("n_s_2 %d",s);
