@@ -1,3 +1,3 @@
-int16 modID
+int16 batteryID
 int16 health 
 time stamp
