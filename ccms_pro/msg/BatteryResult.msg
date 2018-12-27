@@ -1,3 +1,3 @@
 int16 batteryID
-int16 health 
+int16 batteryhealth 
 time stamp

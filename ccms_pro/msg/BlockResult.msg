@@ -1,3 +1,3 @@
 int16 modID
-int16 health 
+uint16[] blockhealths 
 time stamp

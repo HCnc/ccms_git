@@ -1,3 +1,3 @@
 int16 modID
-uint16[] healths
+int16 modulehealth
 time stamp

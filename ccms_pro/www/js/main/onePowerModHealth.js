@@ -4,11 +4,11 @@
  */
 
 $(function () {
-    var healthData = [1,-1,0,0,0,0,0,0,0,0,
-                 0,0,0,0,0,0,0,0,0,0,
-                 0,0,0,0,0,0,0,0,0,0,
-                 0,0,0,0,0,0,0,0,0,0,
-                 0,0,0];
+    var healthData = [-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,
+                 -2,-2,-2,-2,-2,-2,-2,-2,-2,-2,
+                 -2,-2,-2,-2,-2,-2,-2,-2,-2,-2,
+                 -2,-2,-2,-2,-2,-2,-2,-2,-2,-2,
+                 -2,-2,-2];
 
     // var voltData = [0,0,0,0,0,0,0,0,0,0,
     //              0,0,0,0,0,0,0,0,0,0,
@@ -32,7 +32,7 @@ $(function () {
 
     dealMsg = function(data){
         id = data.id;
-        healthData[id] = data
+        healthData[id-1] = data.healthdata;
         // tempData[id] = data;
         // voltData[id] = data;
         // voltOption.series[0].data = tempData;

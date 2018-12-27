@@ -3,12 +3,12 @@
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from ccms_pro.msg import BlockResult
-import ProcessData2
+#import ProcessData2
 import rospy
 #import matplotlib.pyplot as plt
 #import numpy as np
 
-def turkeys(inlist):#输入list，输出list最大、最小阈值。可用于异常检测。
+def turkeys(inlist):#输入list，输出list最大、最小阈值。可用于异常检测
     param1=1.5 #for max
     param2=0.8 #for min
     length=len(inlist) #float
@@ -29,22 +29,20 @@ def block_detect():
     pub1 = rospy.Publisher('block_detect',BlockResult, queue_size=1)
     rospy.init_node('block_detect_publisher')
     rate = rospy.Rate(2)
-    rospy.loginfo('enter block_detect()!!!!!!!')
+    #rospy.loginfo('enter block_detect()!!!!!!!')
     while not rospy.is_shutdown():
         mod_inf=rospy.get_param("/mod_inf")
         #rospy.loginfo(mod_inf)   
-        #rospy.loginfo("the legth of mod_inf = %d" %(len(mod_inf[1][1])))
         for modID in range(1,len(mod_inf)-1):
             #Kmeans
-            if ((len(mod_inf[modID][1])+len(mod_inf[modID][2]))==8):#当mod表中八个模块都有值的时候，开始模块检测
-                #time=mod_inf[modID][1][0]#可取同一模组，但是同一时间如何取？？？
-                time=rospy.get_rostime()
-                #mod_inf[modID][1].pop(0)#
-                #mod_inf[modID][2].pop(0)#
+            if ((len(mod_inf[modID][2])+len(mod_inf[modID][3]))==8):#当mod表中八个模块都有值的时候，开始模块检测
+                #time=mod_inf[modID][1][0]
+                #mod_inf[modID][1].pop(0)
+                #mod_inf[modID][2].pop(0)
                 Scores = []  # 存放轮廓系数
                 #SSE = []  # 存放每次结果的误差平方和
-                X = ([[mod_inf[modID][1][0]],[mod_inf[modID][1][1]],[mod_inf[modID][1][2]],[mod_inf[modID][1][3]],
-                      [mod_inf[modID][2][0]],[mod_inf[modID][2][1]],[mod_inf[modID][2][2]],[mod_inf[modID][2][3]]])
+                X = ([[mod_inf[modID][2][0]],[mod_inf[modID][2][1]],[mod_inf[modID][2][2]],[mod_inf[modID][2][3]],
+                      [mod_inf[modID][3][0]],[mod_inf[modID][3][1]],[mod_inf[modID][3][2]],[mod_inf[modID][3][3]]])
                 for k in range(2,7):#SSE(1,7)
                     estimator = KMeans(n_clusters=k)  # 构造聚类器
                     estimator.fit(X)
@@ -62,23 +60,31 @@ def block_detect():
                 K=Scores.index(max_list)+2
 
             #Turkey's
-                current_blockV=mod_inf[modID][1]+mod_inf[modID][2]
+                current_blockV=mod_inf[modID][2]+mod_inf[modID][3]
                 #print(current_blockV)
                 tukeyresult=turkeys(current_blockV)
 
-            #Judge
-                if K==2 or ((min(current_blockV)>tukeyresult[0]) and (max(current_blockV)<tukeyresult[1])):
-                    health=1
-                elif ((K>2)and(K<4)) or (min(current_blockV)>tukeyresult[0]) or (max(current_blockV)<tukeyresult[1]):
-                    health=0
-                elif ((K>=5) or (K<=6)) and ((current_blockV)<tukeyresult[0] or max(current_blockV)<tukeyresult[1]):
-                    health=-1
-                results=BlockResult()
-                results.modID=modID
-                results.health=health
-                results.stamp=time
-                rospy.loginfo(results)
-                pub1.publish(results)
+            #Threshold and Judge
+                blen=len(current_blockV)
+                blhealths=[-99,-99,-99,-99,-99,-99,-99,-99]
+                for x in range(0,blen):
+                    if K==2 or ((current_blockV[x]>tukeyresult[0]) and (current_blockV[x]<tukeyresult[1])):
+                        blhealths[x]=1#健康
+                    elif ((K>2)and(K<=4)) or (current_blockV[x]<tukeyresult[0]) or (current_blockV[x]>tukeyresult[1]):
+                        blhealths[x]=0#亚健康
+                    elif ((K>=5) or (K<=6)) and (current_blockV[x]<tukeyresult[0] or current_blockV[x]<tukeyresult[1]):
+                        blhealths[x]=-1#不健康
+
+            #Output BlockReault
+                blockresults = BlockResult()
+                blockresults.modID = modID
+                blockresults.blockhealths = blhealths 
+                blockresults.stamp = rospy.get_rostime()
+                pub1.publish(blockresults)
+            #store healthparam
+                mod_inf[modID][0]=blhealths
+                rospy.set_param("/mod_inf", mod_inf)
+                #rospy.loginfo(blockresults)
         rate.sleep()
                 
 if __name__ =='__main__' :

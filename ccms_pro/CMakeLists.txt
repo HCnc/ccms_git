@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_runtime
 )
 
-add_message_files(FILES UnpackingCanData1.msg UnpackingCanData2.msg UnpackingCanData3.msg UnpackingCanData4.msg UnpackingCanData5.msg UnpackingCanData6.msg HistoryMsg.msg BlockResult.msg)
+add_message_files(FILES UnpackingCanData1.msg UnpackingCanData2.msg UnpackingCanData3.msg UnpackingCanData4.msg UnpackingCanData5.msg UnpackingCanData6.msg HistoryMsg.msg BlockResult.msg ModuleResult.msg BatteryResult.msg)
 
 add_service_files(FILES ModuleData.srv)
 

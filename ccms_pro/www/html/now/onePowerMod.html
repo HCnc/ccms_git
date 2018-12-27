@@ -5,7 +5,8 @@
 <title>无标题文档</title>
     <script src="../../js/jQuery3.2.1.js"></script>
     <script src = "../../config.js"></script>
-    <script src="../../js/main/onePowerMod.js"></script>
+    <script src="../../js/main/onePowerModOne.js"></script>
+    <script src="../../js/main/onePowerModTwo.js"></script>
     <script src="../../js/echarts/echarts.min.js"></script>
     <script type="text/javascript">
     function deal_data_p(data){
@@ -1386,7 +1387,7 @@
 		var box43_12 = document.getElementById("box43_12_connected");
 
 		for(var i=0; i<data.length; i++){
-			var box_11 = document.getElementById("box" + (i+1) + "_11_connected");
+			var box_11 = document.getElementById("box" + (i+1) + "_12_connected");
 			box_11.src = (data[i] == 1 ? "../../images/icons/error.png" : "../../images/icons/run.png");
 		}
 	}
@@ -1399,6 +1400,14 @@
         var dto = [d.getHours(), minute, second].join(':');
 
         return dto
+    }
+
+    function select_click(){
+    	var options = $("#selection option:selected");
+    	alert(options.val());
+
+    	//drow data
+    	
     }
     </script>
 <style>

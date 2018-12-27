@@ -48,7 +48,7 @@
   // Create a connection to the rosbridge WebSocket server.
   //ros.connect('ws://localhost:8888');
   //ros.connect('ws://222.241.205.86:8888');
-	ros.connect('ws://192.168.0.100:8888');
+	ros.connect('ws://192.168.0.109:8888');
   
   var send_data = new ROSLIB.Topic({
     ros : ros,
@@ -145,8 +145,7 @@
 			console.log('in d4_data');
       //4
 			try{
-				child.window.error2(message.undervolt_warning, message.resistance_abnormality, message.undervolt_alarm,
-                            message.low_volt_alarm);
+				child.window.error2(message.undervolt_warning, message.resistance_abnormality, message.undervolt_alarm, message.low_volt_alarm);
 			}catch(err){
 				console.log(err);
 				console.log(err.message);
@@ -224,17 +223,49 @@
 	});
 
 
+  var batteryDetect = new ROSLIB.Topic({
+    ros : ros,
+    name : '/battery_detect',
+    messageType : 'ccms_pro/BatteryResult'
+  });
+  batteryDetect.subscribe(function(message){
+    //int16 batteryID
+    //int16 batteryhealth 
+    //time stamp
+    console.log("in batteryDetect");
+    child.window.health1(message.batteryID, message.batteryhealth);
+  });
 
+  var moduleDetect = new ROSLIB.Topic({
+    ros : ros,
+    name : '/module_detect',
+    messageType : 'ccms_pro/ModuleResult'
+  });
+  moduleDetect.subscribe(function(message){
+    //int16 modID
+    //int16 modulehealth
+    //time stamp
+    console.log("in moduleDetect");
+    var data = {
+      id : message.modID,
+      healthdata : message.modulehealth,
+    };
+    child.window.health2(data);
+  });
 
-  var detect = new ROSLIB.Topic({
+  var blockDetect = new ROSLIB.Topic({
     ros : ros,
     name : '/block_detect',
     messageType : 'ccms_pro/BlockResult'
   });
-
-  detect.subscribe(function(message){
-    console.log("in detect");
+  blockDetect.subscribe(function(message){
+    //int16 modID
+    //uint16[] blockhealths 
+    //time stamp
+    console.log("in blockDetect");
+    child.window.health3(message.modID, message.blockhealths);
   });
+
 
   var addTwoIntsClient = new ROSLIB.Service({
     ros : ros,
